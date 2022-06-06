@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task</title>
+        <meta charset='utf-8'>
+        <meta name='author' content='Scott Kenneth Jackson'>
+        <meta name='description' content='Accessing information from APIs using PHP'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+        <link href='libs/favicon.ico' rel='icon'>
+        <link href='libs/css/style.css' rel='stylesheet'>
+    </head>
+
+    <body>
+        <header>
+            <h1>Using GeoNames APIs to Access Data</h1>
+        </header>
+
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th class='name'>API Name</th>
+                        <th class='input'>API Description</th>
+                        <th class='submit'></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class='name'>1. Elevation</td>
+                        <td class='input'>
+                            Enter longitudinal and latitudinal coordinates...
+                            <br>
+                            <br><strong>Longitude:</strong> <input type='number' name='longitude' id='elevationLng' min='-180' max='180'> <sub>(min: -180, max 180)</sub>
+                            <br><strong>Latitude:</strong> <input type='number' name='latitude' id='elevationLat' min='-56' max='60'> <sub>(min: -56, max: 60)</sub>
+                        </td>
+                        <td class='submit'><button id='elevationBtn'>Submit</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class='name'>2. Oceans</td>
+                        <td class='input'>
+                            Enter longitudinal and latitudinal coordinates...
+                            <br>
+                            <br><strong>Longitude:</strong> <input type='number' name='longitude' id='oceanLng' min='-180' max='180'> <sub>(min: -180, max: 180)</sub>
+                            <br><strong>Latitude:</strong> <input type='number' name='latitude' id='elevationLat' min='-90' max='90'> <sub>(min: -90, max: 90)</sub>
+                            <td class='submit'><button id='oceanBtn'>Submit</button></td>
+                    </tr>
+
+                    <tr>
+                        <td class='name'>3. Weather</td>
+                        <td class='input'>
+                            Enter longitudinal and latitudinal coordinates...
+                            <br>
+                            <br><strong>Longitude:</strong> <input type='number' name='longitude' id='weatherLng' min='-180' max='180'> <sub>(min: -180, max: 180)</sub>
+                            <br><strong>Latitude:</strong> <input type='number' name='latitude' id='weatherLat' min='-90' max='90'> <sub>(min: -90, max: 90)</sub>
+                            <td class='submit'><button id='weatherBtn'>Submit</button></td>
+                    </tr>
+                </tbody>
+
+                </tfoot>
+                    <tr>
+                        <td class='results' colspan='3'>
+                            <h2>Results</h2>
+                            <p><strong>Elevation:</strong> <span id=elevationData></span></p>
+                            <p><strong>Oceans:</strong> <span id=oceanName></span></p>
+                            <p><strong>Weather:</strong> <span id=weartherInfo></span></p>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+        
+        <script type='application/javascript' src='libs/js/jquery-2.2.3.min.js'></script>
+        <script type='application/javascript' src='libs/js/app.js'></script>
+    </body>
+</html>

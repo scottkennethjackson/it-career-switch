@@ -1,0 +1,38 @@
+h1, h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+table {
+    width: 80%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.name, .input, .submit{
+    border-style: solid;
+    padding: 10px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+sub {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #808080;
+}
+
+.submit {
+    text-align: center;
+}
+
+.results {
+    border-style: solid;
+    padding: 0 10px;
+}
