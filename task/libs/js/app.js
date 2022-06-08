@@ -1,7 +1,7 @@
 // Elevation script
 $('#elevationBtn').click(function() {
     $.ajax({
-        url: "libs/php/getElevation.php",
+        url: 'libs/php/getElevation.php',
         type: 'POST',
         dataType: 'json',
         data: {
@@ -12,7 +12,7 @@ $('#elevationBtn').click(function() {
         success: function(result) {
             console.log(result);
 
-            if (result.status.name =="ok") {
+            if (result.status.name =='ok') {
                 if (result.data === -32768) {
                     $('#elevationData').html('No elevation data (these coordinates are located in the middle of the ocean).');
                 } else {
