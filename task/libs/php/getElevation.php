@@ -1,10 +1,8 @@
 <?php
 
-include('config.php');
-
 $executionStartTime = microtime(true);
 
-$url='http://api.geonames.org/srtm3?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=sk_jackson';
+$url='http://api.geonames.org/srtm3JSON?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=sk_jackson';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
