@@ -78,9 +78,9 @@ $('#weatherBtn').click(function() {
                     $('#weatherInfo').html(`The nearest weather station is ${result.data.weatherObservation.stationName}
                     (${result.data.weatherObservation.countryCode}).
                     The last observation was taken on ${result.data.weatherObservation.datetime}.
-                    The temperature is ${result.data.weatherObservation.temperature}\u00B0,
+                    The temperature is ${result.data.weatherObservation.temperature}\u00B0C,
                     with ${result.data.weatherObservation.humidity}% humidity.
-                    Windspeed is ${result.data.weatherObservation.windSpeed},
+                    Windspeed is ${result.data.weatherObservation.windSpeed}mph,
                     with ${result.data.weatherObservation.clouds}.`);
                 }
             }
