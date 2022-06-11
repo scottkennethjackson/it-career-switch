@@ -1,7 +1,5 @@
 <?php
 
-include('config.php');
-
 $executionStartTime = microtime(true);
 
 $url='http://api.geonames.org/findNearByWeatherJSON?lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=sk_jackson';

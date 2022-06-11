@@ -12,9 +12,9 @@ $('#elevationBtn').click(function() {
         success: function(result) {
             console.log(result);
 
-            if (result.status.name =='ok') {
+            if (result.status.name == 'ok') {
                 if (result.data === -32768) {
-                    $('#elevationData').html('No elevation data (these coordinates are located in the middle of the ocean).');
+                    $('#elevationData').html('No elevation data. These coordinates are located in the middle of the ocean.');
                 } else {
                     $('#elevationData').html(`The elevation at these coordinates is ${result.data} meters.`);
                 }
@@ -43,7 +43,7 @@ $('#oceanBtn').click(function() {
 
             if (result.status.name =='ok') {
                 if (result.data.ocean === null) {
-                    $('#oceanName').html('There is no sea or ocean at these coordinates.');
+                    $('#oceanName').html('There is no ocean or sea at these coordinates.');
                 } else {
                     $('#oceanName').html(`These coordinates are located in the middle of the ${result.data.ocean.name}.`);
                 }
@@ -76,10 +76,10 @@ $('#weatherBtn').click(function() {
                     $('#weatherInfo').html('There is no weather station within 100km of these coordinates.');
                 } else {
                     $('#weatherInfo').html(`The nearest weather station is ${result.data.weatherObservation.stationName}
-                    in ${result.data.weatherObservation.countryCode}.
+                    (${result.data.weatherObservation.countryCode}).
                     The last observation was taken on ${result.data.weatherObservation.datetime}.
-                    The temperature is ${result.data.weatherObservation.temperature},
-                    with ${result.data.weatherObservation.humidity} humidity.
+                    The temperature is ${result.data.weatherObservation.temperature}\u00B0,
+                    with ${result.data.weatherObservation.humidity}% humidity.
                     Windspeed is ${result.data.weatherObservation.windSpeed},
                     with ${result.data.weatherObservation.clouds}.`);
                 }

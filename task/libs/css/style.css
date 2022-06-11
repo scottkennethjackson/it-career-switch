@@ -1,3 +1,7 @@
+html {
+    background-color: #eee8aa;
+}
+
 h1, h2 {
     text-align: center;
     text-decoration: underline;
@@ -11,15 +15,28 @@ table {
     border-collapse: collapse;
     border-style: solid;
     border-color: #000000;
+    background-color: #ffffff;
 }
 
-.name, .input, .submit{
+th {
     border-style: solid;
+    background-color: #aab0ee;
     padding: 10px;
 }
 
+td {
+    border-style: solid;
+    padding: 0 10px 10px 10px;
+}
+
 .name {
+    width: 15%;
     font-weight: bold;
+    text-align: center;
+}
+
+.description p {
+    text-align: justify;
 }
 
 sub {
@@ -28,11 +45,18 @@ sub {
     color: #808080;
 }
 
+.input {
+    line-height: 1.5;
+}
+
 .submit {
+    width: 15%;
     text-align: center;
 }
 
 .results {
     border-style: solid;
-    padding: 0 10px;
+    background-color: #dcdfff;
+    padding: 0 5%;
+    text-align: justify;
 }
