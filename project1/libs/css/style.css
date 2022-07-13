@@ -1,0 +1,133 @@
+body {
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    color: black;
+    --red: #df7a7e;
+    --lightGreen: #43a783;
+    --darkGreen: #014641;
+    --darkBlue: #1e1a3f;
+    --yellow: #f9b94b;
+}
+
+html {
+    height: 100vh;
+}
+
+a {
+    text-decoration: underline;
+    color: var(--red);
+}
+
+/* <-insert spinner styling here-> */
+
+header {
+    position: sticky;
+    z-index: 100;
+    height: 8vh;
+    min-height: 30px;
+    width: 100vw;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--darkGreen);
+    color: white;
+    border-bottom: .5vw solid var(--red);
+    box-shadow:.5vw .5vw .5vw darkgray;
+}
+
+h1 {
+    font-size: 1.75rem;
+    margin: 2vw;
+}
+
+#map {
+    height: 92vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+/* <-form styling goes here?-> */
+
+select {
+    margin: 2vw;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-family: Tahoma, sans-serif;
+}
+
+#flag2 {
+    max-height: 8vh;
+    border: 1px solid black;
+}
+
+.marker-cluster-small div {
+    background-color: var(--red); /* or --yellow? */
+}
+
+.far, .fas {
+    color: red; /* re-color this */
+}
+
+.modal {
+    overflow-y: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header {
+    background-color: whitesmoke;
+    border-bottom: 2px solid var(--yellow);
+}
+
+.modal-body, .table {
+    background-color: whitesmoke;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td {
+    background-color: var(--lightGreen);
+}
+
+#item-A {
+    font-weight: bold;
+    justify-self: center;
+    align-self: center;
+}
+
+#item-1 {
+    align-self: center;
+    justify-self: flex-start;
+}
+
+#item-B {
+    border-top: 2px solid var(--darkGreen);
+}
+
+#item-2 {
+    text-align: right;
+    justify-content: flex-start;
+    border-top: 2px solid var(--darkGreen);
+}
+
+#item-3, #item-4, #item-5, #item-6, #item-7 {
+    text-align: right;
+}
+
+#item-7 {
+    text-transform: capitalize;
+}
+
+.newsImage {
+    max-width: 50%;
+}
+
+.justify {
+    text-align: justify;
+}
