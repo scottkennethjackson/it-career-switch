@@ -1,28 +1,31 @@
 <?php
 
-$executionStartTime = microtime(true);
+$curl = curl_init();
 
-$url="http://api.geonames.org/childrenJSON?geonameId=" . $_REQUEST["param1"] . "&username=sk_jackson&hierarchy=tourism";
+curl_setopt_array($curl, [
+	CURLOPT_URL => "https://coronavirus-monitor.p.rapidapi.com/coronavirus/latest_stat_by_country.php?country=" . $_REQUEST["param1"],
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => [
+		"X-RapidAPI-Host: coronavirus-monitor.p.rapidapi.com",
+		"X-RapidAPI-Key: aae7c92896mshe10256639238b66p178ba0jsnf152b11cfc5c"
+	],
+]);
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_URL,$url);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-$result=curl_exec($ch);
+curl_close($curl);
 
-curl_close($ch);
-
-$decode = json_decode($result, true);
-
-$output["status"]["code"] = "200";
-$output["status"]["name"] = "ok";
-$output["status"]["description"] = "success";
-$output["status"]["returnedIn"] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
-$output["data"] = $decode["geonames"];
-
-header("Content-Type: application/json; charset=UTF-8");
-
-echo json_encode($output);
+if ($err) {
+	echo "cURL Error #:" . $err;
+} else {
+	echo $response;
+}
 
 ?>
