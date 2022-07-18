@@ -2,7 +2,7 @@
 
 $executionStartTime = microtime(true);
 
-$url="http://api.opencagedata.com/geocode/v1/json?q=" . $_REQUEST["param1"] . "+" . $_REQUEST["param2"] . "&key=777f761e5746414697e69cbf97b96341";
+$url="https://api.opencagedata.com/geocode/v1/json?q=" . $_REQUEST["param1"] . "&countrycode=" . $_REQUEST["param2"] . "&key=777f761e5746414697e69cbf97b96341";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
