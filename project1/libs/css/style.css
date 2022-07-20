@@ -124,6 +124,10 @@ select {
     text-transform: capitalize;
 }
 
+#skyblue {
+    background-color: lightblue;
+}
+
 .newsImage {
     max-width: 50%;
 }
