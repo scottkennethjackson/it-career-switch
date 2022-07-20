@@ -12,18 +12,24 @@ const country = {
     currentHours: "00",
     currentMinutes: "00",
     amOrPm: "am",
+    temp: 0,
+    feelsLike: 0,
     mintemp: 0,
     maxtemp: 0,
     windspeed: 0,
+    windforce: 0,
     weathericon: "",
     humidity: 0,
+    visibility: "",
     weatherDescription: "",
+    weatherForecast: "",
     newCovidCases: 0,
     activeCovidCases: 0,
     covidRecoveries: 0,
     covidDeaths: 0,
-    USDexchange: 0,
+    GBPexchange: 0,
     EURexchange: 0,
+    USDexchange: 0,
     newsTitle1: "",
     newsTitle2: "",
     newsTitle3: "",
@@ -135,7 +141,7 @@ const displaySelectData = (data) => {
     }
 };
 
-// Get country code and use to gather country info
+// Get country code and use it to gather info
 const getCountryCode = (lat, lng) => {
     callApi("getCountryCode", lat, lng, useCountryCode);
 };
@@ -182,7 +188,7 @@ $("#countrySelect").change(function () {
     getData()
 });
 
-// Go to location and populate the marker with the sunrise, plus clock
+// Go to location and populate the marker with sunrise and current time info
 const zoomToPlace = (data) => {
 
     clickLocationLat = data.data.lat;
@@ -243,7 +249,8 @@ const getData = () => {
 
     callApi("getCountryInfo", "en", country.iso2, getBasicData);
     callApi("getPolygon", country.iso2, "", displayPolygon);
-    callApi("getWeather", country.capital, "metric", getWeatherData);
+    callApi("getWeather", country.capital, country.iso2, getWeatherData);
+    callApi("getMoney", country.currency, "", getMoneyData);
 };
 
 // Get countryName, population, currency, capital, flag and area info
@@ -282,7 +289,7 @@ const getBasicData = (data) => {
     callApi("getCapitalCoords", countryCapitalMinusSpaces, country.iso2, zoomToPlace);
 };
 
-// Get the extra top level and call the display
+// Get the extra top level info and call the display
 const saveMoreBasicData = (data) => {
     country.officialName = data.officialName;
     country.demonym = data.demonym;
@@ -318,7 +325,7 @@ const displayTopLevel = () => {
     $("#item-4").html(country.population.toFixed(2) + "m");
     $("#item-E").html("Area");
     $("#item-5").html(`${country.area} km&sup2;`);
-    $("#item-F").html("Inhabitants");
+    $("#item-F").html("Populace");
     $("#item-6").html(country.demonym);
     $("#item-G").html("Languages Spoken");
     const languages = Object.values(country.languages);
@@ -342,33 +349,122 @@ const setCurrentTime = (timeoffset) => {
     }
 };
 
-// Populate weather modal and display it
+// Get weather info and call the display
 const getWeatherData = (data) => {
     const results = data.data;
     country.weatherDescription = results.weather[0].description;
-    country.maxtemp = Math.round(results.main.temp_max);
+    country.temp = Math.round(results.main.temp);
+    country.feelsLike = Math.round(results.main.feels_like);
     country.mintemp = Math.round(results.main.temp_min);
-    country.windspeed = parseFloat(results.wind.speed);
-    country.windspeed = (2.23694 * country.windspeed).toFixed(0);
+    country.maxtemp = Math.round(results.main.temp_max);
+    country.windspeed = Math.round(results.wind.speed);
     country.weathericon = results.weather[0].icon;
     country.humidity = results.main.humidity;
-    country.visibility = results.visibility;
+
+    // weatherForecast formula
+    if (country.weatherDescription == "clear sky") {
+        country.weatherForecast = "Clear skies and sunny";
+    } else if (country.weatherDescription == "few clouds") {
+        country.weatherForecast = "A few clouds";
+    } else if (country.weatherDescription == "scattered clouds") {
+        country.weatherForecast = "Scattered clouds";
+    } else if (country.weatherDescription == "broken clouds") {
+        country.weatherForecast = "Broken clouds";
+    } else if (country.weatherDescription == "shower rain") {
+        country.weatherForecast = "Showers";
+    } else if (country.weatherDescription == "rain") {
+        country.weatherForecast = "Rain";
+    } else if (country.weatherDescription == "thunderstorm") {
+        country.weatherForecast = "Thunderstorms";
+    } else if (country.weatherDescription == "snow") {
+        country.weatherForecast = "Snow";
+    } else {
+        country.weatherForecast = "Misty";
+    }
+
+    // windforce formula
+    if (country.windspeed < 4) {
+        country.windforce = "calm conditions";
+    } else if (country.windspeed < 8) {
+        country.windforce = "a light breeze";
+    } else if (country.windspeed < 13) {
+        country.windforce = "a gentle breeze";
+    } else if (country.windspeed < 19) {
+        country.windforce = "a moderate breeze";
+    } else if (country.windspeed < 25) {
+        country.windforce = "a fresh breeze";
+    } else if (country.windspeed < 32) {
+        country.windforce = "a strong breeze";
+    } else if (country.windspeed < 39) {
+        country.windforce = "near gale-force winds";
+    } else if (country.windspeed < 47) {
+        country.windforce = "gale-force winds";
+    } else if (country.windspeed < 55) {
+        country.windforce = "strong gales";
+    } else if (country.windspeed < 64) {
+        country.windforce = "whole gale-force winds";
+    } else if (country.windspeed < 75) {
+        country.windforce = "storm-force winds";
+    } else {
+        country.windforce = "hurricane-force winds";
+    }
+
+    // visibility formula
+    if (results.visibility < 1000) {
+        country.visibility = "Very Poor";
+    } else if (results.visibility < 4000) {
+        country.visibility = "Poor";
+    } else if (results.visibility < 7000) {
+        country.visibility = "Moderate";
+    } else {
+        country.visibility = "Good";
+    }
+
 };
 
+// Populate the weather modal and display it
 const displayWeather = () => {
     let weather = (screenCheck.matches) ? `https://openweathermap.org/img/wn/${country.weathericon}@2x.png` : `https://openweathermap.org/img/wn/${country.weathericon}.png`;
-    $("#item-A").html(`The Weather in ${country.capital}, ${country.countryName}`);
-    $("#item-B").html(`Today: ${country.weatherDescription}`);
-    $("#item-2").html(`<img src="${weather}" alt="Weather icon">`);
-    $("#item-C").html("Max Temperature");
-    $("#item-3").html(`${country.maxtemp}&#176;C`);
-    $("#item-D").html("Min Temperature");
-    $("#item-4").html(`${country.mintemp}&#176;C`);
+    $("#item-A").html(`Weather in ${country.capital}, ${country.countryName}`);
+    $("#item-B").html(
+        `<p><strong>Today:</strong><br>${country.weatherForecast} with ${country.windforce}</p><p><strong>High:</strong> ${country.maxtemp}&#176;C | <strong>Low:</strong> ${country.mintemp}&#176;C</p>`
+    );
+    $("#item-2").html(`<img id="skyblue" src="${weather}" alt="Weather icon"></img>`);
+    $("#item-C").html("Temperature");
+    $("#item-3").html(`${country.temp}&#176;C`);
+    $("#item-D").html("Feels Like");
+    $("#item-4").html(`${country.feelsLike}&#176;C`);
     $("#item-E").html("Wind Speed");
     $("#item-5").html(`${country.windspeed} mph`);
     $("#item-F").html("Humidity");
     $("#item-6").html(`${country.humidity}%`);
-    $("#item-G").html("");
+    $("#item-G").html("Visibility");
+    $("#item-7").html(`${country.visibility}`);
+};
+
+// Get money info and call the display
+const getMoneyData = (data) => {
+    const results = data.data.conversion_rates;
+    country.GBPexchange = results.GBP;
+    country.EURexchange = results.EUR;
+    country.USDexchange = results.USD;
+};
+
+// Populate the money modal and display it
+const displayMoney = () => {
+    $("#item-A").html(`${country.demonym} Money`);
+    $("#item-B").html("Currency");
+    $("#item-2").html(`${country.currencyName} (${country.currency})`);
+    $("#item-C").html("Symbol");
+    $("#item-3").html(country.currencySymbol);
+    $("#item-D").html("World Bank Rating");
+    $("#item-4").html(country.worldBankRating);
+    $("#item-E").html("Exchange Rate with British Pounds (£)");
+    $("#item-5").html(`${country.currencySymbol}1 = ${country.GBPexchange} GBP`);
+    $("#item-F").html("Exchange Rate with Euros (&#8364;)");
+    $("#item-6").html(`${country.currencySymbol}1 = ${country.EURexchange} EUR`);
+    $("#item-G").html("Exchange Rate with US Dollars ($)");
+    $("#item-7").html(`${country.currencySymbol}1 = ${country.USDexchange} USD`);
 };
 
 // Reset modal
