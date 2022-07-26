@@ -12,6 +12,7 @@ const country = {
     currentHours: "00",
     currentMinutes: "00",
     amOrPm: "am",
+    timeOfDay: "",
     temp: 0,
     feelsLike: 0,
     mintemp: 0,
@@ -21,10 +22,9 @@ const country = {
     weathericon: "",
     humidity: 0,
     visibility: "",
-    weatherDescription: "",
     weatherForecast: "",
     newCovidCases: 0,
-    activeCovidCases: 0,
+    totalCovidCases: 0,
     covidRecoveries: 0,
     covidDeaths: 0,
     GBPexchange: 0,
@@ -34,14 +34,20 @@ const country = {
     newsTitle2: "",
     newsTitle3: "",
     newsTitle4: "",
+    newsTitle5: "",
+    newsTitle6: "",
     newsLink1: "",
     newsLink2: "",
     newsLink3: "",
     newsLink4: "",
+    newsLink5: "",
+    newsLink6: "",
     newsImage1: "",
     newsImage2: "",
     newsImage3: "",
     newsImage4: "",
+    newsImage5: "",
+    newsImage6: "",
     officialName: "",
     demonym: "",
     currencyName: "",
@@ -62,10 +68,9 @@ let centerOnLong = 0;
 let timeoffset = 0;
 
 let polyGonLayer;
-let capitalMarker;
-let regionMarkerLayer;
 let earthquakeMarkerLayer;
 let wikiMarkerLayer;
+let regionMarkerLayer;
 let mapOptions;
 
 let screenCheck = window.matchMedia("(min-width: 480px)");
@@ -108,7 +113,7 @@ L.easyButton("fa-solid fa-cloud-sun-rain", function () {
     displayWeather()
     $(".modal").modal("show");}, function () {}).addTo(map);
 
-L.easyButton("fa-solid fa-stethoscope", function () {
+L.easyButton("fa-solid fa-book-medical", function () {
     resetModal()
     displayVirus()
     $(".modal").modal("show");}, function () {}).addTo(map);
@@ -143,7 +148,24 @@ const displaySelectData = (data) => {
 
 // Get country code and use it to gather info
 const getCountryCode = (lat, lng) => {
-    callApi("getCountryCode", lat, lng, useCountryCode);
+    // callApi("getCountryCode", lat, lng, useCountryCode);
+    $.ajax({
+        url: "libs/php/getCountryCode.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: lat,
+            param2: lng,
+        },
+    
+        success: function (result) {
+            useCountryCode(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getCountryCode.php: ajax call failed ${textStatus}`);
+        },
+    });
 };
 
 const useCountryCode = (data) => {
@@ -188,31 +210,74 @@ $("#countrySelect").change(function () {
     getData()
 });
 
-// Go to location and populate the marker with sunrise and current time info
+// Go to location, get time info and call marker APIs
 const zoomToPlace = (data) => {
 
     clickLocationLat = data.data.lat;
     clickLocationLng = data.data.lng;
 
-    const sunrise = data.sunrise;
     timeoffset = data.timeoffset;
-    //const sunriseString = getSunrise(sunrise);
     setCurrentTime(timeoffset);
 
-    /* let landmarkMarker = L.ExtraMarkers.icon({
-        icon: "fa-compress-alt",
-        markerColor: "purple",
-        shape: "penta",
-        prefix: "fa",
-    })
+    // callApi("getEarthquakes", country.geonameId, "", displayEarthquakes);
+    $.ajax({
+        url: "libs/php/getEarthquakes.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.north,
+            param2: country.south,
+            param3: country.east,
+            param4: country.west,
+        },
+    
+        success: function (result) {
+            displayEarthquakes(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getEarthquakes.php: ajax call failed ${textStatus}`);
+        },
+    });
 
-    capitalMarker = L.marker([clickLocationLat, clickLocationLng], {icon: landmarkMarker}).addTo(map).bindPopup(
-        `The capital city of ${country.countryName} is ${country.capital}. Its population is ${region.population.toLocaleString("en-US")}. ${sunriseString}`
-    );
+    // callApi("getWiki", country.north, country.south, displayWiki, country.east, country.west);
+    $.ajax({
+        url: "libs/php/getWiki.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.north,
+            param2: country.south,
+            param3: country.east,
+            param4: country.west,
+        },
+    
+        success: function (result) {
+            displayWiki(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getWiki.php: ajax call failed ${textStatus}`);
+        },
+    });
 
-    callApi("getEarthquakes", country.geonameId, "", displayEarthquakes);
-    callApi("getWiki", country.north, country.south, displayWiki, country.east, country.west);
-    callApi("getCountryRegions", country.geonameId, "", displayRegions);*/
+    // callApi("getCountryRegions", country.geonameId, "", displayRegions);
+    $.ajax({
+        url: "libs/php/getCountryRegions.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.geonameId,
+        },
+    
+        success: function (result) {
+            displayRegions(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getCountryRegions.php: ajax call failed ${textStatus}`);
+        },
+    });
 };
 
 // Put a polygon or multi-polygon around selected country
@@ -239,18 +304,49 @@ const displayPolygon = (data) => {
         style: {color: "#43a783", opacity: "0.5", weight: "2"},
     })
     polyGonLayer.addTo(map).bringToBack();
-};
+}; 
 
-// Remove previous polygon/features and get new data
+// Remove previous polygon/features, call APIs and get new data
 const getData = () => {
     if (geoJsonFeature.type !== "loading") {
         resetMap()
     }
 
-    callApi("getCountryInfo", "en", country.iso2, getBasicData);
-    callApi("getPolygon", country.iso2, "", displayPolygon);
-    callApi("getWeather", country.capital, country.iso2, getWeatherData);
-    callApi("getMoney", country.currency, "", getMoneyData);
+    // callApi("getCountryInfo", country.iso2, "", getBasicData);
+    $.ajax({
+        url: "libs/php/getCountryInfo.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.iso2,
+        },
+    
+        success: function (result) {
+            getBasicData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getCountryInfo.php: ajax call failed ${textStatus}`);
+        },
+    });
+
+    // callApi("getPolygon", country.iso2, "", displayPolygon);
+    $.ajax({
+        url: "libs/php/getPolygon.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.iso2,
+        },
+    
+        success: function (result) {
+            displayPolygon(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getPolygon.php: ajax call failed ${textStatus}`);
+        },
+    });
 };
 
 // Get countryName, population, currency, capital, flag and area info
@@ -281,12 +377,46 @@ const getBasicData = (data) => {
 
     $("#titleCountry").html(country.countryName);
 
-    callApi("getMoreCountryInfo", country.iso2, country.currency, saveMoreBasicData);
+    // callApi("getMoreCountryInfo", country.iso2, country.currency, saveMoreBasicData);
+    $.ajax({
+        url: "libs/php/getMoreCountryInfo.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.iso2,
+            param2: country.currency,
+        },
+    
+        success: function (result) {
+            saveMoreBasicData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getMoreCountryInfo.php: ajax call failed ${textStatus}`);
+        },
+    });
 
     // Either zoom to capital or user's location/place clicked
     let countryCapitalMinusSpaces = country.capital.split(" ").join("_");
 
-    callApi("getCapitalCoords", countryCapitalMinusSpaces, country.iso2, zoomToPlace);
+    // callApi("getCapitalCoords", countryCapitalMinusSpaces, country.iso2, zoomToPlace);
+    $.ajax({
+        url: "libs/php/getCapitalCoords.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: countryCapitalMinusSpaces,
+            param2: country.iso2,
+        },
+    
+        success: function (result) {
+            zoomToPlace(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getCapitalCoords.php: ajax call failed ${textStatus}`);
+        },
+    });
 };
 
 // Get the extra top level info and call the display
@@ -299,7 +429,97 @@ const saveMoreBasicData = (data) => {
     country.flag = data.flag;
     $("#flag2").html(`<img src="${country.flag}" alt="Flag of ${country.countryName}">`);
     
-    callApi("getWHOData", country.iso3, "", saveWHOData);
+    //callApi("getWHOData", country.iso3, "", saveWHOData);
+    $.ajax({
+        url: "libs/php/getWHOData.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.iso3,
+        },
+    
+        success: function (result) {
+            saveWHOData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getWHOData.php: ajax call failed ${textStatus}`);
+        },
+    });
+
+    // callApi("getWeather", country.capital, country.iso2, getWeatherData);
+    $.ajax({
+        url: "libs/php/getWeather.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.capital,
+            param2: country.iso2,
+        },
+    
+        success: function (result) {
+            getWeatherData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getWeather.php: ajax call failed ${textStatus}`);
+        },
+    });
+    
+    // callApi("getVirus", country.iso2, "", getVirusData);
+    $.ajax({
+        url: "libs/php/getVirus.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.iso2,
+        },
+    
+        success: function (result) {
+            getVirusData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getVirus.php: ajax call failed ${textStatus}`);
+        },
+    });
+
+    // callApi("getMoney", country.currency, "", getMoneyData);
+    $.ajax({
+        url: "libs/php/getMoney.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.currency,
+        },
+    
+        success: function (result) {
+            getMoneyData(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getMoney.php: ajax call failed ${textStatus}`);
+        },
+    });
+
+    // callApi("getNews", country.name, country.demonym, getNews);
+    $.ajax({
+        url: "libs/php/getNews.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            param1: country.name,
+            param2: country.demonym,
+        },
+    
+        success: function (result) {
+            getNews(result);
+        },
+    
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getNews.php: ajax call failed ${textStatus}`);
+        },
+    });
 };
 
 const saveWHOData = (data) => {
@@ -310,7 +530,7 @@ const saveWHOData = (data) => {
     });
 
     country.lifeExpectancy = data.data.fact[11].value.display;
-    //displayTopLevel()
+    displayTopLevel()
 };
 
 // Populate info modal and display it
@@ -349,10 +569,9 @@ const setCurrentTime = (timeoffset) => {
     }
 };
 
-// Get weather info and call the display
+// Get weather info
 const getWeatherData = (data) => {
     const results = data.data;
-    country.weatherDescription = results.weather[0].description;
     country.temp = Math.round(results.main.temp);
     country.feelsLike = Math.round(results.main.feels_like);
     country.mintemp = Math.round(results.main.temp_min);
@@ -361,25 +580,34 @@ const getWeatherData = (data) => {
     country.weathericon = results.weather[0].icon;
     country.humidity = results.main.humidity;
 
-    // weatherForecast formula
-    if (country.weatherDescription == "clear sky") {
-        country.weatherForecast = "Clear skies and sunny";
-    } else if (country.weatherDescription == "few clouds") {
-        country.weatherForecast = "A few clouds";
-    } else if (country.weatherDescription == "scattered clouds") {
-        country.weatherForecast = "Scattered clouds";
-    } else if (country.weatherDescription == "broken clouds") {
-        country.weatherForecast = "Broken clouds";
-    } else if (country.weatherDescription == "shower rain") {
-        country.weatherForecast = "Showers";
-    } else if (country.weatherDescription == "rain") {
-        country.weatherForecast = "Rain";
-    } else if (country.weatherDescription == "thunderstorm") {
-        country.weatherForecast = "Thunderstorms";
-    } else if (country.weatherDescription == "snow") {
-        country.weatherForecast = "Snow";
+    // timeOfDay formula
+    if (country.weathericon.includes("n")) {
+        country.timeOfDay = "Tonight";
     } else {
-        country.weatherForecast = "Misty";
+        country.timeOfDay = "Today";
+    }
+
+    // weatherForecast formula
+    if (country.weathericon == "01d") {
+        country.weatherForecast = "clear skies and sunny";
+    } else if (country.weathericon == "01n") {
+        country.weatherForecast = "clear skies";
+    } else if (country.weathericon.includes("02")) {
+        country.weatherForecast = "a few clouds";
+    } else if (country.weathericon.includes("03")) {
+        country.weatherForecast = "scattered clouds";
+    } else if (country.weathericon.includes("04")) {
+        country.weatherForecast = "broken clouds";
+    } else if (country.weathericon.includes("09")) {
+        country.weatherForecast = "showers";
+    } else if (country.weathericon.includes("10")) {
+        country.weatherForecast = "rain";
+    } else if (country.weathericon.includes("11")) {
+        country.weatherForecast = "thunderstorms";
+    } else if (country.weathericon.includes("13")) {
+        country.weatherForecast = "snow";
+    } else {
+        country.weatherForecast = "misty";
     }
 
     // windforce formula
@@ -419,15 +647,14 @@ const getWeatherData = (data) => {
     } else {
         country.visibility = "Good";
     }
-
 };
 
-// Populate the weather modal and display it
+// Populate weather modal and display it
 const displayWeather = () => {
     let weather = (screenCheck.matches) ? `https://openweathermap.org/img/wn/${country.weathericon}@2x.png` : `https://openweathermap.org/img/wn/${country.weathericon}.png`;
-    $("#item-A").html(`Weather in ${country.capital}, ${country.countryName}`);
+    $("#item-A").html(`The Weather in ${country.capital}, ${country.countryName}`);
     $("#item-B").html(
-        `<p><strong>Today:</strong><br>${country.weatherForecast} with ${country.windforce}</p><p><strong>High:</strong> ${country.maxtemp}&#176;C | <strong>Low:</strong> ${country.mintemp}&#176;C</p>`
+        `<div id="weatherForecast"><p>${country.timeOfDay}'s forecast is ${country.weatherForecast} with ${country.windforce}</p><p><strong>High:</strong> ${country.maxtemp}&#176;C | <strong>Low:</strong> ${country.mintemp}&#176;C</p></div>`
     );
     $("#item-2").html(`<img id="skyblue" src="${weather}" alt="Weather icon"></img>`);
     $("#item-C").html("Temperature");
@@ -442,12 +669,37 @@ const displayWeather = () => {
     $("#item-7").html(`${country.visibility}`);
 };
 
-// Get money info and call the display
+// Get virus info
+const getVirusData = (data) => {
+    const results = data.stats;
+    country.newCovidCases = results.newlyConfirmedCases.toLocaleString("en-US");
+    country.totalCovidCases = results.totalConfirmedCases.toLocaleString("en-US");
+    country.covidRecoveries = results.totalRecoveredCases.toLocaleString("en-US");
+    country.covidDeaths = results.totalDeaths.toLocaleString("en-US");
+};
+
+// Populate virus modal and display it
+const displayVirus = () => {
+    $("#item-A").html(`${country.demonym} Health`);
+    $("#item-B").html("Average Life Expectancy*");
+    $("#item-2").html(`${country.lifeExpectancy} years`);
+    $("#item-C").html("Number of New Covid Cases");
+    $("#item-3").html(country.newCovidCases);
+    $("#item-D").html("Total Number of Covid Cases");
+    $("#item-4").html(country.totalCovidCases);
+    $("#item-E").html("Total Number of Covid Recoveries");
+    $("#item-5").html(country.covidRecoveries);
+    $("#item-F").html("Total Number of Covid-related Deaths");
+    $("#item-6").html(country.covidDeaths);
+    $("#item-G").html(`<sub><em>*according to the World Health Organisation</em></sub>`);
+};
+
+// Get money info
 const getMoneyData = (data) => {
     const results = data.data.conversion_rates;
-    country.GBPexchange = results.GBP;
-    country.EURexchange = results.EUR;
-    country.USDexchange = results.USD;
+    country.GBPexchange = parseFloat(results.GBP).toFixed(4);
+    country.EURexchange = parseFloat(results.EUR).toFixed(4);
+    country.USDexchange = parseFloat(results.USD).toFixed(4);
 };
 
 // Populate the money modal and display it
@@ -459,12 +711,154 @@ const displayMoney = () => {
     $("#item-3").html(country.currencySymbol);
     $("#item-D").html("World Bank Rating");
     $("#item-4").html(country.worldBankRating);
-    $("#item-E").html("Exchange Rate with British Pounds (£)");
-    $("#item-5").html(`${country.currencySymbol}1 = ${country.GBPexchange} GBP`);
-    $("#item-F").html("Exchange Rate with Euros (&#8364;)");
-    $("#item-6").html(`${country.currencySymbol}1 = ${country.EURexchange} EUR`);
-    $("#item-G").html("Exchange Rate with US Dollars ($)");
-    $("#item-7").html(`${country.currencySymbol}1 = ${country.USDexchange} USD`);
+    $("#item-E").html("Exchange Rate with British Pounds");
+    $("#item-5").html(`${country.currencySymbol}1 = £${country.GBPexchange}`);
+    $("#item-F").html("Exchange Rate with Euros");
+    $("#item-6").html(`${country.currencySymbol}1 = &#8364;${country.EURexchange}`);
+    $("#item-G").html("Exchange Rate with US Dollars");
+    $("#item-7").html(`${country.currencySymbol}1 = $${country.USDexchange}`);
+};
+
+
+// Get news info
+const getNews = (data) => {
+    const results = data.data;
+    if (results[0]) {
+        country.newsTitle1 = results[0][0];
+        country.newsLink1 = results[0][1];
+        country.newsImage1 = results[0][2];
+    }
+    if (results[1]) {
+        country.newsTitle2 = results[1][0];
+        country.newsLink2 = results[1][1];
+        country.newsImage2 = results[1][2];
+    }
+    if (results[2]) {
+        country.newsTitle3 = results[2][0];
+        country.newsLink3 = results[2][1];
+        country.newsImage3 = results[2][2];
+    }
+    if (results[3]) {
+        country.newsTitle4 = results[3][0];
+        country.newsLink4 = results[3][1];
+        country.newsImage4 = results[3][2];
+    }
+    if (results[4]) {
+        country.newsTitle5 = results[4][0];
+        country.newsLink5 = results[4][1];
+        country.newsImage5 = results[4][2];
+    }
+    if (results[5]) {
+        country.newsTitle6 = results[5][0];
+        country.newsLink6 = results[5][1];
+        country.newsImage6 = results[5][2];
+    }
+};
+
+// Populate the news modal and display it
+const displayNews = () => {
+    $("#item-A").html(`Latest News`);
+    $("#item-B").html(`<p class="newsTitle">${country.newsTitle1}</p><a class="newsLink" href=${country.newsLink1} target="_blank">Read more...</a>`);
+    $("#item-2").html(`<img class="newsImage" src=${country.newsImage1}>`);
+    $("#item-C").html(`<p class="newsTitle">${country.newsTitle2}</p><a class="newsLink" href=${country.newsLink2} target="_blank">Read more...</a>`);
+    $("#item-3").html(`<img class="newsImage" src=${country.newsImage2}>`);
+    $("#item-D").html(`<p class="newsTitle">${country.newsTitle3}</p><a class="newsLink" href=${country.newsLink3} target="_blank">Read more...</a>`);
+    $("#item-4").html(`<img class="newsImage" src=${country.newsImage3}>`);
+    $("#item-E").html(`<p class="newsTitle">${country.newsTitle4}</p><a class="newsLink" href=${country.newsLink4} target="_blank">Read more...</a>`);
+    $("#item-5").html(`<img class="newsImage" src=${country.newsImage4}>`);
+    $("#item-F").html(`<p class="newsTitle">${country.newsTitle5}</p><a class="newsLink" href=${country.newsLink5} target="_blank">Read more...</a>`);
+    $("#item-6").html(`<img class="newsImage" src=${country.newsImage5}>`);
+    $("#item-G").html(`<p class="newsTitle">${country.newsTitle6}</p><a class="newsLink" href=${country.newsLink6} target="_blank">Read more...</a>`);
+    $("#item-7").html(`<img class="newsImage" src=${country.newsImage6}>`);
+};
+
+// Populate earthquake markers and display them
+const displayEarthquakes = (data) => {
+    const results = data.data.earthquakes;
+
+    let severity;
+    let markerColor;
+
+    results.map((earthquake) => {
+        switch (true) {
+            case (earthquake.magnitude < 4):
+                severity = "Minor";
+                markerColor = "green";
+            break;
+            case (earthquake.magnitude < 6):
+                severity = "Moderate";
+                markerColor = "yellow";
+            break;
+            case (earthquake.magnitude < 8):
+                severity = "Major";
+                markerColor = "orange";
+            break;
+            case (earthquake.magnitude < 10):
+                severity = "Catastrophic";
+                markerColor = "red";
+            break;
+            default:
+                severity = "Recorded";
+            break;
+        }
+
+        let quakeMarker = L.ExtraMarkers.icon({
+            icon: "fa-solid fa-waveform",
+            markerColor: markerColor,
+            shape: "penta",
+            prefix: "fa"
+        })
+
+        let earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {icon: quakeMarker}).bindPopup(
+            `${severity} earthquake on ${earthquake.datetime}, magnitude ${earthquake.magnitude}`
+        );
+
+        earthquakeMarkers.addLayer(earthquakeMarker);
+    })
+
+    earthquakeMarkerLayer = earthquakeMarkers.addTo(map).bringToFront();
+};
+
+// Populate Wikipedia markers and display them
+const displayWiki = (data) => {
+    const results = data.data.geonames;
+    
+    results.map((wikiEntry) => {
+        let aWikiMarker = L.ExtraMarkers.icon({
+            icon: "fa-solid fa-info-circle",
+            markerColor: "blue",
+            shape: "circle",
+            prefix: "fa"
+        })
+
+        let wikiMarker = L.marker([wikiEntry.lat, wikiEntry.lng], {icon: aWikiMarker}).bindPopup(
+            `<img id="wikiThumbnail" src=${wikiEntry.thumbnailImg}><p id="wikiEntry"><strong>${wikiEntry.title}</strong><br>${wikiEntry.summary}</p><a id="wikiLink" href="https://${wikiEntry.wikipediaUrl}" target="_blank">Read More...</a>`
+        );
+
+        wikiMarkers.addLayer(wikiMarker);
+    })
+
+    wikiMarkerLayer = wikiMarkers.addTo(map).bringToFront();
+};
+
+// Populate regional population markers and display them
+const displayRegions = (data) => {
+    const results = data.data;
+
+    results.map((region) => {
+        let aRegionMarker = L.ExtraMarkers.icon({
+            icon: "fa-solid fa-users",
+            markerColor: "orange-dark",
+            shape: "square",
+            prefix: "fa"
+        })
+
+        let regionMarker = L.marker([region.lat, region.lng], {icon: aRegionMarker}).bindPopup(`The population of <strong>${region.adminName1}</strong> is approximately ${region.population.toLocaleString("en-US")} people.`);
+
+        regionMarkers.addLayer(regionMarker);
+    })
+
+    regionMarkerLayer = regionMarkers.addTo(map).bringToFront();
 };
 
 // Reset modal
@@ -487,14 +881,13 @@ const resetModal = () => {
 
 // Reset map
 const resetMap = () => {
-    map.removeLayer(polyGonLayer);//,
-    //wikiMarkerLayer.clearLayers(),
-    //regionMarkerLayer.clearLayers(),
-    //earthquakeMarkerLayer.clearLayers(),
-    //capitalMarker.remove(),
-    //wikiMarkers.remove(),
-    //earthquakeMarkers.remove(),
-    //regionMarkers.remove()
+    map.removeLayer(polyGonLayer),
+    earthquakeMarkerLayer.clearLayers(),
+    wikiMarkerLayer.clearLayers(),
+    regionMarkerLayer.clearLayers(),
+    earthquakeMarkers.remove(),
+    wikiMarkers.remove(),
+    regionMarkers.remove()
 };
 
 // General function for API call
