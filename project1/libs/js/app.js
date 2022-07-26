@@ -81,7 +81,13 @@ const wikiMarkers = L.markerClusterGroup();
 const regionMarkers = L.markerClusterGroup();
 
 // Run pre-loader
-// Preloader script goes <-here->
+$(window).on("load", function () {
+    if ($("#spinner-wrapper").length) {
+        $("#spinner-wrapper").delay(3000).fadeout(3000, function () {
+            $("#spinner-wrapper").remove();
+        });
+    }
+});
 
 // Set up Leaflet maps using Jawg Streets
 const map = L.map("map", {dragging: !L.Browser.mobile, tap: !L.Browser.mobile}).fitWorld();
@@ -219,7 +225,7 @@ const zoomToPlace = (data) => {
     timeoffset = data.timeoffset;
     setCurrentTime(timeoffset);
 
-    // callApi("getEarthquakes", country.geonameId, "", displayEarthquakes);
+    // callApi("getEarthquakes", country.north, country.south, displayEarthquakes, country.east, country.west);
     $.ajax({
         url: "libs/php/getEarthquakes.php",
         type: "POST",
@@ -282,25 +288,7 @@ const zoomToPlace = (data) => {
 
 // Put a polygon or multi-polygon around selected country
 const displayPolygon = (data) => {
-    if (data.data.length > 1) {
-        geoJsonFeature = {
-            type: "Feature",
-            geometry: {
-                type: "MultiPolygon",
-                coordinates: data.data,
-            },
-        };
-    } else {
-        geoJsonFeature = {
-            type: "Feature",
-            geometry: {
-                type: "Polygon",
-                coordinates: data.data,
-            },
-        };
-    }
-
-    polyGonLayer = L.geoJson(geoJsonFeature, {
+    polyGonLayer = L.geoJson(data.data, {
         style: {color: "#43a783", opacity: "0.5", weight: "2"},
     })
     polyGonLayer.addTo(map).bringToBack();
@@ -782,23 +770,24 @@ const displayEarthquakes = (data) => {
     results.map((earthquake) => {
         switch (true) {
             case (earthquake.magnitude < 4):
-                severity = "Minor";
+                severity = "Minor earthquake";
                 markerColor = "green";
             break;
             case (earthquake.magnitude < 6):
-                severity = "Moderate";
+                severity = "Moderate earthquake";
                 markerColor = "yellow";
             break;
             case (earthquake.magnitude < 8):
-                severity = "Major";
+                severity = "Major earthquake";
                 markerColor = "orange";
             break;
             case (earthquake.magnitude < 10):
-                severity = "Catastrophic";
+                severity = "Catastrophic earthquake";
                 markerColor = "red";
             break;
             default:
-                severity = "Recorded";
+                severity = "Earthquake";
+                markerColor = "purple"
             break;
         }
 
@@ -810,7 +799,7 @@ const displayEarthquakes = (data) => {
         })
 
         let earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {icon: quakeMarker}).bindPopup(
-            `${severity} earthquake on ${earthquake.datetime}, magnitude ${earthquake.magnitude}`
+            `${earthquake.severity} recorded on ${earthquake.datetime}, magnitude ${earthquake.magnitude}`
         );
 
         earthquakeMarkers.addLayer(earthquakeMarker);
@@ -832,7 +821,7 @@ const displayWiki = (data) => {
         })
 
         let wikiMarker = L.marker([wikiEntry.lat, wikiEntry.lng], {icon: aWikiMarker}).bindPopup(
-            `<img id="wikiThumbnail" src=${wikiEntry.thumbnailImg}><p id="wikiEntry"><strong>${wikiEntry.title}</strong><br>${wikiEntry.summary}</p><a id="wikiLink" href="https://${wikiEntry.wikipediaUrl}" target="_blank">Read More...</a>`
+            `<div id="wikiHeader"><p id="wikiTitle">${wikiEntry.title}</p></div><div id="wikiBody"><img id="wikiThumbnail" src=${wikiEntry.thumbnailImg}><p id="wikiEntry">${wikiEntry.summary}</p><a id="wikiLink" href="https://${wikiEntry.wikipediaUrl}" target="_blank">Read More...</a></div>`
         );
 
         wikiMarkers.addLayer(wikiMarker);
@@ -853,7 +842,7 @@ const displayRegions = (data) => {
             prefix: "fa"
         })
 
-        let regionMarker = L.marker([region.lat, region.lng], {icon: aRegionMarker}).bindPopup(`The population of <strong>${region.adminName1}</strong> is approximately ${region.population.toLocaleString("en-US")} people.`);
+        let regionMarker = L.marker([region.lat, region.lng], {icon: aRegionMarker}).bindPopup(`<p id="population">The population of <strong>${region.adminName1}</strong> is approximately ${region.population.toLocaleString("en-US")} people.</p>`);
 
         regionMarkers.addLayer(regionMarker);
     })
