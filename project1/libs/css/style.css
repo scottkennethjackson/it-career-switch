@@ -1,3 +1,7 @@
+html {
+    height: 100vh;
+}
+
 body {
     font-family: Tahoma, sans-serif;
     font-size: 16px;
@@ -9,17 +13,20 @@ body {
     --red: #df7a7e;
     --lightGreen: #43a783;
     --darkGreen: #014641;
-    --darkBlue: #1e1a3f;
     --yellow: #f9b94b;
 }
 
-html {
-    height: 100vh;
+a {
+    color: darkblue;
+    text-decoration: none;
 }
 
-a {
-    text-decoration: underline;
+a:hover {
     color: var(--red);
+}
+
+a:active {
+    color: darkred;
 }
 
 /* <-insert spinner styling here-> */
@@ -28,7 +35,7 @@ header {
     position: sticky;
     z-index: 100;
     height: 8vh;
-    min-height: 30px;
+    min-height: 40px;
     width: 100vw;
     display: flex;
     text-align: center;
@@ -37,7 +44,7 @@ header {
     background-color: var(--darkGreen);
     color: white;
     border-bottom: .5vw solid var(--red);
-    box-shadow:.5vw .5vw .5vw darkgray;
+    box-shadow: .5vw .5vw .5vw dimgray;
 }
 
 h1 {
@@ -49,6 +56,7 @@ h1 {
     height: 92vh;
     width: 100vw;
     z-index: 1;
+    background-color: rgb(105, 191, 231);
 }
 
 /* <-form styling goes here?-> */
@@ -68,23 +76,37 @@ select {
     border: 1px solid black;
 }
 
-.marker-cluster-small div {
-    background-color: var(--red); /* or --yellow? */
+.marker-cluster-small {
+    background-color: rgb(249, 185, 75, 0.6);
 }
 
-.far, .fas {
-    color: red; /* re-color this */
+.marker-cluster-small div {
+    background-color: var(--yellow);
+}
+
+.marker-cluster-medium {
+    background-color: rgb(223, 122, 126, 0.6)
+}
+
+.marker-cluster-medium div {
+    background-color: var(--red);
 }
 
 .modal {
     overflow-y: auto;
     align-items: center;
     justify-content: space-between;
+    box-shadow: .5vw .5vw .5vw dimgray;
 }
 
 .modal-header {
     background-color: whitesmoke;
     border-bottom: 2px solid var(--yellow);
+    box-shadow: .5vw .5vw .5vw dimgray;
+}
+
+.modal-body {
+    box-shadow: .5vw .5vw .5vw dimgray;
 }
 
 .modal-body, .table {
@@ -120,18 +142,79 @@ select {
     text-align: right;
 }
 
-#item-7 {
-    text-transform: capitalize;
-}
-
 #skyblue {
-    background-color: lightblue;
+    background-color: lightskyblue;
+    max-width: 100%;
 }
 
 .newsImage {
-    max-width: 50%;
+    width: 200px;
+    object-fit: contain;
+    border: 1px solid black;
 }
 
-.justify {
+.newsTitle, .newsLink {
+    font-size: 0.75rem;
     text-align: justify;
+    width: 100%
+}
+
+#wikiThumbnail {
+    float: left;
+    margin-right:5px;
+    border: 1px solid black;
+}
+
+#wikiEntry {
+    text-align: justify;
+}
+
+#wikiLink {
+    color: darkblue;
+    text-decoration: none;
+}
+
+#wikiLink:hover {
+    color: var(--red);
+}
+
+#wikiLink:active {
+    color: darkred;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        font-size: 12px;
+    }
+
+    /* <-insert @media screen spinner styling here-> */
+    
+    header {
+        min-height: 30px;
+        border-bottom: 2px solid var(--red);
+    }
+
+    select {
+        max-width: 50vw;
+    }
+
+    #weatherForecast {
+        font-size: 10px;
+    }
+    
+    #skyblue {
+        width: 100px;
+    }
+
+    .newsImage {
+        width: 100px;
+        object-fit: contain;
+        border: 1px solid black;
+    }
+
+    .newsTitle, .newsLink {
+        font-size: 10px;
+        text-align: justify;
+        width: 100%
+    }
 }
