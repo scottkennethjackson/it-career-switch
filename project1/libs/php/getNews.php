@@ -40,7 +40,7 @@ $newsData = array();
 $stories = $decode["results"];
 for ($i=0; $i<sizeof($stories); $i++) {
     if (!$stories[$i]["image_url"]) {
-        array_push($newsData, array($stories[$i]["title"], $stories[$i]["link"],"./libs/css/newspaper-regular.svg"));
+        array_push($newsData, array($stories[$i]["title"], $stories[$i]["link"],"./libs/images/gazetteer-news.png"));
     } else {
     array_push($newsData, array($stories[$i]["title"], $stories[$i]["link"],$stories[$i]["image_url"]));
     }
