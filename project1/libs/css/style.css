@@ -29,7 +29,36 @@ a:active {
     color: darkred;
 }
 
-/* <-insert spinner styling here-> */
+#spinner-wrapper {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--darkGreen);
+    z-index: 999;
+}
+
+#spinner {
+    margin-top: 40vh;
+    margin-bottom: 40vh;
+    width: 100vw;
+    height: 20vh;
+    text-align: center;
+}
+
+#globe {
+    height: 15vh;
+    padding: 10px;
+}
+
+#spinner-text {
+    height: 5vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--yellow);
+}
 
 header {
     position: sticky;
@@ -58,8 +87,6 @@ h1 {
     z-index: 1;
     background-color: rgb(105, 191, 231);
 }
-
-/* <-form styling goes here?-> */
 
 select {
     margin: 2vw;
@@ -129,13 +156,13 @@ select {
 }
 
 #item-B {
-    border-top: 2px solid var(--darkGreen);
+    border-top: 5px solid var(--darkGreen);
 }
 
 #item-2 {
     text-align: right;
     justify-content: flex-start;
-    border-top: 2px solid var(--darkGreen);
+    border-top: 5px solid var(--darkGreen);
 }
 
 #item-3, #item-4, #item-5, #item-6, #item-7 {
@@ -159,17 +186,43 @@ select {
     width: 100%
 }
 
+#population {
+    width: 100%;
+    text-align: justify;
+}
+
+#wikiHeader {
+    width: 100%;
+    background-color: var(--lightGreen);
+    border-bottom: 3px solid var(--darkGreen);
+}
+
+#wikiTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: auto;
+    width: 100%;
+    padding: 5px;
+}
+
+#wikiBody {
+    width: 100%;
+}
+
 #wikiThumbnail {
     float: left;
-    margin-right:5px;
+    margin-right: 5px;
     border: 1px solid black;
 }
 
 #wikiEntry {
+    font-size: 0.75rem;
     text-align: justify;
+    width: 100%;
 }
 
 #wikiLink {
+    font-size: 0.75rem;
     color: darkblue;
     text-decoration: none;
 }
@@ -187,7 +240,19 @@ select {
         font-size: 12px;
     }
 
-    /* <-insert @media screen spinner styling here-> */
+    #spinner {
+        margin-top: 35vh;
+        margin-bottom: 40vh;
+        height: 25vh;
+    }
+    
+    #globe {
+        height: 20vh;
+    }
+    
+    #spinner-text {
+        height: 5vh;
+    }
     
     header {
         min-height: 30px;
@@ -208,13 +273,13 @@ select {
 
     .newsImage {
         width: 100px;
-        object-fit: contain;
-        border: 1px solid black;
     }
 
     .newsTitle, .newsLink {
         font-size: 10px;
-        text-align: justify;
-        width: 100%
+    }
+    
+    #wikiEntry {
+        font-size: 10px;
     }
 }
