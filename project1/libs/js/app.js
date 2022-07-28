@@ -83,11 +83,11 @@ const regionMarkers = L.markerClusterGroup();
 // Run pre-loader
 $(window).on("load", function () {
     if ($("#spinner-wrapper").length) {
-        $("#spinner-wrapper").delay(3000).fadeout(3000, function () {
-            $("#spinner-wrapper").remove();
+      $("#spinner-wrapper").delay(4000).fadeOut(1000, function () {
+          $("#spinner-wrapper").remove();
         });
     }
-});
+  });
 
 // Set up Leaflet maps using Jawg Streets
 const map = L.map("map", {dragging: !L.Browser.mobile, tap: !L.Browser.mobile}).fitWorld();
@@ -119,7 +119,7 @@ L.easyButton("fa-solid fa-cloud-sun-rain", function () {
     displayWeather()
     $(".modal").modal("show");}, function () {}).addTo(map);
 
-L.easyButton("fa-solid fa-book-medical", function () {
+L.easyButton("fa-solid fa-heart-pulse", function () {
     resetModal()
     displayVirus()
     $(".modal").modal("show");}, function () {}).addTo(map);
@@ -787,9 +787,14 @@ const displayEarthquakes = (data) => {
             break;
             default:
                 severity = "Earthquake";
-                markerColor = "purple"
+                markerColor = "purple";
             break;
         }
+
+        let day = earthquake.datetime.substr(8, 2);
+        let month = earthquake.datetime.substr(5, 2);
+        let year = earthquake.datetime.substr(0, 4);
+        let time = earthquake.datetime.substr(11, 5);
 
         let quakeMarker = L.ExtraMarkers.icon({
             icon: "fa-solid fa-waveform",
@@ -799,7 +804,7 @@ const displayEarthquakes = (data) => {
         })
 
         let earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {icon: quakeMarker}).bindPopup(
-            `${earthquake.severity} recorded on ${earthquake.datetime}, magnitude ${earthquake.magnitude}`
+            `${severity} recorded on ${day}/${month}/${year} at ${time}, depth ${earthquake.depth} km, magnitude ${earthquake.magnitude}.`
         );
 
         earthquakeMarkers.addLayer(earthquakeMarker);
@@ -837,7 +842,7 @@ const displayRegions = (data) => {
     results.map((region) => {
         let aRegionMarker = L.ExtraMarkers.icon({
             icon: "fa-solid fa-users",
-            markerColor: "orange-dark",
+            markerColor: "violet",
             shape: "square",
             prefix: "fa"
         })
