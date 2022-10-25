@@ -152,7 +152,7 @@ const displayStaffData = (data) => {
                 <td class="button-col">
                     <div class="button-container">
                         <div class="edit-buttons">
-                            <button id"view${employee.id}" class="trafficlight-button view" aria-label="View">
+                            <button id="view${employee.id}" class="trafficlight-button view" aria-label="View">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
                             <button id="edit${employee.id}" class="trafficlight-button edit" aria-label="Edit">
