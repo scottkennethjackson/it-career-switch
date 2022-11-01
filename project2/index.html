@@ -20,15 +20,20 @@
 
   <body>
     <!-- Preloader -->
-    <!--code goes here-->
+    <!--<section id="preloader-container">
+      <div id="preloader">
+        <img src="./libs/img/user-solid.svg" id="user" alt="User Icon">
+        <div id="spinner-container">
+          <span id="spinner" class="rotating">&plus;</span>
+        </div>
+      </div>
+    </section>-->
 
     <!-- Nav -->
     <nav id="nav-container">
       <div id="navbar">
         <div id="logo-container">
-          <h1 id="navbar-logo">
-            Company Directory
-          </h1>
+          <h1 id="navbar-logo">Company Directory</h1>
         </div>
 
         <div id="menu-container">
@@ -38,17 +43,13 @@
               <span class="bar"></span>
           </button>
 
-          <ul id="nav-menu">
-            <li id="add-employee" class="nav-button">
-              Add Employee
-            </li>
-            <li id="manage-departments" class="nav-button">
-              Manage Departments
-            </li>
-            <li id="manage-locations" class="nav-button">
-              Manage Locations
-            </li>
-          </ul>
+          <div id="dropdown-container">
+            <ul id="nav-menu">
+              <li id="add-employee" class="nav-button">Add Employee</li>
+              <li id="manage-departments" class="nav-button">Manage Departments</li>
+              <li id="manage-locations" class="nav-button">Manage Locations</li>
+            </ul>
+          </div>
         </div>
       <div>
     </nav>
@@ -58,17 +59,12 @@
       <table id="directory">
         <thead id="directory-head">
           <tr id="table-header">
-            <th class="employee-head employee-col">
-              Employee
-            </th>
-            <th class="department-head department-col">
-              Department
-            </th>
-            <th class="location-head location-col">
-              Location
-            </th>
+            <th class="employee-head employee-col">Name</th>
+            <th class="email-head email-col">Email Address</th>
+            <th class="department-head department-col">Department</th>
+            <th class="location-head location-col">Location</th>
             <th class="button-head button-col">
-              <div class="button-container" id="filter">
+              <div id="filter" class="button-container">
                 <button id="filter-button" aria-label="Filter">
                   <i class="fa-solid fa-filter"></i>
                   <sub>
@@ -78,33 +74,45 @@
               </div>
             </th>
           </tr>
+
           <tr id="filter-dropdown">
-            <th class="employee-head employee-col">
-              <input type="search" id="search-names" class="form-control" aria-label="Search employee names" placeholder="Search Employees" autocomplete="off">
-            </th>
+              <th id="large" class="employee-head employee-col" colspan="2">
+                  <input type="search" class="form-control search-names" aria-label="Search Employee Names" placeholder="Search Employees" autocomplete="off">
+              </th>
+
+              <th id="medium" class="employee-head employee-col">
+                <input type="search" class="form-control search-names" aria-label="Search Employee Names" placeholder="Search Employees" autocomplete="off">
+              </th>
+
+              <th id="small">
+                <div id="search-container">
+                  <div id="mag-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <input type="search" class="form-control search-names" aria-label="Search Employee Names" placeholder="Search Employees" autocomplete="off">
+                </div>
+              </th>
+
             <th class="department-head department-col">
               <select id="filter-dept" class="form-select">
-                <option value="reset">
-                  Filter Departments
-                </option>
+                <option selected value="reset">Filter Departments</option>
               </select>
             </th>
+
             <th class="location-head location-col">
               <select id="filter-loc" class="form-select">
-                <option value="reset">
-                  Filter Locations
-                </option>
+                <option selected value="reset">Filter Locations</option>
               </select>
             </th>
+
             <th class="button-head button-col">
               <div id="reset" class="button-container">
                 <button id="reset-button" aria-label="Reset">
-                  <i class="fa-solid fa-rotate-left"></i> Reset
+                  <i class="fa-solid fa-rotate-left"></i><span id="hide-small">Reset</span>
                 </button>
               </div>
             </th>
           </tr>
-        </thead>
 
         <tbody id="first-row"></tbody>
       </table>
@@ -112,12 +120,10 @@
 
     <!-- Modal -->
     <section id="extra-info" class="modal" role="dialog" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centred" role="document">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title">
-              <span id="verb"></span> <span id="noun"></span>
-            </h2>
+            <h2 class="modal-title"><span id="verb"></span> <span id="noun"></span></h2>
             <button id="close-modal" class="close" aria-label="Close" data-dismiss="modal">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -129,51 +135,49 @@
                 <fieldset>
                   <div class="forename-container">
                     <label for="forename" class="form-label title">
-                      <p>
-                        First Name
-                      </p>
+                      <p>First Name</p>
                     </label>
-                    <input type="text" id="forename" class="form-control" autocomplete="off">
+                    <input type="text" id="forename" class="form-control" required aria-label="Enter First Name">
                   </div>
+
                   <div class="surname-container">
                     <label for="surname" class="form-label title">
-                      <p>
-                        Surname
-                      </p>
+                      <p>Surname</p>
                     </label>
-                    <input type="text" id="surname" class="form-control" autocomplete="off">
+                    <input type="text" id="surname" class="form-control" required aria-label="Enter Surname">
                   </div>
+
                   <div class="email-container">
                     <label for="email" class="form-label title">
-                      <p>
-                        Email
-                      </p>
+                      <p>Email</p>
                     </label>
-                    <input type="email" id="email" class="form-control" autocomplete="off">
+                    <input type="email" id="email" class="form-control" required aria-label="Enter Email Address">
                   </div>
+
                   <div class="department-container">
-                    <label></label>
-                    <select id="modal-select-dept" class="form-select">
-                      <option value="reset">
-                        Select Department
-                      </option>
+                    <label for="department" class="form-label title">
+                      <p>Department</p>
+                    </label>
+                    <select id="modal-select-dept" class="form-select" required aria-label="Select Department">
+                      <option selected value="reset">Select Department</option>
                     </select>
                   </div>
+
                   <div class="location-container">
-                    <label></label>
-                    <select id="modal-select-loc" class="form-select">
-                      <option value="reset">
-                        Select Location
-                      </option>
+                    <label for="department" class="form-label title">
+                      <p>Location</p>
+                    </label>
+                    <select id="modal-select-loc" class="form-select" required aria-label="Select Location">
+                      <option selected value="reset">Select Location</option>
                     </select>
                   </div>
                   <br>
                   <div class="modal-button-container">
-                    <button id="update-staff" class="save-button">
-                      Save
+                    <button id="update-staff" class="save-button" aria-label="Save">
+                      <span>Save</span>
                     </button>
                     <button class="cancel-button close" aria-label="Cancel">
-                      Cancel
+                      <span>Cancel</span>
                     </button>
                   </div>
                 </fieldset>
@@ -183,9 +187,7 @@
             <div class="view-employee">
               <form>
                 <fieldset>
-                  <h3 id="full-name">
-                    Full Name
-                  </h3>
+                  <h3 id="full-name">Full Name</h3>
                   <p>
                     <i class="fa-solid fa-briefcase bullet"></i><span id="view-department">Department</span>
                     <br>
@@ -207,25 +209,23 @@
                 <div id="new-deptartent-container">
                   <fieldset>
                     <label for="new-department" class="form-label title">
-                      <p>
-                        New Department
-                      </p>
+                      <p>New Department</p>
                     </label>
-                    <input type="text" id="new-department" class="form-control" required aria-label="Add new department">
-                    <label></label>
-                    <select id="department-loc" class="form-select">
-                      <option value="reset" selected>
-                        Select Location
-                      </option>
+                    <input type="text" id="new-department" class="form-control" required aria-label="Add New Department">
+                    <label for="location" class="form-label title">
+                      <p>Location</p>
+                    </label>
+                    <select id="department-loc" class="form-select" required aria-label="Select Location">
+                      <option selected value="reset">Select Location</option>
                     </select>
                     <br>
                     <br>
                     <div class="modal-button-container">
-                      <button id="update-dept" class="save-button">
-                        Save
+                      <button id="update-dept" class="save-button" aria-label="Save">
+                        <span>Save</span>
                       </button>
                       <button class="cancel-button close" aria-label="Cancel">
-                        Cancel
+                        <span>Cancel</span>
                       </button>
                     </div>
                   </fieldset>
@@ -246,14 +246,14 @@
                         New Location
                       </p>
                     </label>
-                    <input type="text" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add new location">
+                    <input type="text" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add New Location">
                     <br>
                     <div class="modal-button-container">
-                      <button id="update-loc" class="save-button">
-                        Save
+                      <button id="update-loc" class="save-button" aria-label="Save">
+                        <span>Save</span>
                       </button>
                       <button class="cancel-button close" aria-label="Cancel">
-                        Cancel
+                        <span>Cancel</span>
                       </button>
                     </div>
                   </fieldset>
