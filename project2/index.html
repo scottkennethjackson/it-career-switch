@@ -20,14 +20,14 @@
 
   <body>
     <!-- Preloader -->
-    <!--<section id="preloader-container">
+    <section id="preloader-container">
       <div id="preloader">
         <img src="./libs/img/user-solid.svg" id="user" alt="User Icon">
         <div id="spinner-container">
           <span id="spinner" class="rotating">&plus;</span>
         </div>
       </div>
-    </section>-->
+    </section>
 
     <!-- Nav -->
     <nav id="nav-container">
@@ -137,28 +137,28 @@
                     <label for="forename" class="form-label title">
                       <p>First Name</p>
                     </label>
-                    <input type="text" id="forename" class="form-control" required aria-label="Enter First Name">
+                    <input type="text" name="forename" id="forename" class="form-control" required aria-label="Enter First Name">
                   </div>
 
                   <div class="surname-container">
                     <label for="surname" class="form-label title">
                       <p>Surname</p>
                     </label>
-                    <input type="text" id="surname" class="form-control" required aria-label="Enter Surname">
+                    <input type="text" name="surname" id="surname" class="form-control" required aria-label="Enter Surname">
                   </div>
 
                   <div class="email-container">
                     <label for="email" class="form-label title">
                       <p>Email</p>
                     </label>
-                    <input type="email" id="email" class="form-control" required aria-label="Enter Email Address">
+                    <input type="email" name="email" id="email" class="form-control" required aria-label="Enter Email Address">
                   </div>
 
                   <div class="department-container">
                     <label for="department" class="form-label title">
                       <p>Department</p>
                     </label>
-                    <select id="modal-select-dept" class="form-select" required aria-label="Select Department">
+                    <select name="modal-select-dept" id="modal-select-dept" class="form-select" required aria-label="Select Department">
                       <option selected value="reset">Select Department</option>
                     </select>
                   </div>
@@ -167,7 +167,7 @@
                     <label for="department" class="form-label title">
                       <p>Location</p>
                     </label>
-                    <select id="modal-select-loc" class="form-select" required aria-label="Select Location">
+                    <select name="modal-select-loc" id="modal-select-loc" class="form-select" required aria-label="Select Location">
                       <option selected value="reset">Select Location</option>
                     </select>
                   </div>
@@ -211,11 +211,11 @@
                     <label for="new-department" class="form-label title">
                       <p>New Department</p>
                     </label>
-                    <input type="text" id="new-department" class="form-control" required aria-label="Add New Department">
+                    <input type="text" name="new-department" id="new-department" class="form-control" required aria-label="Add New Department">
                     <label for="location" class="form-label title">
                       <p>Location</p>
                     </label>
-                    <select id="department-loc" class="form-select" required aria-label="Select Location">
+                    <select name="department-loc" id="department-loc" class="form-select" required aria-label="Select Location">
                       <option selected value="reset">Select Location</option>
                     </select>
                     <br>
@@ -246,7 +246,7 @@
                         New Location
                       </p>
                     </label>
-                    <input type="text" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add New Location">
+                    <input type="text" name="new-location" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add New Location">
                     <br>
                     <div class="modal-button-container">
                       <button id="update-loc" class="save-button" aria-label="Save">
