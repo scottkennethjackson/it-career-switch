@@ -277,7 +277,7 @@ const buildForm = (employee, verb) => {
 
         if (selectedLoc === "reset") {
             departments.forEach((department) => {
-                $("#modal-select-dept").append(`<option value="${department.id}">${department.name}</option>`);
+                $("#modal-select-dept").append(`<option value="${department.id}">${department.name}<deleteStaff/option>`);
             });
         } else {
             departmentOptions = departments.filter((department) => department.locationID === selectedLoc);
@@ -306,7 +306,7 @@ const deleteStaff = (id) => {
                 <button id="confirm-delete" class="yes">
                     Yes
                 </button>
-                <button id="cancel-delete" class="close no">
+                <button class="cancel-delete close no">
                     No
                 </button>
             </div>
@@ -326,7 +326,7 @@ const deleteStaff = (id) => {
             crossOrigin: "",
             success: function (result) {
                 console.log("libs/php/deletePersonnelByID.php: ajax call successful");
-                deleteConfirmation(result);
+                deleteStaffConfirmation(result);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(`libs/php/deletePersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
@@ -339,17 +339,12 @@ const deleteStaff = (id) => {
     });
 };
 
-const deleteConfirmation = (data) => {
+const deleteStaffConfirmation = (data) => {
     closeModal();
     initialiseData();
 
+    $("#validation-text").html(`<div class="alert alert-success">Employee successfully deleted</div>`);
     $("#extra-info").modal("show");
-
-    if (data.data.includes("Denied")) {
-        $("#validation-text").html(`<div class="alert alert-danger">${data.data}</div>`);
-    } else {
-        $("#validation-text").html(`<div class="alert alert-success">${data.data}</div>`);
-    };
 };
 
 // Reset modal and filter data
@@ -364,7 +359,7 @@ const resetData = () => {
         departmentID: "reset",
         location: "Select Location",
         locationID: "reset",
-        id: "not assigned",
+        id: "not assigned"
     };
 
     $(".search-names").val("");
@@ -428,7 +423,7 @@ $("#add-employee").click(function (event) {
 
 // Update employee data and check for any duplication when the user clicks the save button
 $("#update-staff").click(function () {
-    newEmployee.firstName = $("forename")
+    newEmployee.firstName = $("#forename")
     .val()
     .toLowerCase()
     .replace(/(\b[a-z](?!\s))/g, function (x) {
@@ -438,7 +433,7 @@ $("#update-staff").click(function () {
     validateField("employee's first name", newEmployee.firstName, 2, 15, lastNameCheck);
 });
 
-const lastNameCheck = () => {
+const lastNameCheck = (firstName) => {
     newEmployee.lastName = $("#surname")
     .val()
     .toLowerCase()
@@ -486,16 +481,16 @@ const updatePersonnel = () => {
 };
 
 const getEditConfirmation = (data) => {
-    closeModal();
+    //closeModal();
     initialiseData();
-  
-    $("#extraInfo").modal("show");
 
     $("#validation-text").html(
         `<div class="alert alert-success">
             ${data.data[0]}'s information has successfully been updated
         </div>`
     );
+
+    $("#extraInfo").modal("show");
 };
 
 const emailDuplicationCheck = () => {
@@ -534,6 +529,8 @@ const getAddConfirmation = (data) => {
             <p>${data.data[0]} has been successfully added</p>
         </div>`
     );
+
+    $("#extra-info").modal("show");
 };
 
 // Open and populate the department modal when the user clicks the manage departments button
@@ -608,7 +605,7 @@ const editDepartmentData = () => {
                         <button id="confirm-dept-delete" class="yes">
                             Yes
                         </button>
-                        <button id="cancel-delete" class="close no">
+                        <button class="cancel-delete close no">
                             No
                         </button>
                     </div>
@@ -626,7 +623,7 @@ const editDepartmentData = () => {
                     crossOrigin: "",
                     success: function (result) {
                         console.log("libs/php/deleteDepartmentByID.php: ajax call successful")
-                        deleteConfirmation(result);
+                        deleteDeptConfirmation(result);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(`libs/php/deleteDepartmentByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
@@ -663,13 +660,13 @@ const editDepartmentForm = (data) => {
                 <label for="new-department-name" class="form-label title">
                     <p>Rename Department</p>
                 </label>
-                <input type="text" id="new-department-name" class="form-contol" autocapitalize="words">
+                <input type="text" name="new-department-name" id="new-department-name" class="form-contol" autocapitalize="words">
             </div>
             <div class="new-loc-container">
                 <label for="new-location" class="form-label title">
                     <p>New Location</p>
                 </label>
-                <select id="new-location" class="form-select">
+                <select name="new-location" id="new-location" class="form-select">
                     <option selected value="reset">
                         Select Location
                     </option>
@@ -713,7 +710,7 @@ const editDepartmentForm = (data) => {
     });
 };
 
-const callUpdateDepartment = (department, departmentId) => {
+const callUpdateDepartment = (department, departmentID) => {
     $.ajax({
         url: "libs/php/updateDepartment.php",
         type: "GET",
@@ -781,16 +778,23 @@ const lastDepartmentCheck = (departmentName) => {
 };
 
 const getNewDeptConfirmation = (data) => {
-    closeModal();
     initialiseData();
+    closeModal();
 
     $("#extra-info").modal("show");
-
     $("#validation-text").html(
         `<div class="alert alert-success">
             <p>The ${data.data} department has been successfully added</p>
         </div>`
     );
+};
+
+const deleteDeptConfirmation = (data) => {
+    closeModal();
+    initialiseData();
+
+    $("#validation-text").html(`<div class="alert alert-success">Department successfully deleted</div>`);
+    $("#extra-info").modal("show");
 };
 
 // Open and populate the location modal when the user clicks the manage locations button
@@ -865,7 +869,7 @@ const editLocationData = () => {
                         <button id="confirm-loc-delete" class="yes">
                             Yes
                         </button>
-                        <button id="cancel-delete" class="close no">
+                        <button class="cancel-delete close no">
                             No
                         </button>
                     </div>
@@ -883,7 +887,7 @@ const editLocationData = () => {
                     crossOrigin: "",
                     success: function (result) {
                         console.log("libs/php/deleteLocationByID.php: ajax call successful");
-                        deleteConfirmation(result);
+                        deleteLocConfirmation(result);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(`libs/php/deleteLocationByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
@@ -910,7 +914,7 @@ const editLocationForm = (data) => {
                 <label for="new-location-name" class="form-label title">
                     <p>Rename Location</p>
                 </label>
-                <input type="text" id="new-location-name" class="form-contol" autocapitalize="words">
+                <input type="text" name="new-location-name" id="new-location-name" class="form-contol" autocapitalize="words">
             </div>
             <br>
             <div class="modal-button-container">
@@ -927,7 +931,7 @@ const editLocationForm = (data) => {
     $("#confirm-edit-loc").on("click", function () {
         $("#modal-select-loc").html(`<option selected value="reset">Select Location</option>`);
 
-        locations.forEach((locatiopn) => {
+        locations.forEach((location) => {
             $("#modal-select-loc").append(`<option value="${location.id}">${location.name}</option>`);
         });
 
@@ -971,6 +975,14 @@ const lastUpdateLocationCheck = (location, locationID) => {
     };
 };
 
+const deleteLocConfirmation = (data) => {
+    closeModal();
+    initialiseData();
+
+    $("#validation-text").html(`<div class="alert alert-success">Location successfully deleted</div>`);
+    $("#extra-info").modal("show");
+};
+
 // Update location data and check for any duplication when the user clicks the save button
 $("#update-loc").on("click", function () {
     let location = $("#new-location")
@@ -1008,7 +1020,7 @@ const lastLocationCheck = (location) => {
 };
 
 const getNewLocConfirmation = (data) => {
-    closeModal();
+    //closeModal();
     initialiseData();
 
     $("#extra-info").modal("show");
@@ -1023,7 +1035,7 @@ const getNewLocConfirmation = (data) => {
 // Filter names, departments and locations when the user inputs/selects perameters
 $(".search-names").on("input", function (e) {
     let nameToSearch = e.currentTarget.value.toLowerCase().trim();
-    const searchData = $("#filter-dept").val() === "reset" && $("#filter-loc").val() === "reset" ? staticResults : searchResults;
+    let searchData = $("#filter-dept").val() === "reset" && $("#filter-loc").val() === "reset" ? staticResults : searchResults;
 
     results = searchData.filter((result) => {
         result.fullName = result.firstName.toLowerCase() + " " + result.lastName.toLowerCase();
@@ -1058,7 +1070,6 @@ $("#filter-loc").on("change", function (e) {
         searchResults = results;
 
         displayStaffData(results);
-
     };
 });
 
@@ -1068,14 +1079,6 @@ $("#reset-button").click(function () {
 });
 
 // Validate data
-const validationWarning = (validateString) => {
-    $("#validation-text").html(
-        `<div class="alert alert-danger">
-            <p><strong>Error!</strong><br>${validateString}</p>
-        </div>`
-    );
-};
-
 const validateField = (field, fieldInput, min, max, lastCheckCallback, extraField) => {
     if (fieldInput.length > max || fieldInput.length < min) {
         validateString = `The ${field} must be between ${min} and ${max} characters`;
@@ -1083,6 +1086,14 @@ const validateField = (field, fieldInput, min, max, lastCheckCallback, extraFiel
     } else {
         validatePattern(field, fieldInput, lastCheckCallback, extraField);
     };
+};
+
+const validationWarning = (validateString) => {
+    $("#validation-text").html(
+        `<div class="alert alert-danger">
+            <p><strong>Error!</strong><br>${validateString}</p>
+        </div>`
+    );
 };
 
 const validatePattern = (field, fieldInput, lastCheckCallback, extraField) => {
