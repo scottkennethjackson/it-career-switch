@@ -424,6 +424,8 @@ $("#add-employee").click(function (event) {
 
 // Update employee data and check for any duplication when the user clicks the save button
 $("#update-staff").click(function (event) {
+    event.preventDefault()
+
     newEmployee.firstName = $("#forename")
     .val()
     .toLowerCase()
@@ -485,7 +487,7 @@ const getEditConfirmation = (data) => {
     closeModal();
     initialiseData();
 
-    $("#extraInfo").modal("show");
+    $("#extra-info").modal("show");
     $("#validation-text").html(
         `<div class="alert alert-success">
             ${data.data[0]}'s information has successfully been updated
@@ -732,7 +734,9 @@ const callUpdateDepartment = (department, departmentID) => {
 };
 
 // Update department data and check for any duplication when the user clicks the save button
-$("#update-dept").on("click", function () {
+$("#update-dept").on("click", function (event) {
+    event.preventDefault();
+
     let departmentName = $("#new-department")
     .val()
     .toLowerCase()
@@ -976,7 +980,7 @@ const lastUpdateLocationCheck = (location, locationID) => {
     };
 };
 
-const deleteLocConfirmation = (data) => {
+const deleteLocConfirmation = () => {
     closeModal();
     initialiseData();
 
@@ -985,7 +989,9 @@ const deleteLocConfirmation = (data) => {
 };
 
 // Update location data and check for any duplication when the user clicks the save button
-$("#update-loc").on("click", function () {
+$("#update-loc").on("click", function (event) {
+    event.preventDefault();
+
     let location = $("#new-location")
     .val()
     .toLowerCase()
