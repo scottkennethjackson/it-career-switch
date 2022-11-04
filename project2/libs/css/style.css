@@ -519,6 +519,10 @@ td p {
     font-weight: bold;
 }
 
+.form-control {
+    color: black;
+}
+
 .modal-button-container, .yes-no-container {
     width: 100%;
     display: flex;
@@ -710,6 +714,7 @@ a:active {
     box-shadow: 0 1px var(--darkred);
 }
 
+/* Media styling */
 @media screen and (max-width: 1025px) {
     .employee-col,
     .department-col,
