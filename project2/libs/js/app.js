@@ -1,6 +1,3 @@
-
-
-
 // Display the nav dropdown when the user clicks the menu button
 const menuClick = document.querySelector("#menu-button");
 const navDropdown = document.querySelector("#dropdown-container");
@@ -211,7 +208,7 @@ const displayStaffData = (data) => {
         });
     });
 
-    //$("#preloader-container").fadeOut(1000);
+    $("#preloader-container").fadeOut(2000);
 };
 
 // Open and populate the employee modal when the user clicks the green "view" button
@@ -427,10 +424,6 @@ $("#add-employee").click(function (event) {
 
 // Update employee data and check for any duplication when the user clicks the save button
 $("#update-staff").click(function (event) {
-    closeModal();
-    
-    $("#extra-info").modal("show");
-
     newEmployee.firstName = $("#forename")
     .val()
     .toLowerCase()
