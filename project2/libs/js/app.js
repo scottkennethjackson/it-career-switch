@@ -20,7 +20,7 @@ window.onclick = function(event) {
     };
 };
 
-// Reset the menu button and dropdown when the user leaves the nav menu
+// Reset the menu button and dropdown when the use leaves the nav menu
 const navReset = document.querySelector("#menu-container");
 
 navReset.addEventListener("mouseleave", function() {
@@ -128,7 +128,7 @@ const displayStaffData = (data) => {
         $("#first-row").append(
             `<tr key=${employee.id}>
                 <td class="employee-col">
-                    <p id="name-data">${employee.firstName} ${employee.lastName.toUpperCase()}</p>
+                    <p id="name-data">${employee.lastName.toUpperCase()}, ${employee.firstName}</p>
                 </td>
                 <td class="email-col">
                     <p id="email-data">${employee.email}</p>
