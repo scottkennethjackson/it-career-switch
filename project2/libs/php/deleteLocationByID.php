@@ -62,7 +62,7 @@
 	$output['status']['name'] = "unauthorised";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = nl2br("<strong>Deletion Denied!</strong>This location has " . $data . " department(s) attached to it");
+	$output['data'] = nl2br("<strong>Deletion Denied!</strong>\nThis location has " . $data . " department(s) attached to it");
 	
 	mysqli_close($conn);
 
