@@ -344,7 +344,12 @@ const getDeleteConfirmation = (data) => {
     closeModal();
     initialiseData();
 
-    $("#validation-text").html(`<div class="alert alert-success">${data.data[0]}</div>`);
+    if (data.data.includes("Denied")) {
+        $("#validation-text").html(`<div class="alert alert-danger">${data.data}</div>`);
+    } else {
+        $("#validation-text").html(`<div class="alert alert-success">${data.data}</div>`);
+    }
+
     $("#extra-info").modal("show");
 };
 
@@ -368,8 +373,12 @@ const resetData = () => {
     $("#filter-loc").val("reset");
 };
 
-// Reset data when the user closes the modal
-$(".close").click(function (e) {
+// Reset data when the user closes or clicks off the modal
+$(".close").click(function () {
+    closeModal();
+});
+
+$(".modal").on('hidden.bs.modal', function() {
     closeModal();
 });
 
@@ -571,7 +580,7 @@ const editDepartmentData = () => {
                 </div>
                 <div class="modify-buttons-container">
                     <button id="edit${departmentToChange.id}" class="trafficlight-button edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button id="delete${departmentToChange.id}" class="trafficlight-button delete">
                         <i class="fa-solid fa-trash-can"></i>
@@ -620,7 +629,8 @@ const editDepartmentData = () => {
                     type: "GET",
                     dataType: "json",
                     data: {
-                        param1: departmentToChange.id
+                        param1: departmentToChange.id,
+                        param2: departmentToChange.name
                     },
                     crossOrigin: "",
                     success: function (result) {
@@ -837,7 +847,7 @@ const editLocationData = () => {
                 </div>
                 <div class="modify-buttons-container">
                     <button id="edit${locationToChange.id}" class="trafficlight-button edit">
-                        <i class="fa-regular fa-pen-to-square"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button id="delete${locationToChange.id}" class="trafficlight-button delete">
                         <i class="fa-solid fa-trash-can"></i>
