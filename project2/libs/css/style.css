@@ -5,10 +5,12 @@
     --darkgrey: #a9a9a9;
     --darkergrey: #757575;
     --red: #cc3366;
+    --palered: #f9e5ec;
     --darkred: #900038;
     --yellow: #ffcc66;
     --darkyellow: #c39631;
     --green: #339966;
+    --palegreen: #e5f2ec;
     --darkgreen: #006537;
 }
 
@@ -28,6 +30,19 @@ body {
     color: black;
     background: linear-gradient(180deg, var(--darkgrey) 90px, white 90px);
     cursor: default;
+}
+
+@font-face {
+    font-family: "Suez One";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+        url("../fonts/suez-one/suez-one-v11-latin-regular.woff") format("woff"),
+        url("../fonts/suez-one/suez-one-v11-latin-regular.woff2") format("woff2");
+}
+
+button:focus {
+    box-shadow: none !important;
 }
 
 /* Preloader styling */
@@ -223,7 +238,8 @@ body {
 }
 
 #nav-menu {
-    margin: 0
+    margin: 0;
+    padding: 0;
 }
 
 .nav-button {
@@ -469,10 +485,6 @@ td p {
 }
 
 /* Modal styling */
-.modal-content {
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-}
-
 .modal-header {
     background-color: var(--blue);
 }
@@ -607,7 +619,7 @@ a:active {
 }
 
 #current-departments-container, #current-locations-container {
-    max-height: 250px;
+    max-height: 200px;
     padding: 10px;
     border: 1px solid var(--darkergrey);
     border-radius: 5px;
@@ -646,10 +658,15 @@ a:active {
     padding: 5px 0;
 }
 
+#validation-text {
+    background-color: var(--lightgrey);
+}
+
 .alert {
     margin: 0;
     border-radius: 0;
     text-align: center;
+    background-color: var(--lightgrey);
 }
 
 .new-dept-container,
@@ -666,6 +683,22 @@ a:active {
     outline: none;
     border: 1px solid var(--darkgrey);
     border-radius: 5px;
+}
+
+.alert-danger {
+    margin: 15px;
+    border: 2px solid var(--red);
+    border-radius: 5px;
+    color: var(--darkred);
+    background-color: var(--palered);
+}
+
+.alert-success {
+    margin: 15px;
+    border: 2px solid var(--green);
+    border-radius: 5px;
+    color: var(--darkgreen);
+    background-color: var(--palegreen);
 }
 
 #confirm-delete,
