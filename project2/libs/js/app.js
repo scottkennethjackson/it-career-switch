@@ -8,8 +8,8 @@ menuClick.addEventListener("click", function() {
 });
 
 // Reset the the menu button and dropdown when the user clicks a nav button
-window.onclick = function(event) {
-    if (event.target.matches(".nav-button")) {
+window.onclick = function(e) {
+    if (e.target.matches(".nav-button")) {
         if (menuClick.classList.contains("active")) {
             menuClick.classList.remove("active");
         };
@@ -126,7 +126,7 @@ const displayStaffData = (data) => {
 
     results.forEach((employee) => {
         $("#first-row").append(
-            `<tr key=${employee.id}>
+            `<tr key=${employee.id} data-id=${employee.id}>
                 <td class="employee-col">
                     <p id="name-data">${employee.lastName.toUpperCase()}, ${employee.firstName}</p>
                 </td>
@@ -157,64 +157,51 @@ const displayStaffData = (data) => {
             </tr>`
         );
 
-        $("#first-row").on("click", `#view${employee.id}`, function () {
-            $("#verb").html("View");
-            $("#noun").html("Employee");
-            $(".view-employee").show(viewStaff(employee.id));
+        setTimeout(function () {
+            $("#preloader-container").fadeOut(2000);
+        }, 1000);
+
+        $(".view").click(function() {
+            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+
+            $(".view-employee").show(viewStaff(selectedEmployeeID));
         });
 
-        $("#first-row").on("click", `#edit${employee.id}`, function () {
-            $("#verb").html("Edit");
-            $("#noun").html("Employee");
+        $(".edit").click(function () {
+            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
 
             $.ajax({
-                url: "libs/php/getAllLocations.php",
+                url: "libs/php/getPersonnelByID.php",
                 type: "GET",
                 dataType: "json",
+                data: {
+                    param1: selectedEmployeeID
+                },
                 crossOrigin: "",
                 success: function (result) {
-                    console.log("libs/php/getAllLocations.php: ajax call successful");
-                    getLocationData(result);
+                    console.log("libs/php/getPersonnelByID.php: ajax call successful");
+                    editStaff(result);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(`libs/php/getAllLocations.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
+                    console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
                 }
-            });
-
-            $(".add-edit-form").show(
-                $.ajax({
-                    url: "libs/php/getPersonnelByID.php",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        param1: employee.id
-                    },
-                    crossOrigin: "",
-                    success: function (result) {
-                        console.log("libs/php/getPersonnelByID.php: ajax call successful");
-                        editStaff(result);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
-                    }
-                })
-            );
+            })
         });
 
-        $("#first-row").on("click", `#delete${employee.id}`, function () {
-            $("#verb").html("Delete");
-            $("#noun").html("Employee");
-            $(".view-employee").show(deleteStaff(employee.id));
+        $(".delete").click(function() {
+            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+
+            $(".view-employee").show(deleteStaff(selectedEmployeeID));
         });
     });
-
-    $("#preloader-container").fadeOut(2000);
 };
 
 // Open and populate the employee modal when the user clicks the green "view" button
 const viewStaff = (id) => {
     let result = staticResults.filter((result) => result.id === id);
 
+    $("#verb").html("View");
+    $("#noun").html("Employee");
     $("#full-name").html(`${result[0].firstName} ${result[0].lastName}`);
     $("#view-department").html(`${result[0].department}`);
     $("#view-location").html(`${result[0].location}`);
@@ -227,8 +214,10 @@ const editStaff = (data) => {
     let result = data.data.personnel;
     departments = data.data.department;
 
-    buildForm(result, "Edit");
+    buildForm(result);
 
+    $("#verb").html("Edit");
+    $("#noun").html("Employee");
     $("#forename").val(result.firstName);
     $("#surname").val(result.lastName);
     $("#email").val(result.email);
@@ -236,19 +225,12 @@ const editStaff = (data) => {
 
     newEmployee.id = result.id;
 
-    let employeeLocation = locations.find(
-        (location) => location.name === result.locationName
-    );
-    
-    result.locationID = employeeLocation.id;
-
-    $("#modal-select-loc").val(result.locationID);
     $("#extra-info").modal("show");
+    $(".add-edit-form").show();
 };
 
 // Populate the employee modal's dropdowns
-const buildForm = (employee, verb) => {
-    $("#verb").html(verb);
+const buildForm = () => {
     $("#modal-select-dept").html(`<option selected value="reset">Select Department</option>`);
 
     departments.forEach((department) => {
@@ -300,8 +282,11 @@ const buildForm = (employee, verb) => {
 const deleteStaff = (id) => {
     viewStaff(id);
 
+    $("#verb").html("Delete");
+    $("#noun").html("Employee");
+
     $("#validation-text").html(
-        `<div class="alert alert-warning">
+        `<div class="alert">
             <p>Are you sure you want to delete this employee?</p>
             <div class="yes-no-container">
                 <button id="confirm-delete" class="yes">
@@ -373,12 +358,8 @@ const resetData = () => {
     $("#filter-loc").val("reset");
 };
 
-// Reset data when the user closes or clicks off the modal
+// Reset data when the user closes the modal
 $(".close").click(function () {
-    closeModal();
-});
-
-$(".modal").on('hidden.bs.modal', function() {
     closeModal();
 });
 
@@ -413,9 +394,10 @@ const getLocationData = (data) => {
 };
 
 // Open the employee modal when the user clicks the add employee button
-$("#add-employee").click(function (event) {
-    event.preventDefault();
+$("#add-employee").click(function (e) {
+    e.preventDefault();
 
+    $("#verb").html("Add")
     $("#noun").html("Employee")
     $("#forename").val("");
     $("#surname").val("");
@@ -425,15 +407,15 @@ $("#add-employee").click(function (event) {
 
     newEmployee.id = "not assigned";
 
-    buildForm(newEmployee, "Add");
+    buildForm(newEmployee);
 
-    $(".add-edit-form").show();
     $("#extra-info").modal("show");
+    $(".add-edit-form").show();
 });
 
 // Update employee data and check for any duplication when the user clicks the save button
-$("#update-staff").click(function (event) {
-    event.preventDefault()
+$("#employee-form").on("submit", function(e) {
+    e.preventDefault()
 
     newEmployee.firstName = $("#forename")
     .val()
@@ -461,7 +443,7 @@ const departmentCheck = () => {
     newEmployee.locationID = $("#modal-select-loc").val();
 
     if ( newEmployee.departmentID === "reset" || newEmployee.departmentID === "resetSubset" || newEmployee.locationID === "reset") {
-        validateString = "Employees must be associated with a department and a location";
+        validateString = "Employee must be associated with a department and a location";
         validationWarning(validateString);
     } else {
         newEmployee.email = $("#email").val().toLowerCase();
@@ -496,12 +478,13 @@ const getEditConfirmation = (data) => {
     closeModal();
     initialiseData();
 
-    $("#extra-info").modal("show");
     $("#validation-text").html(
         `<div class="alert alert-success">
             ${data.data[0]}'s information has successfully been updated
         </div>`
     );
+
+    $("#extra-info").modal("show");
 };
 
 const emailDuplicationCheck = () => {
@@ -545,11 +528,11 @@ const getAddConfirmation = (data) => {
 };
 
 // Open and populate the department modal when the user clicks the manage departments button
-$("#manage-departments").click(function (event) {
+$("#manage-departments").click(function (e) {
+    e.preventDefault();
+    
     $("#verb").html("Manage");
     $("#noun").html("Departments")
-
-    event.preventDefault();
 
     editDepartmentData();
 });
@@ -609,42 +592,50 @@ const editDepartmentData = () => {
         });
 
         $("#list-departments").on("click", `#delete${departmentToChange.id}`, function () {
-            $("#validation-text").html(
-                `<div class="alert alert-warning">
-                    <p>Are you sure you want to delete the ${departmentToChange.name} department?</p>
-                    <div class="yes-no-container">
-                        <button id="confirm-dept-delete" class="yes">
-                            Yes
-                        </button>
-                        <button class="cancel-delete close no">
-                            No
-                        </button>
-                    </div>
-                </div>`
-            );
+            $.ajax({
+                url: "libs/php/deleteDepartmentByID.php",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    param1: departmentToChange.id,
+                    param2: departmentToChange.name
+                },
+                crossOrigin: "",
+                success: function (result) {
+                    console.log("libs/php/deleteDepartmentByID.php: ajax call successful")
+                    if (result.count > 0) {
+                        $("#validation-text").html(`<div class="alert alert-danger">${result.data}</div>`);
+                    } else {
+                        $("#validation-text").html(
+                            `<div class="alert">
+                                <p>Are you sure you want to delete the ${departmentToChange.name} department?</p>
+                                <div class="yes-no-container">
+                                    <button id="confirm-dept-delete" class="yes">
+                                        Yes
+                                    </button>
+                                    <button class="cancel-delete close no">
+                                        No
+                                    </button>
+                                </div>
+                            </div>`
+                        );
 
-            $("#confirm-dept-delete").on("click", function () {
-                $.ajax({
-                    url: "libs/php/deleteDepartmentByID.php",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        param1: departmentToChange.id,
-                        param2: departmentToChange.name
-                    },
-                    crossOrigin: "",
-                    success: function (result) {
-                        console.log("libs/php/deleteDepartmentByID.php: ajax call successful")
-                        getDeleteConfirmation(result);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(`libs/php/deleteDepartmentByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
-                    },
-                });
-            });
+                        $("#confirm-dept-delete").on("click", function () {
+                            closeModal();
+                            initialiseData();
 
-            $(".close").on("click", function () {
-                $("#validation-text").html("");
+                            $("#validation-text").html(`<div class="alert alert-success">${result.data}</div>`);
+                            $("#extra-info").modal("show");
+                        });
+
+                        $(".close").on("click", function () {
+                            $("#validation-text").html("");
+                        });
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(`libs/php/deleteDepartmentByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
+                },
             });
         });
     });
@@ -666,17 +657,19 @@ const editDepartmentData = () => {
 const editDepartmentForm = (data) => {
     let departmentToChange = data.data;
 
+    $(".new-department-form").hide();
+
     $("#validation-text").html(
-        `<div class="alert alert-light">
+        `<div class="alert">
             <div class="new-dept-container">
                 <label for="new-department-name" class="form-label title">
-                    <p>Rename Department</p>
+                    <p>Department</p>
                 </label>
                 <input type="text" name="new-department-name" id="new-department-name" class="form-contol" autocapitalize="words">
             </div>
             <div class="new-loc-container">
                 <label for="new-location" class="form-label title">
-                    <p>New Location</p>
+                    <p>Location</p>
                 </label>
                 <select name="new-location" id="new-location" class="form-select">
                     <option selected value="reset">
@@ -706,13 +699,14 @@ const editDepartmentForm = (data) => {
     $("#new-location").val(departmentToChange.locationID);
 
     $("#confirm-edit-dept").on("click", function () {
-        locationForEditedDepartment = $("#new-location").val();
         let departmentName = $("#new-department-name")
         .val()
         .toLowerCase()
         .replace(/(\b[a-z](?!\s))/g, function (x) {
             return x.toUpperCase();
         });
+
+        locationForEditedDepartment = $("#new-location").val();
 
         validateField("new department", departmentName, 2, 30, callUpdateDepartment, departmentToChange.id);
     });
@@ -723,7 +717,33 @@ const editDepartmentForm = (data) => {
 };
 
 const callUpdateDepartment = (department, departmentID) => {
-    $.ajax({
+    departmentName = $("#new-department-name").val();
+
+    if (departments.find((department) => department.name === departmentName)) {
+        validateString = `${department} already exists`;
+        validationWarning(validateString);
+    } else {
+        $.ajax({
+            url: "libs/php/updateDepartment.php",
+            type: "GET",
+            dataType: "json",
+            data: {
+                param1: department,
+                param2: locationForEditedDepartment,
+                param3: departmentID
+            },
+            crossOrigin: "",
+            success: function (result) {
+                console.log("libs/php/updateDepartment.php: ajax call successful");
+                getEditConfirmation(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(`libs/php/updateDepartment.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
+            }
+        });
+    }
+
+    /*$.ajax({
         url: "libs/php/updateDepartment.php",
         type: "GET",
         dataType: "json",
@@ -740,12 +760,12 @@ const callUpdateDepartment = (department, departmentID) => {
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(`libs/php/updateDepartment.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
         }
-    });
+    });*/
 };
 
 // Update department data and check for any duplication when the user clicks the save button
-$("#update-dept").on("click", function (event) {
-    event.preventDefault();
+$("#department-form").on("submit", function(e) {
+    e.preventDefault();
 
     let departmentName = $("#new-department")
     .val()
@@ -795,12 +815,13 @@ const getNewDeptConfirmation = (data) => {
     initialiseData();
     closeModal();
 
-    $("#extra-info").modal("show");
     $("#validation-text").html(
         `<div class="alert alert-success">
             <p>${data.data}</p>
         </div>`
     );
+
+    $("#extra-info").modal("show");
 };
 
 const deleteDeptConfirmation = (data) => {
@@ -812,11 +833,11 @@ const deleteDeptConfirmation = (data) => {
 };
 
 // Open and populate the location modal when the user clicks the manage locations button
-$("#manage-locations").click(function (event) {
+$("#manage-locations").click(function (e) {
+    e.preventDefault();
+
     $("#verb").html("Manage");
     $("#noun").html("Locations");
-
-    event.preventDefault();
     
     editLocationData();
 });
@@ -876,42 +897,50 @@ const editLocationData = () => {
         });
 
         $("#list-locations").on("click", `#delete${locationToChange.id}`, function () {
-            $("#validation-text").html(
-                `<div class="alert alert-warning">
-                    <p>Are you sure you want to delete the ${locationToChange.name} office?</p>
-                    <div class="yes-no-container">
-                        <button id="confirm-loc-delete" class="yes">
-                            Yes
-                        </button>
-                        <button class="cancel-delete close no">
-                            No
-                        </button>
-                    </div>
-                </div>`
-            );
-            
-            $("#confirm-loc-delete").on("click", function () {
-                $.ajax({
-                    url: "libs/php/deleteLocationByID.php",
-                    type: "GET",
-                    dataType: "json",
-                    data: {
-                        param1: locationToChange.id,
-                        param2: locationToChange.name
-                    },
-                    crossOrigin: "",
-                    success: function (result) {
-                        console.log("libs/php/deleteLocationByID.php: ajax call successful");
-                        getDeleteConfirmation(result);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(`libs/php/deleteLocationByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
-                    }
-                });
-            });
+            $.ajax({
+                url: "libs/php/deleteLocationByID.php",
+                type: "GET",
+                dataType: "json",
+                data: {
+                    param1: locationToChange.id,
+                    param2: locationToChange.name
+                },
+                crossOrigin: "",
+                success: function (result) {
+                    console.log("libs/php/deleteLocationByID.php: ajax call successful");
+                    if (result.count > 0) {
+                        $("#validation-text").html(`<div class="alert alert-danger">${result.data}</div>`);
+                    } else {
+                        $("#validation-text").html(
+                            `<div class="alert">
+                                <p>Are you sure you want to delete the ${locationToChange.name} office?</p>
+                                <div class="yes-no-container">
+                                    <button id="confirm-loc-delete" class="yes">
+                                        Yes
+                                    </button>
+                                    <button class="cancel-delete close no">
+                                        No
+                                    </button>
+                                </div>
+                            </div>`
+                        );
 
-            $(".close").on("click", function () {
-                $("#validation-text").html("");
+                        $("#confirm-loc-delete").on("click", function () {
+                            closeModal();
+                            initialiseData();
+
+                            $("#validation-text").html(`<div class="alert alert-success">${result.data}</div>`);
+                            $("#extra-info").modal("show");
+                        });
+
+                        $(".close").on("click", function () {
+                            $("#validation-text").html("");
+                        });
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(`libs/php/deleteLocationByID.php: ajax call failed ${textStatus}.  ${errorThrown}. ${jqXHR}.`);
+                }
             });
         });
     });
@@ -923,11 +952,13 @@ const editLocationData = () => {
 const editLocationForm = (data) => {
     let locationToChange = data.data;
 
+    $(".new-location-form").hide();
+
     $("#validation-text").html(
-        `<div class="alert alert-light">
+        `<div class="alert">
             <div class=new-loc-container>
                 <label for="new-location-name" class="form-label title">
-                    <p>Rename Location</p>
+                    <p>Location</p>
                 </label>
                 <input type="text" name="new-location-name" id="new-location-name" class="form-contol" autocapitalize="words">
             </div>
@@ -942,6 +973,8 @@ const editLocationForm = (data) => {
             </div>
         </div>`
     );
+
+    $("#new-location-name").val(locationToChange.name);
 
     $("#confirm-edit-loc").on("click", function () {
         $("#modal-select-loc").html(`<option selected value="reset">Select Location</option>`);
@@ -999,8 +1032,8 @@ const deleteLocConfirmation = () => {
 };
 
 // Update location data and check for any duplication when the user clicks the save button
-$("#update-loc").on("click", function (event) {
-    event.preventDefault();
+$("#location-form").on("submit", function(e) {
+    e.preventDefault();
 
     let location = $("#new-location")
     .val()
@@ -1040,13 +1073,13 @@ const getNewLocConfirmation = (data) => {
     closeModal();
     initialiseData();
 
-    $("#extra-info").modal("show");
-
     $("#validation-text").html(
         `<div class="alert alert-success">
             <p>${data.data}</p>
         </div>`
     );
+
+    $("#extra-info").modal("show");
 };
 
 // Filter names, departments and locations when the user inputs/selects perameters
