@@ -10,10 +10,7 @@
 
     <link rel="icon" href="favicon.ico">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap">
-    
+    <link rel="stylesheet" href="./libs/css/all.min.css">
     <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
     <link rel="stylesheet" href="./libs/css/style.css">
   </head>
@@ -113,83 +110,89 @@
               </div>
             </th>
           </tr>
+        </thead>
 
         <tbody id="first-row"></tbody>
       </table>
     </section>
 
     <!-- Modal -->
-    <section id="extra-info" class="modal" role="dialog" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+    <section id="extra-info" class="modal" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content shadow">
           <div class="modal-header">
             <h2 class="modal-title"><span id="verb"></span> <span id="noun"></span></h2>
-            <button id="close-modal" class="close" aria-label="Close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" id="close-modal" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div id="validation-text"></div>
           <div class="modal-body">
             <div class="add-edit-form">
-              <div class="forename-container">
-                <label for="forename" class="form-label title">
-                  <p>First Name</p>
-                </label>
-                <input type="text" name="forename" id="forename" class="form-control" required aria-label="Enter First Name">
-              </div>
+              <form id="employee-form">
+                <fieldset>
+                  <div class="forename-container">
+                    <input type="hidden" id="employeeID">
+                    <label for="forename" class="form-label title">
+                      <p>First Name</p>
+                    </label>
+                    <input type="text" name="forename" id="forename" class="form-control" required aria-label="Enter First Name">
+                  </div>
 
-              <div class="surname-container">
-                <label for="surname" class="form-label title">
-                  <p>Surname</p>
-                </label>
-                <input type="text" name="surname" id="surname" class="form-control" required aria-label="Enter Surname">
-              </div>
+                  <div class="surname-container">
+                    <label for="surname" class="form-label title">
+                      <p>Surname</p>
+                    </label>
+                    <input type="text" name="surname" id="surname" class="form-control" required aria-label="Enter Surname">
+                  </div>
 
-              <div class="email-container">
-                <label for="email" class="form-label title">
-                  <p>Email</p>
-                </label>
-                <input type="email" name="email" id="email" class="form-control" required aria-label="Enter Email Address">
-              </div>
+                  <div class="email-container">
+                    <label for="email" class="form-label title">
+                      <p>Email</p>
+                    </label>
+                    <input type="email" name="email" id="email" class="form-control" required aria-label="Enter Email Address">
+                  </div>
 
-              <div class="department-container">
-                <label for="department" class="form-label title">
-                  <p>Department</p>
-                </label>
-                <select name="modal-select-dept" id="modal-select-dept" class="form-select" required aria-label="Select Department">
-                  <option selected value="reset">Select Department</option>
-                </select>
-              </div>
+                  <div class="department-container">
+                    <label for="department" class="form-label title">
+                      <p>Department</p>
+                    </label>
+                    <select name="modal-select-dept" id="modal-select-dept" class="form-select" required aria-label="Select Department">
+                      <option selected value="reset">Select Department</option>
+                    </select>
+                  </div>
 
-              <div class="location-container">
-                <label for="department" class="form-label title">
-                  <p>Location</p>
-                </label>
-                <select name="modal-select-loc" id="modal-select-loc" class="form-select" required aria-label="Select Location">
-                  <option selected value="reset">Select Location</option>
-                </select>
-              </div>
-              <br>
-              <div class="modal-button-container">
-                <button id="update-staff" class="save-button" aria-label="Save">
-                  <span>Save</span>
-                </button>
-                <button class="cancel-button close" aria-label="Cancel">
-                  <span>Cancel</span>
-                </button>
-              </div>
+                  <!--<div class="location-container">
+                    <label for="department" class="form-label title">
+                      <p>Location</p>
+                    </label>
+                    <select name="modal-select-loc" id="modal-select-loc" class="form-select" required aria-label="Select Location">
+                      <option selected value="reset">Select Location</option>
+                    </select>
+                  </div>-->
+                  <br>
+                  <div class="modal-button-container">
+                    <button type="submit" id="update-staff" class="save-button" aria-label="Save">
+                      <span>Save</span>
+                    </button>
+                    <button type="button" class="cancel-button close" data-bs-dismiss="modal" aria-label="Cancel">
+                      <span>Cancel</span>
+                    </button>
+                  </div>
+                </fieldset>
+              </form>
             </div>
 
             <div class="view-employee">
-              <h3 id="full-name">Full Name</h3>
-              <p>
-                <i class="fa-solid fa-briefcase bullet"></i><span id="view-department">Department</span>
-                <br>
-                <i class="fa-solid fa-location-dot bullet"></i><span id="view-location">Location</span>
-              </p>
-              <p>
-                <i class="fa-regular fa-envelope bullet"></i><span id="email-address">Email address</span>
-              </p>
+              <fieldset>
+                <h3 id="full-name">Full Name</h3>
+                <p>
+                  <i class="fa-solid fa-briefcase bullet"></i><span id="view-department">Department</span>
+                  <br>
+                  <i class="fa-solid fa-location-dot bullet"></i><span id="view-location">Location</span>
+                </p>
+                <p>
+                  <i class="fa-regular fa-envelope bullet"></i><span id="email-address">Email address</span>
+                </p>
+              </fieldset>
             </div>
 
             <div class="new-department-form">
@@ -197,28 +200,32 @@
                 <section id="list-departments"></section>
               </div>
               <br>
-              <div id="new-deptartent-container">
-                  <label for="new-department" class="form-label title">
-                    <p>New Department</p>
-                  </label>
-                  <input type="text" name="new-department" id="new-department" class="form-control" required aria-label="Add New Department">
-                  <label for="location" class="form-label title">
-                    <p>Location</p>
-                  </label>
-                  <select name="department-loc" id="department-loc" class="form-select" required aria-label="Select Location">
-                    <option selected value="reset">Select Location</option>
-                  </select>
-                  <br>
-                  <br>
-                  <div class="modal-button-container">
-                    <button id="update-dept" class="save-button" aria-label="Save">
-                      <span>Save</span>
-                    </button>
-                    <button class="cancel-button close" aria-label="Cancel">
-                      <span>Cancel</span>
-                    </button>
+              <form id="department-form">
+                <fieldset>
+                  <div id="new-deptartent-container">
+                      <label for="new-department" class="form-label title">
+                        <p>New Department</p>
+                      </label>
+                      <input type="text" name="new-department" id="new-department" class="form-control" required aria-label="Add New Department">
+                      <label for="location" class="form-label title">
+                        <p>Location</p>
+                      </label>
+                      <select name="department-loc" id="department-loc" class="form-select" required aria-label="Select Location">
+                        <option selected value="reset">Select Location</option>
+                      </select>
+                      <br>
+                      <br>
+                      <div class="modal-button-container">
+                        <button type="submit" id="update-dept" class="save-button" aria-label="Save">
+                          <span>Save</span>
+                        </button>
+                        <button type="button" class="cancel-button close" data-bs-dismiss="modal" aria-label="Cancel">
+                          <span>Cancel</span>
+                        </button>
+                      </div>
                   </div>
-              </div>
+                </fieldset>
+              </form>
             </div>
 
             <div class="new-location-form">
@@ -226,32 +233,46 @@
                 <section id="list-locations"></section>
               </div>
               <br>
-              <div id="new-location-container">
-                  <label for="new-location" class="form-label title">
-                    <p>
-                      New Location
-                    </p>
-                  </label>
-                  <input type="text" name="new-location" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add New Location">
-                  <br>
-                  <div class="modal-button-container">
-                    <button id="update-loc" class="save-button" aria-label="Save">
-                      <span>Save</span>
-                    </button>
-                    <button class="cancel-button close" aria-label="Cancel">
-                      <span>Cancel</span>
-                    </button>
+              <form id="location-form">
+                <fieldset>
+                  <div id="new-location-container">
+                      <label for="new-location" class="form-label title">
+                        <p>
+                          New Location
+                        </p>
+                      </label>
+                      <input type="text" name="new-location" id="new-location" class="form-control" minlength="2" maxlength="20" required aria-label="Add New Location">
+                      <br>
+                      <div class="modal-button-container">
+                        <button type="submit" id="update-loc" class="save-button" aria-label="Save">
+                          <span>Save</span>
+                        </button>
+                        <button type="button" class="cancel-button close" data-bs-dismiss="modal" aria-label="Cancel">
+                          <span>Cancel</span>
+                        </button>
+                      </div>
                   </div>
-              </div>
+                </fieldset>
+              </form>
             </div>
           </div>
+          <!--<div class="modal-footer">
+            <div class="modal-button-container">
+              <button type="submit" class="save-button" aria-label="Save">
+                <span>Save</span>
+              </button>
+              <button type="button" class="cancel-button close" data-bs-dismiss="modal" aria-label="Cancel">
+                <span>Cancel</span>
+              </button>
+            </div>
+          </div>-->
         </div>
       </div>
     </section>
 
     <footer>
       <script src="./libs/js/jquery-3.6.0.min.js"></script>
-      <script src="https://kit.fontawesome.com/db76958d9f.js" crossorigin="anonymous"></script>
+      <script src="./libs/js/all.min.js"></script>
       <script src="./libs/js/bootstrap.bundle.min.js"></script>
       <script src="./libs/js/app.js"></script>
     </footer>
