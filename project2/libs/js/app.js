@@ -603,8 +603,10 @@ const editDepartmentData = () => {
                 crossOrigin: "",
                 success: function (result) {
                     console.log("libs/php/deleteDepartmentByID.php: ajax call successful")
-                    if (result.count > 0) {
-                        $("#validation-text").html(`<div class="alert alert-danger">${result.data}</div>`);
+                    if (result.data === 1) {
+                        $("#validation-text").html(`<div class="alert alert-danger"><strong>Deletion Denied!</strong><br>This department has ${result.data} member of staff attached to it</div>`);
+                    } else if (result.data > 1) {
+                        $("#validation-text").html(`<div class="alert alert-danger"><strong>Deletion Denied!</strong><br>This department has ${result.data} members of staff attached to it</div>`);
                     } else {
                         $("#validation-text").html(
                             `<div class="alert">
@@ -908,8 +910,10 @@ const editLocationData = () => {
                 crossOrigin: "",
                 success: function (result) {
                     console.log("libs/php/deleteLocationByID.php: ajax call successful");
-                    if (result.count > 0) {
-                        $("#validation-text").html(`<div class="alert alert-danger">${result.data}</div>`);
+                    if (result.data === 1) {
+                        $("#validation-text").html(`<div class="alert alert-danger"><strong>Deletion Denied!</strong><br>This location has ${result.data} department attached to it</div>`);
+                    } else if (result.data > 1) {
+                        $("#validation-text").html(`<div class="alert alert-danger"><strong>Deletion Denied!</strong><br>This location has ${result.data} departments attached to it</div>`);
                     } else {
                         $("#validation-text").html(
                             `<div class="alert">
