@@ -362,6 +362,10 @@ tr {
     color: black;
 }
 
+.surname {
+    text-transform: uppercase;
+}
+
 .form-control, .form-select {
     height: 30px;
     width: 100%;
