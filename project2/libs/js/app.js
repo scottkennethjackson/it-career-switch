@@ -161,40 +161,40 @@ const displayStaffData = (data) => {
             $("#preloader-container").fadeOut(2000);
         }, 1000);
     }
-};
 
-$(".view").click(function () {
-    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-    
-    $(".view-employee").show(viewStaff(selectedEmployeeID));
-});
-
-$(".edit").click(function () {
-    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-
-    $.ajax({
-        url: "libs/php/getPersonnelByID.php",
-        type: "GET",
-        dataType: "json",
-        data: {
-            param1: selectedEmployeeID
-        },
-        crossOrigin: "",
-        success: function (result) {
-            console.log("libs/php/getPersonnelByID.php: ajax call successful");
-            editStaff(result);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
-        }
+    $(".view").click(function () {
+        let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+        
+        $(".view-employee").show(viewStaff(selectedEmployeeID));
     });
-});
-
-$(".delete").click(function() {
-    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-
-    $(".view-employee").show(deleteStaff(selectedEmployeeID));
-});
+    
+    $(".edit").click(function () {
+        let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+    
+        $.ajax({
+            url: "libs/php/getPersonnelByID.php",
+            type: "GET",
+            dataType: "json",
+            data: {
+                param1: selectedEmployeeID
+            },
+            crossOrigin: "",
+            success: function (result) {
+                console.log("libs/php/getPersonnelByID.php: ajax call successful");
+                editStaff(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
+            }
+        });
+    });
+    
+    $(".delete").click(function() {
+        let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+    
+        $(".view-employee").show(deleteStaff(selectedEmployeeID));
+    });
+};
 
 // Open and populate the employee modal when the user clicks the green "view" button
 const viewStaff = (id) => {
