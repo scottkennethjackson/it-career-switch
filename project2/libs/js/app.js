@@ -124,31 +124,31 @@ const displayStaffData = (data) => {
 
     $("#first-row").html("");
 
-    results.forEach((employee) => {
+    for (let i = 0; i < results.length; i++) {
         $("#first-row").append(
-            `<tr key=${employee.id} data-id=${employee.id}>
+            `<tr key=${results[i].id} data-id=${results[i].id}>
                 <td class="employee-col">
-                    <p id="name-data">${employee.lastName.toUpperCase()}, ${employee.firstName}</p>
+                    <p id="name-data"><span class="surname">${results[i].lastName}</span>, ${results[i].firstName}</p>
                 </td>
                 <td class="email-col">
-                    <p id="email-data">${employee.email}</p>
+                    <p id="email-data">${results[i].email}</p>
                 </td>
                 <td class="department-col">
-                    <p id="department-data">${employee.department}</p>
+                    <p id="department-data">${results[i].department}</p>
                 </td>
                 <td class="location-col">
-                    <p id="location-data">${employee.location}</p>
+                    <p id="location-data">${results[i].location}</p>
                 </td>
                 <td class="button-col">
                     <div class="button-container">
                         <div class="edit-buttons">
-                            <button id="view${employee.id}" class="trafficlight-button view" aria-label="View">
+                            <button id="view${results[i].id}" class="trafficlight-button view" aria-label="View">
                                 <i class="fa-solid fa-solid fa-eye"></i>
                             </button>
-                            <button id="edit${employee.id}" class="trafficlight-button edit" aria-label="Edit">
+                            <button id="edit${results[i].id}" class="trafficlight-button edit" aria-label="Edit">
                                 <i class="fa-solid fa-user-pen"></i>
                             </button>
-                            <button id="delete${employee.id}" class="trafficlight-button delete" aria-label="Delete">
+                            <button id="delete${results[i].id}" class="trafficlight-button delete" aria-label="Delete">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
@@ -160,41 +160,41 @@ const displayStaffData = (data) => {
         setTimeout(function () {
             $("#preloader-container").fadeOut(2000);
         }, 1000);
-
-        $(".view").click(function() {
-            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-
-            $(".view-employee").show(viewStaff(selectedEmployeeID));
-        });
-
-        $(".edit").click(function () {
-            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-
-            $.ajax({
-                url: "libs/php/getPersonnelByID.php",
-                type: "GET",
-                dataType: "json",
-                data: {
-                    param1: selectedEmployeeID
-                },
-                crossOrigin: "",
-                success: function (result) {
-                    console.log("libs/php/getPersonnelByID.php: ajax call successful");
-                    editStaff(result);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
-                }
-            })
-        });
-
-        $(".delete").click(function() {
-            let selectedEmployeeID = $(this).closest("tr").attr("data-id");
-
-            $(".view-employee").show(deleteStaff(selectedEmployeeID));
-        });
-    });
+    }
 };
+
+$(".view").click(function () {
+    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+    
+    $(".view-employee").show(viewStaff(selectedEmployeeID));
+});
+
+$(".edit").click(function () {
+    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+
+    $.ajax({
+        url: "libs/php/getPersonnelByID.php",
+        type: "GET",
+        dataType: "json",
+        data: {
+            param1: selectedEmployeeID
+        },
+        crossOrigin: "",
+        success: function (result) {
+            console.log("libs/php/getPersonnelByID.php: ajax call successful");
+            editStaff(result);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(`libs/php/getPersonnelByID.php: ajax call failed ${textStatus}. ${errorThrown}. ${jqXHR}.`);
+        }
+    });
+});
+
+$(".delete").click(function() {
+    let selectedEmployeeID = $(this).closest("tr").attr("data-id");
+
+    $(".view-employee").show(deleteStaff(selectedEmployeeID));
+});
 
 // Open and populate the employee modal when the user clicks the green "view" button
 const viewStaff = (id) => {
