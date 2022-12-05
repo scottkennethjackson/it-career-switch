@@ -1,0 +1,439 @@
+/* Fonts */
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    src: local(''),
+         url('../fonts/roboto/roboto-v30-latin-100.woff2') format('woff2'),
+         url('../fonts/roboto/roboto-v30-latin-100.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+        url('../fonts/roboto/roboto-v30-latin-regular.woff2') format('woff2'),
+        url('../fonts/roboto/roboto-v30-latin-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+        url('../fonts/roboto/roboto-v30-latin-700.woff2') format('woff2'),
+        url('../fonts/roboto/roboto-v30-latin-regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''),
+         url('../fonts/playfair-display/playfair-display-v30-latin-700.woff2') format('woff2'),
+         url('../fonts/playfair-display/playfair-display-v30-latin-700.woff') format('woff');
+}
+
+/* General Styling */
+:root {
+    --offwhite: #eff0f2;
+    --grey: #e2e2e2;
+    --orange: #f0ae53;
+    --altorange: #e78945;
+    --yellow: #efc646;
+    --darkyellow: #b39100;
+    --lightblue: #bcdcd5;
+    --darkblue: #163653;
+    --altblue: #0c1338;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: .5px dashed red;*/
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: justify;
+    text-justify: inter-word;
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
+
+#scroll-container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-align: center;
+}
+
+/* Nav Styling */
+#navbar {
+    height: 50px;
+    width: 100vw;
+    position: fixed;
+    z-index: 100;
+}
+
+#nav-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+}
+
+#logo-container {
+    height: 100%;
+}
+
+#logo {
+    margin-left: 25px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    line-height: 50px;
+    color: white;
+}
+
+#button-container {
+    height: 100%;
+    width: 30px;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+#menu-button {
+    height: 30px;
+    width: 30px;
+    border: none;
+    background-color: transparent;
+}
+
+.bar {
+    height: 2px;
+    width: 30px;
+    margin: 6px auto;
+    border-radius: 2px;
+    background-color: white;
+    display: block;
+    transition: all 0.5s;
+}
+
+#menu-button:hover .bar {
+    background-color: var(--yellow);
+}
+
+#menu-button:active .bar {
+    background-color: var(--darkyellow);
+    transition: none;
+}
+
+#menu-button.active .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+    transition: all 0.5s;
+}
+
+#menu-button.active .bar:nth-child(2){
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+#menu-button.active .bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+    transition: all 0.5s;
+}
+
+#menu-button.active:active .bar {
+    background: var(--darkyellow);
+    transition: none;
+}
+
+#menu-container {
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    z-index: -1;
+    background-color: black;
+    transition: all 0.5s;
+}
+
+#menu-container.visible {
+    top: 50px;
+    transition: all 0.5s;
+}
+
+#nav-menu {
+    position: absolute;
+    right: 15px;
+    z-index: -1;
+    display: flex;
+    white-space: nowrap;
+}
+
+.menu-item {
+    list-style: none;
+}
+
+.nav-button {
+    height: 30px;
+    margin: 0 10px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-button:hover {
+    color: var(--yellow);
+}
+
+.nav-button:active {
+    color: var(--darkyellow);
+}
+
+/* Intro Styling */
+#intro {
+    height: 100vh;
+    background-color: var(--lightblue);
+    position: relative;
+    scroll-snap-align: center;
+}
+
+#intro-container {
+    width: 100%;
+    padding-top: 50px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#intro-blurb .title {
+    font-size: 10rem;
+    color: var(--altblue);
+}
+
+#intro-blurb .subtitle {
+    font-size: 3rem;
+    color: var(--altorange);
+}
+
+/* Bio Styling */
+#about-me {
+    height: 100vh;
+    background-color: var(--yellow);
+    position: relative;
+    scroll-snap-align: center;
+}
+
+#bio-container {
+    padding-top: 50px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#illustration-container {
+    width: 40%;
+    margin-right: 25px;
+}
+
+.bio-intro .title,
+.bio-intro .subtitle {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.hide-big {
+    display: none;
+}
+
+#sketchpad {
+    position: relative;
+}
+
+#illustration {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+#canvas {
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: url(../img/pen.png), crosshair;
+}
+
+#bio-blurb {
+    width: 40%;
+    margin-left: 25px;
+}
+
+/* Skills & Experience Styling */
+#skills-experience {
+    height: 100vh;
+    background-color: var(--offwhite);
+    position: relative;
+    scroll-snap-align: center;
+}
+
+#skills-container {
+    padding-top: 50px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#experience {
+    width: 60%;
+    margin: 25px auto 50px;
+}
+
+#languages-container {
+    margin: auto;
+    text-align: center;
+}
+
+.logo {
+    height: 30px;
+    margin: 0 5px;
+}
+
+/* Portfolio Styling */
+#portfolio {
+    height: 100vh;
+    background-color: var(--orange);
+    position: relative;
+    scroll-snap-align: center;
+}
+
+#portfolio-container {
+    width: 100%;
+    padding-top: 50px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.mockup {
+    height: 50vh;
+    margin-bottom: 25px;
+}
+
+.mockup:active {
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+}
+
+.project-blurb {
+    width: 60%;
+    margin: auto;
+}
+
+.project-description {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.project-languages {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
+/* Contact Styling */
+#contact {
+    height: 100vh;
+    color: white;
+    background-color: var(--darkblue);
+    position: relative;
+    scroll-snap-align: center;
+}
+
+#contact-container {
+    width: 100%;
+    padding-top: 90px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+#contact-head .subtitle {
+    font-size: 1.25rem;
+}
+
+#contact-form {
+    width: 50%;
+    margin: 25px auto;
+}
+
+.form-input {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.invalid-feedback {
+    height: 0;
+    font-size: 0.75rem;
+}
+
+textarea {
+    resize: none;
+}
+
+#form-submit {
+    margin: 20px auto;
+    padding: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--yellow);
+    box-shadow: 0 3px var(--darkyellow);
+    border-radius: 5px;
+    border: none;
+    white-space: nowrap;
+}
+
+#form-submit:active {
+    box-shadow: 0 1px var(--darkyellow);
+    transform: translateY(2px);
+}
+
+.status-notification {
+    height: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+}
