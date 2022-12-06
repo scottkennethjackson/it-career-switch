@@ -19,6 +19,22 @@ window.onclick = function(e) {
     }
 };
 
+// When the user clicks the slider, activate dark mode
+const darkButton = document.querySelector("#slider-container");
+const slider = document.querySelector("#slider");
+const navCSS = document.querySelector("#nav-container");
+const menuCSS = document.querySelector("#menu-container");
+const bodyCSS = document.querySelector("#scroll-container");
+const carouselCSS = document.querySelector("#portfolio-carousel");
+
+darkButton.addEventListener("click", function() {
+    slider.classList.toggle("switch");
+    navCSS.classList.toggle("dark");
+    menuCSS.classList.toggle("dark");
+    bodyCSS.classList.toggle("dark");
+    carouselCSS.classList.toggle("carousel-dark");
+});
+
 // When the user leaves the nav menu, reset the menu button and dropdown
 const navReset = document.querySelector("#navbar");
 
