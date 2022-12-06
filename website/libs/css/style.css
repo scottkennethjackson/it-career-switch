@@ -88,6 +88,14 @@ body {
     text-align: center;
 }
 
+.hide-big {
+    display: none;
+}
+
+.show-medium {
+    display: none;
+}
+
 /* Nav Styling */
 #navbar {
     height: 50px;
@@ -110,8 +118,6 @@ body {
 
 #logo {
     margin-left: 25px;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2rem;
     line-height: 50px;
     color: white;
 }
@@ -233,6 +239,10 @@ body {
     transform: translateY(-50%);
 }
 
+#intro-blurb {
+    margin: 0 25px;
+}
+
 #intro-blurb .title {
     font-size: 10rem;
     color: var(--altblue);
@@ -252,6 +262,7 @@ body {
 }
 
 #bio-container {
+    margin: 0 25px;
     padding-top: 50px;
     position: absolute;
     top: 50%;
@@ -264,21 +275,16 @@ body {
 
 #illustration-container {
     width: 40%;
-    margin-right: 25px;
 }
 
 .bio-intro .title,
 .bio-intro .subtitle {
     text-align: justify;
-    text-justify: inter-word;
-}
-
-.hide-big {
-    display: none;
 }
 
 #sketchpad {
     position: relative;
+    margin-right: 25px;
 }
 
 #illustration {
@@ -296,7 +302,6 @@ body {
 
 #bio-blurb {
     width: 40%;
-    margin-left: 25px;
 }
 
 /* Skills & Experience Styling */
@@ -315,6 +320,10 @@ body {
     transform: translateY(-50%);
 }
 
+#skills-blurb {
+    margin: 0 25px;
+}
+
 #experience {
     width: 60%;
     margin: 25px auto 50px;
@@ -327,7 +336,7 @@ body {
 
 .logo {
     height: 30px;
-    margin: 0 5px;
+    margin: 5px;
 }
 
 /* Portfolio Styling */
@@ -348,14 +357,15 @@ body {
     text-align: center;
 }
 
-.mockup {
-    height: 50vh;
-    margin-bottom: 25px;
+#portfolio-carousel {
+    margin: 0 25px;
 }
 
-.mockup:active {
-    filter: blur(1px);
-    -webkit-filter: blur(1px);
+.mockup {
+    height: 50vh;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 25px;
 }
 
 .project-blurb {
@@ -365,7 +375,6 @@ body {
 
 .project-description {
     text-align: justify;
-    text-justify: inter-word;
 }
 
 .project-languages {
@@ -392,6 +401,10 @@ body {
     text-align: center;
 }
 
+#contact-head {
+    margin: 0 25px;
+}
+
 #contact-head .subtitle {
     font-size: 1.25rem;
 }
@@ -411,6 +424,10 @@ body {
     font-size: 0.75rem;
 }
 
+#name, #email {
+    height: 40px
+}
+
 textarea {
     resize: none;
 }
@@ -420,6 +437,7 @@ textarea {
     padding: 10px;
     font-weight: 700;
     text-transform: uppercase;
+    color: black;
     background-color: var(--yellow);
     box-shadow: 0 3px var(--darkyellow);
     border-radius: 5px;
@@ -436,4 +454,191 @@ textarea {
     height: 20px;
     font-size: 1rem;
     font-weight: 700;
+}
+
+/* Tablet Styling */
+@media only screen and (max-width: 770px) {
+    .hide-medium {
+        display: none;
+    }
+    .show-medium {
+        display: unset;
+    }
+
+    #intro-blurb .title {
+        font-size: 6rem;
+    }
+
+    #bio-container {
+        display: unset;
+    }
+
+    #illustration-container {
+        width: 100%;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    #sketchpad {
+        width: 25%;
+        margin-right: 15px;
+    }
+
+    #bio-blurb {
+        width: 90%;
+        margin: auto;
+    }
+
+    #experience {
+        width: 90%;
+    }
+
+    #languages-blurb {
+        text-align: justify;
+    }
+
+    #contact-form {
+        width: 70%;
+    }
+}
+
+/* Smartphone Portrait Styling */
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .hide-small {
+        display: none;
+    }
+
+    .show-small {
+        display: unset
+    }
+
+    #menu-container {
+        height: 100vh;
+        top: -100vh;
+    }
+
+    #menu-container.visible {
+        top: 0;
+    }
+
+    #nav-menu {
+        width: 100%;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        display: block;
+        text-align: center;
+    }
+
+    .nav-button {
+        margin: 5px;
+    }
+
+    #intro-blurb .title {
+        font-size: 4rem;
+    }
+
+    #intro-blurb .subtitle {
+        font-size: 2rem;
+    }
+
+    #illustration-container {
+        margin-bottom: 10px;
+    }
+
+    #sketchpad {
+        margin-right: 10px;
+    }
+
+    #languages-container {
+        display: none;
+    }
+
+    .project-blurb {
+        width: 90%;
+    }
+
+    #contact-form {
+        width: 80%;
+    }
+}
+
+/* Smartphone Landscape Styling */
+@media only screen and (max-width: 770px) and (orientation: landscape) {
+    body {
+        font-size: 12px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .hide-small {
+        display: none;
+    }
+
+    .hide-smaller {
+        display: none;
+    }
+
+    .show-small {
+        display: unset
+    }
+
+    .show-smaller {
+        display: unset;
+    }
+
+    #menu-container {
+        height: 100vh;
+        top: -100vh;
+    }
+
+    #menu-container.visible {
+        top: 0;
+    }
+
+    #nav-menu {
+        width: 100%;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        display: block;
+        text-align: center;
+    }
+
+    .nav-button {
+        margin: 5px;
+    }
+
+    #illustration-container {
+        display: none;
+    }
+
+    #languages-container {
+        display: none;
+    }
+
+    #contact-form {
+        width: 60%;
+    }
+
+    #message {
+        max-height: 80px;
+        overflow-y: scroll;
+    }
 }
