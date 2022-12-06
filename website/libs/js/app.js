@@ -126,7 +126,7 @@ function isNotEmpty(caller) {
     }
 }
 
-// Disable form submissions if there are invalid fields
+// Disable form submissions if there are invalid fields and notify the user
 (function () {
     'use strict'
   
