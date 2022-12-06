@@ -46,6 +46,7 @@
     --lightblue: #bcdcd5;
     --darkblue: #163653;
     --altblue: #0c1338;
+    --offblack: #303030;
 }
 
 * {
@@ -222,6 +223,45 @@ body {
     color: var(--darkyellow);
 }
 
+#slider-container {
+    position: relative;
+    cursor: pointer;
+}
+
+#dark-button {
+    height: 28px;
+    border: 2px solid white;
+    border-radius: 28px;
+    background-color: var(--darkblue);
+}
+
+.fa-sun-bright {
+    margin: 0 4px;
+    color: var(--yellow);
+}
+
+.fa-moon {
+    margin: 0 4px;
+    color: var(--lightblue);
+}
+
+#slider {
+    height: 24px;
+    width: 24px;
+    margin: 2px;
+    position: absolute;
+    left: auto;
+    right: 10px;
+    background-color: var(--grey);
+    border-radius: 24px;
+    transition: all 0.5s;
+}
+
+#slider.switch {
+    transform: translateX(-27px);
+    transition: all 0.5s;
+}
+
 /* Intro Styling */
 #intro {
     height: 100vh;
@@ -275,6 +315,7 @@ body {
 
 #illustration-container {
     width: 40%;
+    margin-right: 25px;
 }
 
 .bio-intro .title,
@@ -284,7 +325,6 @@ body {
 
 #sketchpad {
     position: relative;
-    margin-right: 25px;
 }
 
 #illustration {
@@ -456,6 +496,45 @@ textarea {
     font-weight: 700;
 }
 
+/* Dark Mode Styling */
+#scroll-container.dark {
+    color: white;
+    --offwhite: #303030;
+    --orange: #303030;
+    --yellow: #303030;
+    --altyellow: #efc646;
+    --lightblue: #303030;
+    --darkblue: #303030;
+}
+
+#scroll-container.dark .subtitle {
+    color: var(--altorange);
+}
+
+#scroll-container.dark #intro-blurb .title {
+    color: white;
+}
+
+#scroll-container.dark #leaflet {
+    -webkit-filter: brightness(125%);
+    filter: brightness(125%);
+}
+
+#scroll-container.dark #jquery,
+#scroll-container.dark #node-js,
+#scroll-container.dark #github {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+#scroll-container.dark .project-languages {
+    color: var(--altorange);
+}
+
+#scroll-container.dark #form-submit {
+    background-color: var(--altyellow);
+}
+
 /* Tablet Styling */
 @media only screen and (max-width: 770px) {
     .hide-medium {
@@ -509,7 +588,7 @@ textarea {
     body {
         font-size: 12px;
     }
-    
+
     .title {
         font-size: 1.5rem;
     }
