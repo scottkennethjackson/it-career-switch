@@ -377,8 +377,8 @@ body {
 .logo {
     height: 30px;
     margin: 5px;
-    -webkit-filter: saturate(200%);
-    filter: saturate(200%);
+    -webkit-filter: saturate(150%);
+    filter: saturate(150%);
 }
 
 /* Portfolio Styling */
@@ -520,10 +520,14 @@ textarea {
 #scroll-container.dark #jquery,
 #scroll-container.dark #node-js,
 #scroll-container.dark #mysql,
-#scroll-container.dark #leaflet,
 #scroll-container.dark #github {
-    -webkit-filter: saturate(200%) invert(100%);
-    filter: saturate(200%) invert(100%);
+    -webkit-filter: saturate(150%) invert(100%);
+    filter: saturate(150%) invert(100%);
+}
+
+#scroll-container.dark #leaflet {
+    -webkit-filter: saturate(150%) brightness(125%);
+    filter: saturate(150%) brightness(125%);
 }
 
 #scroll-container.dark .project-languages {
