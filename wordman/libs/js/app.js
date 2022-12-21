@@ -12,7 +12,7 @@ const getWord = (category) => {
     return category[wordIndex];
 };
 
-const word = "Javascript"/*getWord(categories[categoryPlace]);*/
+const word = getWord(categories[categoryPlace]);
 
 const setUpWord = () => {
     let wordArray = word.split(" ");
