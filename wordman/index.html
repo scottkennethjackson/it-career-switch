@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wordman | A Wordle-inspired Hangman Game</title>
+
+        <meta charset="utf-8">
+        <meta name="author" content="Scott Kenneth Jackson">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
+
+        <link rel="icon" href="./libs/img/favicon.ico">
+
+        <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./libs/css/style.css">
+    </head>
+    <body>
+        <div id="logo-container">
+            <h1 id="logo">
+                <div class="logo-tile incorrect">W</div>
+                <div class="logo-tile incorrect">O</div>
+                <div class="logo-tile incorrect">R</div>
+                <div class="logo-tile incorrect">D</div>
+                <div class="logo-tile correct">M</div>
+                <div class="logo-tile correct">A</div>
+                <div class="logo-tile correct">N</div>
+            </h1>
+        </div>
+
+        <div id="game-container">
+            <div id="game-area">
+                <div id="word-container">
+                    <div data-guess-grid class="index0"></div>
+                    <div data-guess-grid class="index1"></div>
+                    <div data-guess-grid class="index2"></div>
+                    <div data-guess-grid class="index3"></div>
+                </div>
+
+                <div id="alert-container">
+                    <p id="alert">Alert status</p>
+                    <button id="play-again">Play again?</button>
+                </div>
+
+                <div id="countdown-container">
+                    <div id="lives-container">
+                        <p id="lives-label">Lives</p>
+                        <p id="lives-counter">10</p>
+                    </div>
+                    <div id="hint-container">
+                        <button id="hint-button">Hint</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="keyboard">
+            <div id="top-row" class="keyboard-row">
+                <button class="key" data-key="Q">Q</button>
+                <button class="key" data-key="W">W</button>
+                <button class="key" data-key="E">E</button>
+                <button class="key" data-key="R">R</button>
+                <button class="key" data-key="T">T</button>
+                <button class="key" data-key="Y">Y</button>
+                <button class="key" data-key="U">U</button>
+                <button class="key" data-key="I">I</button>
+                <button class="key" data-key="O">O</button>
+                <button class="key" data-key="P">P</button>
+            </div>
+            
+            <div id="middle-row" class="keyboard-row">
+                <button class="key" data-key="A">A</button>
+                <button class="key" data-key="S">S</button>
+                <button class="key" data-key="D">D</button>
+                <button class="key" data-key="F">F</button>
+                <button class="key" data-key="G">G</button>
+                <button class="key" data-key="H">H</button>
+                <button class="key" data-key="J">J</button>
+                <button class="key" data-key="K">K</button>
+                <button class="key" data-key="L">L</button>
+            </div>
+            
+            <div id="bottom-row" class="keyboard-row">
+                <button class="key" data-key="Z">Z</button>
+                <button class="key" data-key="X">X</button>
+                <button class="key" data-key="C">C</button>
+                <button class="key" data-key="V">V</button>
+                <button class="key" data-key="B">B</button>
+                <button class="key" data-key="N">N</button>
+                <button class="key" data-key="M">M</button>
+            </div>
+        </div>
+        
+        <script src="./libs/js/jquery-3.6.1.min.js"></script>
+        <script src="./libs/js/bootstrap.bundle.min.js"></script>
+        <script src="./libs/js/words.js"></script>
+        <script src="./libs/js/app.js"></script>
+    </body>
+</html>
