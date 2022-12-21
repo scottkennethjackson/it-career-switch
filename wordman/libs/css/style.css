@@ -93,7 +93,6 @@ body {
     margin: 50px auto;
     line-height: 40px;
     color: black;
-    
 }
 
 .word {
@@ -271,6 +270,7 @@ body {
     margin: 5px 0;
     white-space: nowrap;
 }
+
 .key {
     height: 50px;
     width: 40px;
@@ -292,4 +292,60 @@ body {
 
 .key.incorrect {
     background-color: var(--darkgrey);
+}
+
+/* Smartphone Styling */
+@media only screen and (max-width: 500px) {
+    .correct {
+        height: 32px;
+        width: 32px;
+    }
+    
+    .missing {
+        height: 32px;
+        width: 32px;
+    }
+
+    #logo-container {
+        height: 40px;
+    }
+    
+    #logo {
+        font-size: 2rem;
+    }
+    
+    .logo-tile {
+        height: 40px;
+        width: 40px;
+    }
+
+    #game-container {
+        height: 75vh;
+    }
+
+    #word-container {
+        line-height: 32px;
+    }
+    
+    .tile {
+        height: 32px;
+        width: 32px;
+    }
+
+    #lives-container {
+        width: 150px;
+    }
+    
+    #hint-container {
+        width: 150px;
+    }
+
+    #keyboard {
+        height: 25vh;
+    }
+
+    .key {
+        height: 40px;
+        width: 32px;
+    }
 }
