@@ -1,0 +1,20 @@
+/* General Styling */
+:root {
+    --lightgreen: #40af74;
+    --darkgreen: #334353;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: .5px dashed red;*/
+}
+
+#logo-container {
+    display: flex;
+}
+
+#logo-img {
+    height: 50px;
+}

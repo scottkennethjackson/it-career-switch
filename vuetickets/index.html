@@ -10,15 +10,115 @@
 
         <link rel="icon" href="./libs/img/favicon.ico">
 
-        <link rel="stylesheet" href="./libs/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="./libs/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="./libs/css/style.css">
     </head>
     <body>
-        
+        <header id="logo-container">
+            <img src="./libs/img/vue-js.svg" id="logo-img" alt="Logo">
+            <h1 id="logo-text">Vue Tickets</h1>
+        </header>
+
+        <div id="app">
+            <form v-on:reset="resetFields" v-on:submit.prevent="submitForm">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" v-model.trim="firstName">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" v-model.trim="surname">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" v-model.trim="email" v-bind:class="[requiredFieldClass, emailClasses]">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="ticket-quantity">Ticket Quantity</label>
+                        <select id="ticket-quantity" v-model.number="ticketQuantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <legend>Ticket Type</legend>
+                        <div>
+                            <input type="radio" id="general" value="general" v-model="ticketType">
+                            <label for="general">General Admission</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="vip" value="vip" v-model="ticketType">
+                            <label for="vip">VIP</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row checkbox">
+                    <fieldset>
+                        <legend>How did you hear about this event?</legend>
+                        <div>
+                            <input type="checkbox" id="friend" value="friend" v-model="referrals">
+                            <label for="friend">Friend</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="publication" value="publication" v-model="referrals">
+                            <label for="publication">Publication</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="social-media" value="social" v-model="referrals">
+                            <label for="social-media">Social Media</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" id="website" value="website" v-model="referrals">
+                            <label for="website">Scott's Website</label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="form-row vertical">
+                    <label for="requests">Special Requests</label>
+                    <textarea id="requests" rows="3" v-model.trim="specialRequests"></textarea>
+                </div>
+
+                <div class="form-row vertical agreement checkbox">
+                    <fieldset>
+                        <legend>Purchase Agreement</legend>
+                        <p>I, {{ fullName }}, wish to buy {{ ticketDescription }}. I understand that these tickets don't cost anything, that they are not real, and that the event that they are for does not actually exist.</p>
+                        <input type="checkbox" name="agreement" id="agree" v-model="purchaseAgreementSigned">
+                        <label for="agree">I Agree</label>
+                    </fieldset>
+                </div>
+
+                <div class="form-row vertical">
+                    <label for="signature">Signature</label>
+                    <input type="text" id="signature" class="signature">
+                </div>
+
+                <div>
+                    <button type="reset" class="reset">Reset</button>
+                    <button type="submit" v-bind:disabled="!formIsValid" v-bind:class="{ active: formIsValid }">Confirm</button>
+                </div>
+            </form>
+        </div>
     </body>
     <footer>
         <script src="./libs/js/jquery-3.6.1.min.js"></script>
-        <script src="./libs/js/bootstrap.bundle.min.js"></script>
+        <!--<script src="./libs/js/bootstrap.bundle.min.js"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
         <script src="./libs/js/app.js" defer></script>
     </footer>
