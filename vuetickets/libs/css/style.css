@@ -2,6 +2,9 @@
 :root {
     --lightgreen: #40af74;
     --darkgreen: #334353;
+    --offwhite: #f1f1f1;
+    --offblack: #303030;
+    --red: #e85b49;
 }
 
 * {
@@ -11,10 +14,89 @@
     /*border: .5px dashed red;*/
 }
 
-#logo-container {
+html {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: justify;
+    text-justify: inter-word;
+    text-decoration: none;
+    color: black;
+    background-color: var(--offwhite);
+    cursor: default;
+}
+
+header {
+    height: 50px;
     display: flex;
+    align-items: center;
+    background-color: var(--lightgreen);
 }
 
 #logo-img {
     height: 50px;
+    padding: 5px;
+    background-color: var(--offblack);
+}
+
+#logo-text {
+    padding-left: 5px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 20%;
+}
+
+input,
+textarea,
+select {
+    margin-right: 2rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .25rem;
+}
+
+textarea {
+    resize: none;
+}
+
+label,
+legend {
+    margin-bottom: .25rem;
+    font-weight: bold;
+}
+
+.form-row {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.form-row.vertical {
+    flex-direction: column;
+}
+
+.form-field,
+.checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox label {
+    font-weight: normal;
+}
+
+.signature {
+    font-family: cursive;
+}
+
+.button {
+    cursor: pointer;
+    padding: 10px;
 }
