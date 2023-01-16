@@ -32,17 +32,17 @@ header {
     height: 50px;
     display: flex;
     align-items: center;
-    background-color: var(--lightgreen);
+    padding: 0 10px;
+    color: var(--lightgreen);
+    background-color: var(--offblack);
 }
 
 #logo-img {
     height: 50px;
     padding: 5px;
-    background-color: var(--offblack);
 }
 
 #logo-text {
-    padding-left: 5px;
     font-family: "Josefin Sans", sans-serif;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -96,7 +96,34 @@ legend {
     font-family: cursive;
 }
 
-.button {
-    cursor: pointer;
+button {
+    width: 100px;
+    margin-right: 2rem;
+    border: 1px solid grey;
+    border-radius: 5px;
     padding: 10px;
+    color: white;
+    background-color: grey;
+}
+
+button.active {
+    border: 1px solid var(--lightgreen);
+    background-color: var(--lightgreen);
+    cursor: pointer;
+}
+
+button.active:active {
+    color: var(--lightgreen);
+    background-color: transparent;
+}
+
+button.reset {
+    border: 1px solid var(--red);
+    background-color: var(--red);
+    cursor: pointer;
+}
+
+button.reset:active {
+    color: var(--red);
+    background-color: transparent;
 }
