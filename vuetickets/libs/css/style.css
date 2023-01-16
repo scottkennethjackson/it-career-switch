@@ -5,6 +5,8 @@
     --offwhite: #f1f1f1;
     --offblack: #303030;
     --red: #e85b49;
+    --invalidborder: #da5252;
+    --invalidbackground: #ffeded;
 }
 
 * {
@@ -28,18 +30,18 @@ html {
     cursor: default;
 }
 
+/* Header Styling */
 header {
     height: 50px;
     display: flex;
     align-items: center;
-    padding: 0 10px;
     color: var(--lightgreen);
     background-color: var(--offblack);
 }
 
 #logo-img {
     height: 50px;
-    padding: 5px;
+    padding: 5px 10px;
 }
 
 #logo-text {
@@ -48,36 +50,11 @@ header {
     text-transform: uppercase;
 }
 
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
     padding: 2rem 20%;
-}
-
-input,
-textarea,
-select {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: .25rem;
-}
-
-.margin-right {
-    margin-right: 1rem;
-}
-
-.margin-left {
-    margin-left: 1rem;
-}
-
-textarea {
-    resize: none;
-}
-
-label,
-legend {
-    margin-bottom: .25rem;
-    font-weight: bold;
 }
 
 .form-row {
@@ -95,6 +72,46 @@ legend {
     flex-direction: column;
 }
 
+.margin-right {
+    margin-right: 1rem;
+}
+
+.margin-left {
+    margin-left: 1rem;
+}
+
+.fill-space {
+    width: 100%;
+}
+
+label,
+legend {
+    margin-bottom: .25rem;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .25rem;
+    resize: none;
+}
+
+input.invalid {
+    border-color: var(--invalidborder);
+    background-color: var(--invalidbackground);
+}
+
+#ticket-quantity {
+    text-align: center;
+}
+
+fieldset {
+    border: none;
+}
+
 .checkbox label {
     font-weight: normal;
 }
@@ -103,12 +120,17 @@ legend {
     font-family: cursive;
 }
 
+.center {
+    text-align: center;
+}
+
 button {
     width: 100px;
     margin: 0 1rem;
     border: 1px solid grey;
     border-radius: 5px;
     padding: 10px;
+    
     color: white;
     background-color: grey;
 }
@@ -135,14 +157,7 @@ button.reset:active {
     background-color: transparent;
 }
 
-.center {
-    text-align: center;
-}
-
-.fill-space {
-    width: 100%;
-}
-
+/* Media Styling */
 @media screen and (max-width: 500px) {
     form {
         padding: 1rem 2rem;

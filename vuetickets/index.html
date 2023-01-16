@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="author" content="Scott Kenneth Jackson">
-        <meta name="description" content="A simple ticketing form, built and styled using Vue.js">
+        <meta name="description" content="A simple ticketing form, built using Vue.js">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <link rel="icon" href="./libs/img/favicon.ico">
@@ -14,7 +14,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,700&display=swap">
         
-        <!--<link rel="stylesheet" href="./libs/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="./libs/css/style.css">
     </head>
     <body>
@@ -28,12 +27,12 @@
                 <div class="form-row">
                     <div class="form-field margin-right fill-space">
                         <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" v-bind:class="requiredFieldClass" v-model.trim="firstName">
+                        <input type="text" id="first-name" v-model.trim="firstName">
                     </div>
 
                     <div class="form-field margin-left fill-space">
                         <label for="surname">Surname</label>
-                        <input type="text" id="surname" v-bind:class="requiredFieldClass" v-model.trim="surname">
+                        <input type="text" id="surname" v-model.trim="surname">
                     </div>
                 </div>
 
@@ -47,7 +46,7 @@
                 <div class="form-row">
                     <div class="form-field margin-right">
                         <label for="ticket-quantity">Ticket Quantity</label>
-                        <select id="ticket-quantity" class="center" v-model.number="ticketQuantity">
+                        <select id="ticket-quantity" v-model.number="ticketQuantity">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -102,16 +101,16 @@
                 <div class="form-row vertical agreement checkbox">
                     <fieldset>
                         <legend>Purchase Agreement</legend>
-                        <p>I{{ fullName }} wish to buy {{ ticketDescription }}. I understand that tickets don't cost anything, that they are not real, and that the event they are for does not actually exist.</p>
+                        <p>I{{ fullName }} would like to buy {{ ticketDescription }}. I understand that tickets don't cost anything, that they are not real, and that the event they are for doesn't actually exist.</p>
                         <br>
                         <input type="checkbox" name="agreement" id="agree" v-model="purchaseAgreementSigned">
-                        <label for="agree">I Agree</label>
+                        <label for="agree">I agree to the terms of the Purchase Agreement</label>
                     </fieldset>
                 </div>
 
                 <div class="form-row vertical">
                     <label for="signature">Signature</label>
-                    <input type="text" id="signature" class="signature" v-bind:class="requiredFieldClass">
+                    <input type="text" id="signature" class="signature">
                 </div>
 
                 <div class="center">
@@ -123,7 +122,6 @@
     </body>
     <footer>
         <script src="./libs/js/jquery-3.6.1.min.js"></script>
-        <!--<script src="./libs/js/bootstrap.bundle.min.js"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
         <script src="./libs/js/app.js" defer></script>
     </footer>
