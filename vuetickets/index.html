@@ -26,28 +26,28 @@
         <div id="app">
             <form v-on:reset="resetFields" v-on:submit.prevent="submitForm">
                 <div class="form-row">
-                    <div class="form-field">
+                    <div class="form-field margin-right fill-space">
                         <label for="first-name">First Name</label>
                         <input type="text" id="first-name" v-bind:class="requiredFieldClass" v-model.trim="firstName">
                     </div>
 
-                    <div class="form-field">
+                    <div class="form-field margin-left fill-space">
                         <label for="surname">Surname</label>
                         <input type="text" id="surname" v-bind:class="requiredFieldClass" v-model.trim="surname">
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-field">
+                    <div class="form-field fill-space">
                         <label for="email">Email</label>
                         <input type="email" id="email" v-bind:class="[requiredFieldClass, emailClasses]" v-model.trim="email">
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-field">
+                    <div class="form-field margin-right">
                         <label for="ticket-quantity">Ticket Quantity</label>
-                        <select id="ticket-quantity" v-model.number="ticketQuantity">
+                        <select id="ticket-quantity" class="center" v-model.number="ticketQuantity">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -55,7 +55,7 @@
                         </select>
                     </div>
 
-                    <div class="form-field">
+                    <div class="form-field margin-left">
                         <legend>Ticket Type</legend>
                         <div>
                             <input type="radio" id="general" value="general" v-model="ticketType">
@@ -102,7 +102,8 @@
                 <div class="form-row vertical agreement checkbox">
                     <fieldset>
                         <legend>Purchase Agreement</legend>
-                        <p>I{{ fullName }} wish to buy {{ ticketDescription }}. I understand that these tickets don't cost anything, that they are not real, and that the event that they are for does not actually exist.</p>
+                        <p>I{{ fullName }} wish to buy {{ ticketDescription }}. I understand that tickets don't cost anything, that they are not real, and that the event they are for does not actually exist.</p>
+                        <br>
                         <input type="checkbox" name="agreement" id="agree" v-model="purchaseAgreementSigned">
                         <label for="agree">I Agree</label>
                     </fieldset>
@@ -110,10 +111,10 @@
 
                 <div class="form-row vertical">
                     <label for="signature">Signature</label>
-                    <input type="text" id="signature" class="signature">
+                    <input type="text" id="signature" class="signature" v-bind:class="requiredFieldClass">
                 </div>
 
-                <div>
+                <div class="center">
                     <button type="reset" class="reset">Reset</button>
                     <button type="submit" v-bind:disabled="!formIsValid" v-bind:class="{ active: formIsValid }">Confirm</button>
                 </div>

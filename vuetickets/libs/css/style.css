@@ -17,7 +17,7 @@
 html {
     font-family: Arial, sans-serif;
     font-style: normal;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.25;
     text-align: justify;
@@ -57,10 +57,17 @@ form {
 input,
 textarea,
 select {
-    margin-right: 2rem;
     border: 1px solid black;
     border-radius: 5px;
     padding: .25rem;
+}
+
+.margin-right {
+    margin-right: 1rem;
+}
+
+.margin-left {
+    margin-left: 1rem;
 }
 
 textarea {
@@ -98,7 +105,7 @@ legend {
 
 button {
     width: 100px;
-    margin-right: 2rem;
+    margin: 0 1rem;
     border: 1px solid grey;
     border-radius: 5px;
     padding: 10px;
@@ -126,4 +133,18 @@ button.reset {
 button.reset:active {
     color: var(--red);
     background-color: transparent;
+}
+
+.center {
+    text-align: center;
+}
+
+.fill-space {
+    width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+    form {
+        padding: 1rem 2rem;
+    }
 }
