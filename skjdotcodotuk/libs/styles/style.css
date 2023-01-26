@@ -3,43 +3,47 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/playfair-display-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/playfair-display-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* playfair-display-700italic - latin-ext_latin */
 @font-face {
   font-family: "Playfair Display";
-  font-style: italic;
+  font-style: normal;
   font-weight: 700;
-  src: local(""), url("../fonts/playfair-display-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/playfair-display-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* playfair-display-900italic - latin-ext_latin */
 @font-face {
   font-family: "Playfair Display";
-  font-style: italic;
+  font-style: normal;
   font-weight: 900;
-  src: local(""), url("../fonts/playfair-display-v30-latin-ext_latin-900.woff2") format("woff2"), url("../fonts/playfair-display-v30-latin-ext_latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-900.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-100 - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
-  src: local(""), url("../fonts/roboto-v30-latin-ext_latin-100.woff2") format("woff2"), url("../fonts/roboto-v30-latin-ext_latin-100.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-100.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-100.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-regular - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/roboto-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/roboto-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* roboto-700 - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
-  src: local(""), url("../fonts/roboto-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/roboto-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+html {
+  font-family: "Roboto", Arial, sans-serif;
+}
+
 .navbar {
   height: 50px;
 }
@@ -57,9 +61,52 @@
 .navbar .nav-menu .menu-btn:hover a {
   color: rgb(239, 198, 70);
 }
-.navbar .nav-menu .menu-link {
+.navbar .nav-menu .menu-btn .menu-link {
   font-size: 1.25rem;
   color: white;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+#home {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: rgb(188, 220, 213);
+}
+#home h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 10rem;
+}
+#home .home-blurb {
+  font-size: 3rem;
+  font-weight: 100;
+  color: rgb(231, 137, 69);
+}
+#home .resources-menu {
+  justify-content: center;
+  list-style: none;
+}
+#home .resources-menu .resource-btn {
+  border: none;
+  background-color: transparent;
+}
+#home .resources-menu .resource-btn:hover a {
+  opacity: 1;
+}
+#home .resources-menu .resource-btn .resource-link {
+  font-size: 2rem;
+  color: rgb(22, 54, 83);
+  opacity: 0.5;
 }/*# sourceMappingURL=style.css.map */
