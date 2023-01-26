@@ -42,6 +42,8 @@
 }
 html {
   font-family: "Roboto", Arial, sans-serif;
+  text-align: justify;
+  cursor: default;
 }
 
 .navbar {
@@ -69,6 +71,11 @@ html {
 }
 
 #home {
+  height: 100vh;
+  position: relative;
+  background-color: rgb(188, 220, 213);
+}
+#home .home-container {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -82,31 +89,68 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: rgb(188, 220, 213);
 }
-#home h2 {
+#home .home-container h2 {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 10rem;
 }
-#home .home-blurb {
+#home .home-container .home-blurb {
   font-size: 3rem;
   font-weight: 100;
   color: rgb(231, 137, 69);
 }
-#home .resources-menu {
+#home .home-container .resources-menu {
   justify-content: center;
   list-style: none;
 }
-#home .resources-menu .resource-btn {
+#home .home-container .resources-menu .resource-btn {
   border: none;
   background-color: transparent;
 }
-#home .resources-menu .resource-btn:hover a {
+#home .home-container .resources-menu .resource-btn:hover a {
   opacity: 1;
 }
-#home .resources-menu .resource-btn .resource-link {
+#home .home-container .resources-menu .resource-btn .resource-link {
   font-size: 2rem;
   color: rgb(22, 54, 83);
   opacity: 0.5;
+}
+
+#about {
+  height: 100vh;
+  position: relative;
+  background-color: rgb(239, 198, 70);
+}
+#about .about-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#about .about-container .sketchpad {
+  position: relative;
+}
+#about .about-container .sketchpad #illustration {
+  width: 40vw;
+  position: absolute;
+  z-index: -1;
+}
+#about .about-container .sketchpad #canvas {
+  cursor: url(../images/pen.png), crosshair;
+}
+#about .about-container h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+#about .about-container .bio-blurb {
+  font-size: 1.5rem;
+  font-weight: 100;
 }/*# sourceMappingURL=style.css.map */

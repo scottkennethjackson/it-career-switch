@@ -63,6 +63,8 @@
 
 html {
     font-family: 'Roboto', Arial, sans-serif;
+    text-align: justify;
+    cursor: default;
 }
 
 .navbar {
@@ -95,39 +97,76 @@ html {
 }
 
 #home {
-    @include centralise;
+    @include full-screen;
 
-    height: 100vh;
     background-color: $lightblue;
 
-    h2 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 10rem;
-    }
+    .home-container {
+        @include centralise;
 
-    .home-blurb {
-        font-size: 3rem;
-        font-weight: 100;
-        color: $darkorange;
-    }
-
-    .resources-menu {
-        justify-content: center;
-        list-style: none;
-
-        .resource-btn {
-            border: none;
-            background-color: transparent;
-
-            &:hover a {
-                opacity: 1;
-            }
-
-            .resource-link {
-                font-size: 2rem;
-                color: $darkblue;
-                opacity: .5;
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 10rem;
+        }
+    
+        .home-blurb {
+            font-size: 3rem;
+            font-weight: 100;
+            color: $darkorange;
+        }
+    
+        .resources-menu {
+            justify-content: center;
+            list-style: none;
+    
+            .resource-btn {
+                border: none;
+                background-color: transparent;
+    
+                &:hover a {
+                    opacity: 1;
+                }
+    
+                .resource-link {
+                    font-size: 2rem;
+                    color: $darkblue;
+                    opacity: .5;
+                }
             }
         }
     }
+}
+
+#about {
+    @include full-screen;
+
+    background-color: $yellow;
+
+    .about-container {
+        @include centralise;
+
+        .sketchpad {
+            position: relative;
+
+            #illustration {
+                width: 40vw;
+                position: absolute;
+                z-index: -1;
+            }
+    
+            #canvas {
+                cursor: url(../images/pen.png), crosshair;
+            }
+        }
+
+        h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .bio-blurb {
+            font-size: 1.5rem;
+            font-weight: 100;
+        }
+    }
+    
 }
