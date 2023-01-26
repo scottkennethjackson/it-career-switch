@@ -1,0 +1,265 @@
+nav .banner {
+  background-color: rgb(235, 235, 235);
+  z-index: 1;
+}
+nav .banner .nav-logo {
+  height: 50px;
+}
+nav .banner .menu-button {
+  border: none;
+}
+nav .banner .menu-button .bar {
+  height: 5px;
+  width: 30px;
+  display: block;
+  margin: 3px auto;
+  background-color: black;
+  transition: all 0.5s;
+}
+nav .banner .menu-button.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+nav .banner .menu-button.active .bar:nth-child(2) {
+  transform: rotate(45deg);
+}
+nav .banner .menu-button.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+nav .dropdown {
+  position: absolute;
+  top: 20px;
+  background-color: rgb(235, 235, 235);
+  transition: all 0.5s;
+}
+nav .dropdown .nav-menu {
+  height: 30px;
+  justify-content: right;
+  text-transform: uppercase;
+  list-style: none;
+}
+nav .dropdown .nav-menu a {
+  line-height: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+nav .dropdown.visible {
+  top: 50px;
+}
+
+main {
+  font-size: 16px;
+  text-align: justify;
+  background-color: rgb(235, 235, 235);
+}
+main #home .carousel-img {
+  height: 100vh;
+  position: relative;
+}
+main #home .carousel-info {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+main #home .carousel-logo {
+  width: 40%;
+}
+main #home .dates {
+  color: white;
+}
+main #home .ticket-button {
+  border: 1px solid white;
+  transition: none;
+}
+main #home .ticket-button:active {
+  background-color: white;
+}
+main #home .ticket-button:active a {
+  color: black;
+}
+main #home .ticket-button a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+main #about {
+  height: 100vh;
+  position: relative;
+}
+main #about .about-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main #about .video-container {
+  width: 60%;
+}
+main #about .blurb-container {
+  width: 60%;
+}
+main #venue {
+  height: 100vh;
+  position: relative;
+}
+main #venue .venue-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main #venue .venue-container .vb-container {
+  width: 80%;
+}
+main #venue .venue-container .vb-container .venue-img {
+  width: 60%;
+}
+main #venue .venue-container .vb-container .vb-blurb .modal-button {
+  margin: 0 auto;
+  border: 1px solid black;
+  text-transform: uppercase;
+  transition: none;
+}
+main #venue .venue-container .vb-container .vb-blurb .modal-button:active {
+  color: white;
+  background-color: black;
+}
+main #venue .venue-container .support-container .support-blurb {
+  font-size: 0.75rem;
+}
+main #venue .venue-container .support-container .supporter {
+  height: 2rem;
+  margin: 0 10px;
+}
+main #venue #vb-modal {
+  font-size: 0.75rem;
+}
+main #venue #vb-modal .modal-header {
+  background-color: rgb(241, 241, 233);
+}
+main #venue #vb-modal .modal-header .modal-logo {
+  height: 50px;
+}
+main #venue #vb-modal .modal-header .close {
+  border: none;
+  font-size: 2rem;
+  background-color: transparent;
+}
+main #venue #vb-modal .modal-body {
+  height: 60vh;
+  overflow-y: auto;
+  background-color: rgb(254, 254, 245);
+}
+main #venue #vb-modal .modal-footer {
+  background-color: rgb(241, 241, 233);
+}
+main #venue #vb-modal .modal-footer .donate {
+  margin: 0 auto;
+  border: 1px solid rgb(209, 89, 53);
+  text-transform: uppercase;
+  transition: none;
+}
+main #venue #vb-modal .modal-footer .donate:active {
+  background-color: rgb(209, 89, 53);
+}
+main #venue #vb-modal .modal-footer .donate:active a {
+  color: white;
+}
+main #venue #vb-modal .modal-footer .donate a {
+  color: rgb(209, 89, 53);
+  text-decoration: none;
+}
+main #press {
+  height: 100vh;
+  position: relative;
+  font-family: monospace;
+}
+main #press .reviews {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+}
+main #press .review {
+  text-align: center;
+}
+main #press .source {
+  width: 100px;
+}
+main #contact {
+  height: 100vh;
+  position: relative;
+}
+main #contact .contact-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main #contact .contact-container textarea {
+  resize: none;
+}
+main #contact .contact-container .send {
+  margin: 0 auto;
+  border: 1px solid black;
+  text-transform: uppercase;
+  transition: none;
+}
+main #contact .contact-container .send:active {
+  color: white;
+  background-color: black;
+}/*# sourceMappingURL=style.css.map */
