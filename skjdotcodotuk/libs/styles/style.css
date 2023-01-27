@@ -1,45 +1,45 @@
-/* playfair-display-regular - latin-ext_latin */
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
   src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* playfair-display-700italic - latin-ext_latin */
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 700;
   src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* playfair-display-900italic - latin-ext_latin */
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 900;
   src: local(""), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-900.woff2") format("woff2"), url("../fonts/playfair-display/playfair-display-v30-latin-ext_latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-100 - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
   src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-100.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-100.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-regular - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-regular.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
-/* roboto-700 - latin-ext_latin */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   src: local(""), url("../fonts/roboto/roboto-v30-latin-ext_latin-700.woff2") format("woff2"), url("../fonts/roboto/roboto-v30-latin-ext_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
@@ -52,6 +52,8 @@ html {
 .navbar h1 {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 2rem;
+  font-weight: bold;
+  color: white;
 }
 .navbar .nav-menu {
   list-style: none;
@@ -93,24 +95,25 @@ html {
 #home .home-container h2 {
   font-family: "Playfair Display", Georgia, serif;
   font-size: 10rem;
+  font-weight: bold;
 }
 #home .home-container .home-blurb {
   font-size: 3rem;
   font-weight: 100;
   color: rgb(231, 137, 69);
 }
-#home .home-container .resources-menu {
+#home .home-container .icon-menu {
   justify-content: center;
   list-style: none;
 }
-#home .home-container .resources-menu .resource-btn {
+#home .home-container .icon-menu .icon-btn {
   border: none;
   background-color: transparent;
 }
-#home .home-container .resources-menu .resource-btn:hover a {
+#home .home-container .icon-menu .icon-btn:hover a {
   opacity: 1;
 }
-#home .home-container .resources-menu .resource-btn .resource-link {
+#home .home-container .icon-menu .icon-btn .icon-link {
   font-size: 2rem;
   color: rgb(22, 54, 83);
   opacity: 0.5;
@@ -138,6 +141,7 @@ html {
 }
 #about .about-container .sketchpad {
   position: relative;
+  align-items: center;
 }
 #about .about-container .sketchpad #illustration {
   width: 40vw;
@@ -149,6 +153,7 @@ html {
 }
 #about .about-container h3 {
   font-family: "Playfair Display", Georgia, serif;
+  font-weight: bold;
 }
 #about .about-container .bio-blurb {
   font-size: 1.5rem;
@@ -178,12 +183,14 @@ html {
   width: 20%;
   position: relative;
   margin: 0 0.5rem;
-  border-radius: 10%;
-  padding: 5px;
+  border-radius: 5%;
   font-size: 0.75rem;
+  color: white;
 }
 #skills .skills-container .skill .skill-title {
   font-family: "Playfair Display", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
 }
 #skills .skills-container .skill #development {
   background-color: rgb(151, 208, 242);
@@ -204,7 +211,9 @@ html {
   height: 100%;
   width: 100%;
   position: absolute;
-  border-radius: 10%;
+  border-radius: 5%;
+  justify-content: center;
+  opacity: 0.5;
 }
 #skills .skills-container .skill .skill-screen .skill-icon {
   font-size: 2rem;
@@ -212,4 +221,8 @@ html {
 #skills .skills-container .logo {
   height: 1.5rem;
   margin: 0.25rem;
+}
+
+.x {
+  border: 1px solid red;
 }/*# sourceMappingURL=style.css.map */

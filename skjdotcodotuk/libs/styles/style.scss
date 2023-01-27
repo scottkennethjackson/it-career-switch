@@ -1,7 +1,6 @@
 @import "./variables";
 @import "./mixins";
 
-/* playfair-display-regular - latin-ext_latin */
 @font-face {
     font-family: 'Playfair Display';
     font-style: normal;
@@ -11,7 +10,6 @@
         url('../fonts/playfair-display/playfair-display-v30-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* playfair-display-700italic - latin-ext_latin */
 @font-face {
     font-family: 'Playfair Display';
     font-style: normal;
@@ -21,7 +19,6 @@
         url('../fonts/playfair-display/playfair-display-v30-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* playfair-display-900italic - latin-ext_latin */
 @font-face {
     font-family: 'Playfair Display';
     font-style: normal;
@@ -31,7 +28,6 @@
         url('../fonts/playfair-display/playfair-display-v30-latin-ext_latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* roboto-100 - latin-ext_latin */
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -41,7 +37,6 @@
         url('../fonts/roboto/roboto-v30-latin-ext_latin-100.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* roboto-regular - latin-ext_latin */
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -51,7 +46,6 @@
         url('../fonts/roboto/roboto-v30-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* roboto-700 - latin-ext_latin */
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
@@ -61,10 +55,13 @@
         url('../fonts/roboto/roboto-v30-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-html {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
     cursor: default;
@@ -76,6 +73,8 @@ html {
     h1 {
         font-family: 'Playfair Display', Georgia, serif;
         font-size: 2rem;
+        font-weight: bold;
+        color: white;
     }
     
     .nav-menu {
@@ -101,7 +100,6 @@ html {
 
 #home {
     @include full-screen;
-
     background-color: $lightblue;
 
     .home-container {
@@ -110,6 +108,7 @@ html {
         h2 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 10rem;
+            font-weight: bold;
         }
     
         .home-blurb {
@@ -118,11 +117,11 @@ html {
             color: $darkorange;
         }
     
-        .resources-menu {
+        .icon-menu {
             justify-content: center;
             list-style: none;
     
-            .resource-btn {
+            .icon-btn {
                 border: none;
                 background-color: transparent;
     
@@ -130,7 +129,7 @@ html {
                     opacity: 1;
                 }
     
-                .resource-link {
+                .icon-link {
                     font-size: 2rem;
                     color: $darkblue;
                     opacity: .5;
@@ -142,7 +141,6 @@ html {
 
 #about {
     @include full-screen;
-
     background-color: $yellow;
 
     .about-container {
@@ -150,6 +148,7 @@ html {
 
         .sketchpad {
             position: relative;
+            align-items: center;
 
             #illustration {
                 width: 40vw;
@@ -164,6 +163,7 @@ html {
 
         h3 {
             font-family: 'Playfair Display', Georgia, serif;
+            font-weight: bold;
         }
 
         .bio-blurb {
@@ -184,12 +184,14 @@ html {
             width: 20%;
             position: relative;
             margin: 0 .5rem;
-            border-radius: 10%;
-            padding: 5px;
+            border-radius: 5%;
             font-size: .75rem;
+            color: white;
 
             .skill-title {
                 font-family: 'Playfair Display', Georgia, serif;
+                font-weight: bold;
+                text-align: center;
             }
 
             #development {
@@ -197,7 +199,7 @@ html {
             }
 
             #design{
-                background-color: $darkyellow;
+                background-color: $yellow;
             }
 
             #deployment {
@@ -216,7 +218,9 @@ html {
                 height: 100%;
                 width: 100%;
                 position: absolute;
-                border-radius: 10%;
+                border-radius: 5%;
+                justify-content: center;
+                opacity: .5;
 
                 .skill-icon {
                     font-size: 2rem;
@@ -229,4 +233,8 @@ html {
             margin: .25rem;
         }
     }
+}
+
+.x {
+    border: 1px solid red;
 }
