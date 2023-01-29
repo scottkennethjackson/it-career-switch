@@ -110,10 +110,12 @@ a {
         }
 
         .slider-container {
+            height: 32px;
             position: relative;
 
             #dark-btn {
-                height: 40px;
+                height: 30px;
+                line-height: 1;
                 border: 2px solid white;
                 border-radius: 40px;
 
@@ -127,7 +129,7 @@ a {
             }
 
             .slider {
-                height: 36px;
+                height: 26px;
                 aspect-ratio: 1;
                 position: absolute;
                 top: 2px;
@@ -139,7 +141,7 @@ a {
             }
 
             .switch {
-                transform: translateX(-32px);
+                transform: translateX(-26px);
                 transition: all .5s;
             }
         }
