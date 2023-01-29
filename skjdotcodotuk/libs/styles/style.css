@@ -224,6 +224,9 @@ a {
   position: relative;
   border-radius: 0.5rem;
 }
+#skills .skills-container .box-container .box * {
+  transition: all 0.5s;
+}
 #skills .skills-container .box-container .box .box-blurb {
   position: absolute;
   font-size: 0.75rem;
@@ -272,15 +275,18 @@ a {
 }
 #skills .skills-container .box-container .show .box-blurb {
   position: absolute;
-  top: 50%;
+  transform: translateY(3.5rem);
   opacity: 1;
 }
 #skills .skills-container .box-container .show .screen-container {
-  height: 50%;
+  height: 35%;
   padding: 1rem;
 }
 #skills .skills-container .box-container .show .screen-container .screen {
   border-radius: 50%;
+}
+#skills .skills-container .box-container .show .screen-container .screen .screen-icon {
+  font-size: 1rem;
 }
 #skills .skills-container .logo {
   height: 1.5rem;
@@ -399,26 +405,4 @@ a {
 .dark #portfolio .carousel-control-prev,
 .dark #portfolio .carousel-control-next {
   filter: invert(100%);
-}
-
-#dev {
-  min-height: 100vh;
-  position: relative;
-  scroll-snap-align: center;
-  background-color: pink;
-}
-#dev .dev-container {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

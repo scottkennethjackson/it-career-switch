@@ -1,3 +1,8 @@
+console.log("Hello, there! My name is Scott. I am a Full Stack Developer who is currently on the lookout for entry-level opportunities within the coding and web development industry.");
+console.log("Find me on LinkedIn: https://www.linkedin.com/in/scott-kenneth-jackson/");
+console.log("View my GitHub profile: https://github.com/scottkennethjackson");
+
+
 // When the user clicks the slider, toggle dark mode
 const darkButton = document.querySelector(".slider-container");
 const slider = document.querySelector(".slider");
@@ -59,7 +64,17 @@ $canvas.mousedown(function(e) {
     mouseDown = false;
 });
 
-// When the user clicks send, check the fom and handle accordingly
+// When the user clicks a skill box, reveal its skill description
+$(".box").click(function() {
+    let selectedBox = this.closest(".box");
+
+    selectedBox.classList.toggle("show");
+    selectedBox.addEventListener("mouseleave", function() {
+        selectedBox.classList.remove("show")
+    });
+});
+
+// When the user clicks send, check the form and handle accordingly
 $("#contact-form").on("submit", function(e) {
     e.preventDefault();
 

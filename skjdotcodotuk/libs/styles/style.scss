@@ -225,6 +225,10 @@ a {
                 position: relative;
                 border-radius: .5rem;
 
+                * {
+                    transition: all .5s;
+                }
+
                 .box-blurb {
                     position: absolute;
                     font-size: .75rem;
@@ -281,16 +285,20 @@ a {
             .show {
                 .box-blurb {
                     position: absolute;
-                    top: 50%;
+                    transform: translateY(3.5rem);
                     opacity: 1;
                 }
 
                 .screen-container {
-                    height: 50%;
+                    height: 35%;
                     padding: 1rem;
 
                     .screen {
                         border-radius: 50%;
+
+                        .screen-icon {
+                            font-size: 1rem;
+                        }
                     }
                 }
             }
