@@ -64,16 +64,30 @@
 html {
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
+    scroll-snap-type: y mandatory;
     cursor: default;
+}
+
+.heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: bold;
+}
+
+.subheading {
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .navbar {
     height: 50px;
 
     h1 {
-        font-family: 'Playfair Display', Georgia, serif;
         font-size: 2rem;
-        font-weight: bold;
         color: white;
     }
     
@@ -92,7 +106,41 @@ html {
                 font-size: 1.25rem;
                 color: white;
                 text-transform: uppercase;
-                text-decoration: none;
+            }
+        }
+
+        .slider-container {
+            position: relative;
+
+            #dark-btn {
+                height: 40px;
+                border: 2px solid white;
+                border-radius: 40px;
+
+                .fa-sun-bright {
+                    color: $yellow;
+                }
+
+                .fa-moon {
+                    color: $lightblue;
+                }
+            }
+
+            .slider {
+                height: 36px;
+                aspect-ratio: 1;
+                position: absolute;
+                top: 2px;
+                left: auto;
+                right: 2px;
+                border-radius: 50%;
+                background-color: $lightgrey;
+                transition: all .5s;
+            }
+
+            .switch {
+                transform: translateX(-32px);
+                transition: all .5s;
             }
         }
     }
@@ -105,15 +153,12 @@ html {
     .home-container {
         @include centralise;
 
-        h2 {
-            font-family: 'Playfair Display', Georgia, serif;
+        .heading {
             font-size: 10rem;
-            font-weight: bold;
         }
     
-        .home-blurb {
+        .subheading {
             font-size: 3rem;
-            font-weight: 100;
             color: $darkorange;
         }
     
@@ -160,70 +205,93 @@ html {
                 cursor: url(../images/marker.png), crosshair;
             }
         }
-
-        h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: bold;
-        }
-
-        .bio-blurb {
-            font-size: 1.5rem;
-            font-weight: 100;
-        }
     }
     
 }
 
 #skills {
     @include full-screen;
+    background-color: $offwhite;
 
     .skills-container {
         @include centralise;
 
-        .skill {
-            width: 20%;
-            position: relative;
-            margin: 0 .5rem;
-            border-radius: 5%;
-            font-size: .75rem;
-            color: white;
+        .box-container {
+            width: 100%;
 
-            .skill-title {
-                font-family: 'Playfair Display', Georgia, serif;
-                font-weight: bold;
-                text-align: center;
+            .box {
+                width: 20%;
+                aspect-ratio: 1;
+                position: relative;
+                border-radius: .5rem;
+
+                .box-blurb {
+                    position: absolute;
+                    font-size: .75rem;
+                    color: white;
+                    opacity: 0;
+
+                    .heading {
+                        font-size: initial;
+                    }
+                }
+
+                .screen-container {
+                    @include flex-center;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+
+                    #development {
+                        background-color: $vividblue;
+                    }
+
+                    #design {
+                        background-color: $yellow;
+                    }
+
+                    #deployment {
+                        background-color: $grey;
+                    }
+
+                    #seo {
+                        background-color: $darkorange;
+                    }
+
+                    #qa {
+                        background-color: $mediumblue;
+                    }
+
+                    .screen {
+                        @include flex-center;
+                        height: 100%;
+                        aspect-ratio: 1;
+                        position: relative;
+                        border-radius: .5rem;
+
+                        .screen-icon {
+                            font-size: 3rem;
+                            color: white;
+                        }
+                    }
+                }
             }
 
-            #development {
-                background-color: $vividblue;
-            }
+            .show {
+                .box-blurb {
+                    position: absolute;
+                    top: 50%;
+                    opacity: 1;
+                }
 
-            #design{
-                background-color: $yellow;
-            }
+                .screen-container {
+                    height: 50%;
+                    padding: 1rem;
 
-            #deployment {
-                background-color: $grey;
-            }
-
-            #seo{
-                background-color: $darkorange;
-            }
-
-            #qa{
-                background-color: $darkerblue;
-            }
-
-            .skill-screen {
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                border-radius: 5%;
-                justify-content: center;
-                opacity: .5;
-
-                .skill-icon {
-                    font-size: 2rem;
+                    .screen {
+                        border-radius: 50%;
+                    }
                 }
             }
         }
@@ -235,6 +303,95 @@ html {
     }
 }
 
-.x {
-    border: 1px solid red;
+#portfolio {
+    @include full-screen;
+    background-color: $orange;
+
+    .portfolio-container {
+        @include centralise;
+
+        a {
+            color: black;
+            text-decoration: none;
+
+            .mockup {
+                height: 40vh;
+            }
+    
+            .portfolio-blurb {
+                text-align: justify;
+            }
+    
+            .project-languages {
+                font-family: monospace;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+#contact {
+    @include full-screen;
+    color: white;
+    background-color: $darkblue;
+
+    .contact-container {
+        @include centralise;
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            border: 1px solid $yellow;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: $yellow;
+
+            &:hover {
+                color: black;
+                background-color: $yellow;
+            }
+        }
+    }
+
+    .credit {
+        position: absolute;
+        bottom: .25rem;
+        font-size: .75rem;
+        text-align: center;
+
+        a:hover {
+            color: $yellow;
+        }
+    }
+}
+
+.dark {
+    nav {
+        box-shadow: none !important;
+    }
+    
+    #home,
+    #about,
+    #contact {
+        @include dark-mode
+    }
+
+    #skills {
+        @include dark-mode;
+
+        .logo {
+            filter: grayscale(100%) invert(75%) brightness(150%);
+        }
+    }
+
+    #portfolio {
+        @include dark-mode;
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            filter: invert(100%);
+        }
+    }
 }
