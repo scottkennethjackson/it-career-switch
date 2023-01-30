@@ -45,7 +45,6 @@ let $canvas = $("#canvas");
 $canvas.mousedown(function(e) {
     lastEvent = e;
     mouseDown = true;
-    console.log(lastEvent);
 }).mousemove(function(e) {
     if(mouseDown) {
         context.beginPath();

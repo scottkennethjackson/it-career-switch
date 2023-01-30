@@ -193,7 +193,7 @@ a {
   z-index: -1;
 }
 #about .about-container .sketchpad #canvas {
-  cursor: url(../images/marker.png), crosshair;
+  cursor: url(../../images/marker.png), crosshair;
 }
 
 #skills {
@@ -276,19 +276,20 @@ a {
   color: white;
 }
 #skills .skills-container .box-container .show .box-blurb {
+  height: 50%;
   position: absolute;
-  transform: translateY(3.5rem);
+  transform: translateY(100%);
   opacity: 1;
 }
 #skills .skills-container .box-container .show .screen-container {
-  height: 35%;
+  height: 50%;
   padding: 1rem;
 }
 #skills .skills-container .box-container .show .screen-container .screen {
   border-radius: 50%;
 }
 #skills .skills-container .box-container .show .screen-container .screen .screen-icon {
-  font-size: 1rem;
+  font-size: 2rem;
 }
 #skills .skills-container .logo {
   height: 1.5rem;
