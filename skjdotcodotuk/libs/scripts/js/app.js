@@ -2,6 +2,22 @@ console.log("Hello, there! My name is Scott. I am a Full Stack Developer who is 
 console.log("Find me on LinkedIn: https://www.linkedin.com/in/scott-kenneth-jackson/");
 console.log("View my GitHub profile: https://github.com/scottkennethjackson");
 
+// When the user clicks the nav button, display the dropdown
+const navBtn = document.querySelector(".nav-btn");
+const dropdown = document.querySelector(".dropdown");
+
+navBtn.addEventListener("click", function() {
+    navBtn.classList.toggle("active");
+    dropdown.classList.toggle("visible");
+});
+
+// When the user leaves the navbar, reset the nav button and dropdown
+const navbar = document.querySelector(".navbar");
+
+navbar.addEventListener("mouseleave", function() {
+    navBtn.classList.remove("active");
+    dropdown.classList.remove("visible");
+});
 
 // When the user clicks the slider, toggle dark mode
 const darkButton = document.querySelector(".slider-container");

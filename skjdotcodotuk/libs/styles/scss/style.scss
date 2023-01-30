@@ -33,9 +33,44 @@ a {
 .navbar {
     height: 50px;
 
-    h1 {
-        font-size: 2rem;
-        color: white;
+    .main-nav {
+        height: 50px;
+
+        h1 {
+            font-size: 2rem;
+            color: white;
+        }
+    
+        button {
+            display: none;
+
+            .bar {
+                height: 2px;
+                width: 30px;
+                margin: 6px auto;
+                border-radius: 2px;
+                background-color: white;
+                transition: all .5s;
+            }
+    
+            &:hover .bar {
+                background-color: $yellow;
+            }
+    
+            &.active {
+                .bar:nth-child(1) {
+                    transform: translateY(8px) rotate(45deg);
+                }
+    
+                .bar:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+    
+                .bar:nth-child(3) {
+                    transform: translateY(-8px) rotate(-45deg);
+                }
+            }
+        }
     }
     
     .nav-menu {
@@ -59,6 +94,7 @@ a {
         .slider-container {
             height: 32px;
             position: relative;
+            margin-top: 6px;
 
             #dark-btn {
                 height: 30px;
@@ -278,7 +314,7 @@ a {
     
             .project-info {
                 height: 10rem;
-                
+
                 .project-blurb {
                     text-align: justify;
                 }
@@ -354,6 +390,35 @@ a {
         .carousel-control-prev,
         .carousel-control-next {
             filter: invert(100%);
+        }
+    }
+}
+
+@media only screen and (max-width: 1060px) {
+    .navbar {
+        .main-nav {
+            width: 100%;
+            z-index: 1;
+            background-color: $dark;
+
+            button {
+                display: unset;
+            }
+        }
+    }
+
+    .dropdown {
+        width: 100%;
+        position: absolute;
+        background-color: $dark;
+        transition: all .5s;
+
+        &.visible {
+            transform: translateY(100%);
+        }
+
+        .nav-menu {
+            justify-content: end;
         }
     }
 }

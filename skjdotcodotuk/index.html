@@ -17,9 +17,17 @@
 
     <body>
         <nav class="navbar fixed-top p-0 bg-dark shadow">
-            <a class="navbar-brand ms-3" href="#"><h1 class="heading">Scott Kenneth Jackson</h1></a>
+            <div class="main-nav m-0 d-flex justify-content-between">
+                <a class="navbar-brand ms-3" href="#"><h1 class="heading">Scott Kenneth Jackson</h1></a>
 
-            <div>
+                <button class="nav-btn btn me-1">
+                    <span class="bar d-block"></span>
+                    <span class="bar d-block"></span>
+                    <span class="bar d-block"></span>
+                </button>
+            </div>
+
+            <div class="dropdown">
                 <ul class="nav-menu m-0 d-flex">
                     <li>
                         <button class="menu-btn btn"><a class="menu-link" href="#about">About Me</a></button>
@@ -34,7 +42,7 @@
                         <button class="menu-btn btn"><a class="menu-link" href="#contact">Contact</a></button>
                     </li>
                     <li class="me-3">
-                        <div class="slider-container mt-1">
+                        <div class="slider-container">
                             <button id="dark-btn" class="menu-btn btn p-0"><i class="fa-solid fa-sun-bright mx-2"></i><i class="fa-solid fa-moon me-2"></i></button>
                             <span class="slider" role="button"></span>
                         </div>
