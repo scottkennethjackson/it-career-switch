@@ -324,10 +324,13 @@ a {
 #portfolio .portfolio-container a .mockup {
   height: 40vh;
 }
-#portfolio .portfolio-container a .portfolio-blurb {
+#portfolio .portfolio-container a .project-info {
+  height: 10rem;
+}
+#portfolio .portfolio-container a .project-info .project-blurb {
   text-align: justify;
 }
-#portfolio .portfolio-container a .project-languages {
+#portfolio .portfolio-container a .project-info .project-languages {
   font-family: monospace;
   font-weight: bold;
 }

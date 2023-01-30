@@ -276,13 +276,17 @@ a {
                 height: 40vh;
             }
     
-            .portfolio-blurb {
-                text-align: justify;
-            }
-    
-            .project-languages {
-                font-family: monospace;
-                font-weight: bold;
+            .project-info {
+                height: 10rem;
+                
+                .project-blurb {
+                    text-align: justify;
+                }
+        
+                .project-languages {
+                    font-family: monospace;
+                    font-weight: bold;
+                }
             }
         }
     }
