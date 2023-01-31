@@ -41,6 +41,7 @@
 }
 
 html {
+  width: 100%;
   font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
   -ms-scroll-snap-type: y mandatory;
@@ -69,7 +70,7 @@ a {
 .navbar .main-nav {
   height: 50px;
 }
-.navbar .main-nav h1 {
+.navbar .main-nav .heading {
   font-size: 2rem;
   color: white;
 }
@@ -217,10 +218,14 @@ a {
 #about .about-container .sketchpad #illustration {
   width: 40vw;
   position: absolute;
-  z-index: -1;
+  z-index: 1;
 }
 #about .about-container .sketchpad #canvas {
   cursor: url(../../images/marker.png), crosshair;
+  z-index: 2;
+}
+#about .about-container .about-blurb {
+  padding-left: 3rem;
 }
 
 #skills {
@@ -318,6 +323,9 @@ a {
 #skills .skills-container .box-container .show .screen-container .screen .screen-icon {
   font-size: 2rem;
 }
+#skills .skills-container .languages-blurb {
+  display: none;
+}
 #skills .skills-container .logo {
   height: 1.5rem;
   margin: 0.25rem;
@@ -384,16 +392,19 @@ a {
   align-items: center;
   justify-content: center;
 }
-#contact .contact-container textarea {
+#contact .contact-container #contact-form {
+  width: 50%;
+}
+#contact .contact-container #contact-form textarea {
   resize: none;
 }
-#contact .contact-container button {
+#contact .contact-container #contact-form button {
   border: 1px solid rgb(239, 198, 70);
   font-weight: bold;
   text-transform: uppercase;
   color: rgb(239, 198, 70);
 }
-#contact .contact-container button:hover {
+#contact .contact-container #contact-form button:hover {
   color: black;
   background-color: rgb(239, 198, 70);
 }
@@ -440,25 +451,123 @@ a {
   filter: invert(100%);
 }
 
-@media only screen and (max-width: 1060px) {
+@media only screen and (max-width: 600px) {
+  html {
+    -ms-scroll-snap-type: unset;
+        scroll-snap-type: unset;
+  }
   .navbar .main-nav {
     width: 100%;
+    position: absolute;
     z-index: 1;
     background-color: rgb(34, 37, 41);
   }
-  .navbar .main-nav button {
-    display: unset;
+  .navbar .main-nav .nav-btn {
+    display: block;
   }
-  .dropdown {
+  .navbar .dropdown {
+    height: 100vh;
     width: 100%;
     position: absolute;
+    top: -100vh;
+    z-index: 0;
+    padding-top: 50px;
+    text-align: center;
     background-color: rgb(34, 37, 41);
     transition: all 0.5s;
   }
-  .dropdown.visible {
-    transform: translateY(100%);
+  .navbar .dropdown .nav-menu {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
-  .dropdown .nav-menu {
-    justify-content: end;
+  .navbar .dropdown .nav-menu .menu-btn {
+    margin: 1rem auto;
+  }
+  .navbar .dropdown .nav-menu .slider-container .fa-moon {
+    opacity: 0.5;
+  }
+  .navbar .dropdown .nav-menu .slider-container .slider {
+    display: none;
+  }
+  .navbar .visible {
+    top: 0;
+    transition: all 0.5s;
+  }
+  #home .home-container .heading {
+    font-size: 4rem;
+  }
+  #home .home-container .subheading {
+    font-size: 2rem;
+  }
+  #about {
+    min-height: unset;
+  }
+  #about .about-container {
+    position: relative;
+    transform: unset;
+  }
+  #about .about-container .about-content {
+    flex-direction: column;
+  }
+  #about .about-container .about-content .sketchpad {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  #about .about-container .about-content .sketchpad #illustration {
+    width: 100%;
+  }
+  #about .about-container .about-content .about-blurb {
+    padding-left: 0;
+  }
+  #skills .skills-container {
+    position: relative;
+    transform: unset;
+  }
+  #skills .skills-container .box-container .box {
+    display: none;
+  }
+  #skills .languages-container {
+    margin-bottom: 1rem;
+  }
+  #skills .languages-container .languages-blurb {
+    display: block;
+    font-size: 0.75rem;
+  }
+  #portfolio .portfolio-container {
+    position: relative;
+    transform: unset;
+  }
+  #portfolio .portfolio-container .carousel-item .project-info {
+    height: unset;
+  }
+  #portfolio .carousel-control-prev,
+#portfolio .carousel-control-next {
+    display: none;
+  }
+  #contact .contact-container {
+    position: relative;
+    transform: unset;
+  }
+  #contact .contact-container #contact-form {
+    width: 100%;
+    padding: 0 3rem;
+  }
+  .dark .slider-container #dark-btn .fa-sun-bright {
+    opacity: 0.5;
+  }
+  .dark .slider-container #dark-btn .fa-moon {
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -9,6 +9,7 @@
 }
 
 html {
+    width: 100%;
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
     scroll-snap-type: y mandatory;
@@ -36,7 +37,7 @@ a {
     .main-nav {
         height: 50px;
 
-        h1 {
+        .heading {
             font-size: 2rem;
             color: white;
         }
@@ -183,12 +184,17 @@ a {
             #illustration {
                 width: 40vw;
                 position: absolute;
-                z-index: -1;
+                z-index: 1;
             }
     
             #canvas {
                 cursor: url(../../images/marker.png), crosshair;
+                z-index: 2;
             }
+        }
+
+        .about-blurb {
+            padding-left: 3rem;
         }
     }
     
@@ -290,6 +296,10 @@ a {
             }
         }
 
+        .languages-blurb {
+            display: none;
+        }
+
         .logo {
             height: 1.5rem;
             margin: .25rem;
@@ -336,19 +346,23 @@ a {
     .contact-container {
         @include centralise;
 
-        textarea {
-            resize: none;
-        }
+        #contact-form {
+            width: 50%;
 
-        button {
-            border: 1px solid $yellow;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: $yellow;
-
-            &:hover {
-                color: black;
-                background-color: $yellow;
+            textarea {
+                resize: none;
+            }
+    
+            button {
+                border: 1px solid $yellow;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: $yellow;
+    
+                &:hover {
+                    color: black;
+                    background-color: $yellow;
+                }
             }
         }
     }
@@ -394,31 +408,173 @@ a {
     }
 }
 
-@media only screen and (max-width: 1060px) {
-    .navbar {
+@media only screen and (max-width: 600px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    .navbar {    
         .main-nav {
             width: 100%;
+            position: absolute;
             z-index: 1;
             background-color: $dark;
 
-            button {
-                display: unset;
+            .nav-btn {
+                display: block;
+            }
+        }
+
+        .dropdown {
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: -100vh;
+            z-index: 0;
+            padding-top: 50px;
+            text-align: center;
+            background-color: $dark;
+            transition: all .5s;
+            
+            .nav-menu {
+                @include centralise;
+                flex-direction: column;
+
+                .menu-btn {
+                    margin: 1rem auto;
+                }
+
+                .slider-container {
+                    .fa-moon {
+                        opacity: .5;
+                    }
+    
+                    .slider {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .visible {
+            top: 0;
+            transition: all .5s;
+        }
+    }
+
+    #home {
+        .home-container {
+            .heading {
+                font-size: 4rem;
+            }
+
+            .subheading {
+                font-size: 2rem;
             }
         }
     }
 
-    .dropdown {
-        width: 100%;
-        position: absolute;
-        background-color: $dark;
-        transition: all .5s;
+    #about {
+        min-height: unset;
 
-        &.visible {
-            transform: translateY(100%);
-        }
+        .about-container {
+            @include unset-centralise;
 
-        .nav-menu {
-            justify-content: end;
+            .about-content {
+                flex-direction: column;
+    
+                .sketchpad {
+                    justify-content: center;
+                    margin-bottom: 1rem;
+    
+                    #illustration {
+                        width: 100%;
+                    }
+                }
+    
+                .about-blurb {
+                    padding-left: 0;
+                }
+            }
         }
     }
+
+    #skills {
+        .skills-container {
+            @include unset-centralise;
+
+            .box-container {
+                .box {
+                    display: none;
+                }
+            }
+        }
+
+        .languages-container {
+            margin-bottom: 1rem;
+
+            .languages-blurb {
+                display: block;
+                font-size: .75rem;
+            }
+        }
+    }
+
+    #portfolio {
+        .portfolio-container {
+            @include unset-centralise;
+
+            .carousel-item {
+                .project-info {
+                    height: unset;
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+    }
+
+    #contact {
+        .contact-container {
+            @include unset-centralise;
+
+            #contact-form {
+                width: 100%;
+                padding: 0 3rem;
+            }
+        }
+    }
+
+    .dark {
+        .slider-container {
+            #dark-btn {
+                .fa-sun-bright {
+                    opacity: .5;
+                }
+
+                .fa-moon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+    
+}
+
+@media only screen and (min-width: 992px) {
+    
+}
+
+@media only screen and (min-width: 1200px) {
+    
 }

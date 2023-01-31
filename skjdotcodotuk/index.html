@@ -20,7 +20,7 @@
             <div class="main-nav m-0 d-flex justify-content-between">
                 <a class="navbar-brand ms-3" href="#"><h1 class="heading">Scott Kenneth Jackson</h1></a>
 
-                <button class="nav-btn btn me-1">
+                <button class="nav-btn btn">
                     <span class="bar d-block"></span>
                     <span class="bar d-block"></span>
                     <span class="bar d-block"></span>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="dropdown">
-                <ul class="nav-menu m-0 d-flex">
+                <ul class="nav-menu my-0 me-3 d-flex">
                     <li>
                         <button class="menu-btn btn"><a class="menu-link" href="#about">About Me</a></button>
                     </li>
@@ -41,7 +41,7 @@
                     <li>
                         <button class="menu-btn btn"><a class="menu-link" href="#contact">Contact</a></button>
                     </li>
-                    <li class="me-3">
+                    <li class="dark-mode">
                         <div class="slider-container">
                             <button id="dark-btn" class="menu-btn btn p-0"><i class="fa-solid fa-sun-bright mx-2"></i><i class="fa-solid fa-moon me-2"></i></button>
                             <span class="slider" role="button"></span>
@@ -80,13 +80,13 @@
 
             <section id="about">
                 <div class="about-container">
-                    <div class="mx-5 d-flex">
+                    <div class="about-content mx-5 d-flex">
                         <div class="sketchpad d-flex">
                             <img id="illustration" class="rounded-circle" src="./libs/images/illustration.png" alt="Scott Kenneth Jackson">
                             <canvas id="canvas" class="rounded-circle" height="" width=""></canvas>
                         </div>
 
-                        <div class="ps-5 d-flex flex-column justify-content-center">
+                        <div class="about-blurb d-flex flex-column justify-content-center">
                             <h3 class="heading">Hello, there!</h3>
                             <p class="subheading">My name is Scott and I am a Full Stack Developer.</p>
                             <p>After spending 18 years in the beer industry, I was unfortunately made redundant during the pandemic...twice!</p>
@@ -111,7 +111,7 @@
                     <div class="box-container d-flex my-3 px-5">
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
-                                <p class="heading m-1 text-center">Development</p>
+                                <p class="heading m-0 text-center">Development</p>
                                 <p class="m-0">Building responsive, user-friendly websites that are optimised for performance, accessibility and SEO.</p>
                             </div>
 
@@ -124,7 +124,7 @@
 
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
-                                <p class="heading m-1 text-center">Design</p>
+                                <p class="heading m-0 text-center">Design</p>
                                 <p class="m-0">Creating attractive websites that are fully-accessible to all users, and work effectively across different devices.</p>
                             </div>
 
@@ -137,7 +137,7 @@
 
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
-                                <p class="heading m-1 text-center">Deployment</p>
+                                <p class="heading m-0 text-center">Deployment</p>
                                 <p class="m-0">Optimising sites for improved performance and reduced loading times before making them available to the public.</p>
                             </div>
 
@@ -150,7 +150,7 @@
 
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
-                                <p class="heading m-1 text-center">SEO</p>
+                                <p class="heading m-0 text-center">SEO</p>
                                 <p class="m-0">Implementing features that improve a website's visibility on search engines and increase its ranking in search results.</p>
                             </div>
 
@@ -163,7 +163,7 @@
 
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
-                                <p class="heading m-1 text-center">QA</p>
+                                <p class="heading m-0 text-center">QA</p>
                                 <p class="m-0">Testing websites to ensure that they conform with industry best practices and meet the highest standards of quality.</p>
                             </div>
 
@@ -175,7 +175,8 @@
                         </div>
                     </div>
 
-                    <div class="text-center mt-3">
+                    <div class="languages-container text-center mt-3 mx-5">
+                        <p class="languages-blurb">I have practical experience and a good understanding of a wide array of programming languages, frameworks and technologies, including:</p>
                         <img class="logo" src="./libs/images/languages/html.svg" alt="HTML">
                         <img class="logo" src="./libs/images/languages/css.svg" alt="CSS">
                         <img class="logo" src="./libs/images/languages/javascript.svg" alt="JavaScript">
@@ -267,7 +268,7 @@
                     <h3 class="heading">Give Me a Shout</h3>
                     <p class="subheading">I'd love to hear from you</p>
 
-                    <form id="contact-form" class="needs-validation w-50" novalidate>
+                    <form id="contact-form" class="needs-validation" novalidate>
                         <div class="form-group mb-3">
                             <label for="name" class="ps-1">Name</label>
                             <input type="text" id="name" class="form-control" required>
