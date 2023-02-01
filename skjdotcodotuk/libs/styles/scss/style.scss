@@ -38,6 +38,7 @@ a {
         height: 50px;
 
         .heading {
+            line-height: 50px;
             font-size: 2rem;
             color: white;
         }
@@ -90,6 +91,10 @@ a {
                 color: white;
                 text-transform: uppercase;
             }
+        }
+
+        .hidden-btn {
+            display: none;
         }
 
         .slider-container {
@@ -177,24 +182,28 @@ a {
     .about-container {
         @include centralise;
 
-        .sketchpad {
-            position: relative;
-            align-items: center;
+        .about-content {
+            margin: 0 3rem;
 
-            #illustration {
-                width: 40vw;
-                position: absolute;
-                z-index: 1;
+            .sketchpad {
+                position: relative;
+                align-items: center;
+    
+                #illustration {
+                    width: 40vw;
+                    position: absolute;
+                    z-index: 1;
+                }
+        
+                #canvas {
+                    cursor: url(../../images/marker.png), crosshair;
+                    z-index: 2;
+                }
             }
     
-            #canvas {
-                cursor: url(../../images/marker.png), crosshair;
-                z-index: 2;
+            .about-blurb {
+                padding-left: 3rem;
             }
-        }
-
-        .about-blurb {
-            padding-left: 3rem;
         }
     }
     
@@ -206,6 +215,9 @@ a {
 
     .skills-container {
         @include centralise;
+        .blurb-container {
+            margin: 0 3rem;
+        }
 
         .box-container {
             width: 100%;
@@ -296,13 +308,17 @@ a {
             }
         }
 
-        .languages-blurb {
-            display: none;
-        }
+        .languages-container {
+            margin: 3rem;
 
-        .logo {
-            height: 1.5rem;
-            margin: .25rem;
+            .languages-blurb {
+                display: none;
+            }
+    
+            .logo {
+                height: 1.5rem;
+                margin: .25rem;
+            }
         }
     }
 }
@@ -324,6 +340,8 @@ a {
     
             .project-info {
                 height: 10rem;
+                margin: 0 3rem;
+                padding-top: 1rem;
 
                 .project-blurb {
                     text-align: justify;
@@ -370,6 +388,7 @@ a {
     .credit {
         position: absolute;
         bottom: .25rem;
+        padding: 0 1rem;
         font-size: .75rem;
         text-align: center;
 
@@ -420,6 +439,10 @@ a {
             z-index: 1;
             background-color: $dark;
 
+            .heading {
+                font-size: 1.5rem;
+            }
+
             .nav-btn {
                 display: block;
             }
@@ -437,11 +460,14 @@ a {
             transition: all .5s;
             
             .nav-menu {
-                @include centralise;
                 flex-direction: column;
 
                 .menu-btn {
                     margin: 1rem auto;
+                }
+
+                .hidden-btn {
+                    display: block;
                 }
 
                 .slider-container {
@@ -458,18 +484,24 @@ a {
 
         .visible {
             top: 0;
-            transition: all .5s;
         }
     }
 
     #home {
         .home-container {
             .heading {
-                font-size: 4rem;
+                font-size: 5rem;
             }
 
             .subheading {
                 font-size: 2rem;
+            }
+
+            .icon-container .icon-menu {
+                .icon-link {
+                    font-size: 1.5rem;
+                }
+        
             }
         }
     }
@@ -482,6 +514,7 @@ a {
 
             .about-content {
                 flex-direction: column;
+                margin: 0 1rem;
     
                 .sketchpad {
                     justify-content: center;
@@ -503,19 +536,20 @@ a {
         .skills-container {
             @include unset-centralise;
 
+            .blurb-container {
+                margin: 0 1rem;
+            }
+
             .box-container {
+                flex-direction: column;
+
                 .box {
-                    display: none;
+                    width: 100%;
                 }
             }
-        }
 
-        .languages-container {
-            margin-bottom: 1rem;
-
-            .languages-blurb {
-                display: block;
-                font-size: .75rem;
+            .languages-container {
+                margin: 1rem;
             }
         }
     }
@@ -523,10 +557,16 @@ a {
     #portfolio {
         .portfolio-container {
             @include unset-centralise;
-
+            
             .carousel-item {
+                .mockup {
+                    height: unset;
+                    width: 100vw;
+                }
+
                 .project-info {
                     height: unset;
+                    margin: 0 1rem;
                 }
             }
         }
@@ -543,7 +583,7 @@ a {
 
             #contact-form {
                 width: 100%;
-                padding: 0 3rem;
+                padding: 0 1rem;
             }
         }
     }

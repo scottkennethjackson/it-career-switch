@@ -71,6 +71,7 @@ a {
   height: 50px;
 }
 .navbar .main-nav .heading {
+  line-height: 50px;
   font-size: 2rem;
   color: white;
 }
@@ -111,6 +112,9 @@ a {
   font-size: 1.25rem;
   color: white;
   text-transform: uppercase;
+}
+.navbar .nav-menu .hidden-btn {
+  display: none;
 }
 .navbar .nav-menu .slider-container {
   height: 32px;
@@ -211,20 +215,23 @@ a {
   align-items: center;
   justify-content: center;
 }
-#about .about-container .sketchpad {
+#about .about-container .about-content {
+  margin: 0 3rem;
+}
+#about .about-container .about-content .sketchpad {
   position: relative;
   align-items: center;
 }
-#about .about-container .sketchpad #illustration {
+#about .about-container .about-content .sketchpad #illustration {
   width: 40vw;
   position: absolute;
   z-index: 1;
 }
-#about .about-container .sketchpad #canvas {
+#about .about-container .about-content .sketchpad #canvas {
   cursor: url(../../images/marker.png), crosshair;
   z-index: 2;
 }
-#about .about-container .about-blurb {
+#about .about-container .about-content .about-blurb {
   padding-left: 3rem;
 }
 
@@ -248,6 +255,9 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+#skills .skills-container .blurb-container {
+  margin: 0 3rem;
 }
 #skills .skills-container .box-container {
   width: 100%;
@@ -323,10 +333,13 @@ a {
 #skills .skills-container .box-container .show .screen-container .screen .screen-icon {
   font-size: 2rem;
 }
-#skills .skills-container .languages-blurb {
+#skills .skills-container .languages-container {
+  margin: 3rem;
+}
+#skills .skills-container .languages-container .languages-blurb {
   display: none;
 }
-#skills .skills-container .logo {
+#skills .skills-container .languages-container .logo {
   height: 1.5rem;
   margin: 0.25rem;
 }
@@ -361,6 +374,8 @@ a {
 }
 #portfolio .portfolio-container a .project-info {
   height: 10rem;
+  margin: 0 3rem;
+  padding-top: 1rem;
 }
 #portfolio .portfolio-container a .project-info .project-blurb {
   text-align: justify;
@@ -411,6 +426,7 @@ a {
 #contact .credit {
   position: absolute;
   bottom: 0.25rem;
+  padding: 0 1rem;
   font-size: 0.75rem;
   text-align: center;
 }
@@ -462,6 +478,9 @@ a {
     z-index: 1;
     background-color: rgb(34, 37, 41);
   }
+  .navbar .main-nav .heading {
+    font-size: 1.5rem;
+  }
   .navbar .main-nav .nav-btn {
     display: block;
   }
@@ -477,23 +496,13 @@ a {
     transition: all 0.5s;
   }
   .navbar .dropdown .nav-menu {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
   }
   .navbar .dropdown .nav-menu .menu-btn {
     margin: 1rem auto;
+  }
+  .navbar .dropdown .nav-menu .hidden-btn {
+    display: block;
   }
   .navbar .dropdown .nav-menu .slider-container .fa-moon {
     opacity: 0.5;
@@ -503,13 +512,15 @@ a {
   }
   .navbar .visible {
     top: 0;
-    transition: all 0.5s;
   }
   #home .home-container .heading {
-    font-size: 4rem;
+    font-size: 5rem;
   }
   #home .home-container .subheading {
     font-size: 2rem;
+  }
+  #home .home-container .icon-container .icon-menu .icon-link {
+    font-size: 1.5rem;
   }
   #about {
     min-height: unset;
@@ -520,6 +531,7 @@ a {
   }
   #about .about-container .about-content {
     flex-direction: column;
+    margin: 0 1rem;
   }
   #about .about-container .about-content .sketchpad {
     justify-content: center;
@@ -535,22 +547,29 @@ a {
     position: relative;
     transform: unset;
   }
+  #skills .skills-container .blurb-container {
+    margin: 0 1rem;
+  }
+  #skills .skills-container .box-container {
+    flex-direction: column;
+  }
   #skills .skills-container .box-container .box {
-    display: none;
+    width: 100%;
   }
-  #skills .languages-container {
-    margin-bottom: 1rem;
-  }
-  #skills .languages-container .languages-blurb {
-    display: block;
-    font-size: 0.75rem;
+  #skills .skills-container .languages-container {
+    margin: 1rem;
   }
   #portfolio .portfolio-container {
     position: relative;
     transform: unset;
   }
+  #portfolio .portfolio-container .carousel-item .mockup {
+    height: unset;
+    width: 100vw;
+  }
   #portfolio .portfolio-container .carousel-item .project-info {
     height: unset;
+    margin: 0 1rem;
   }
   #portfolio .carousel-control-prev,
 #portfolio .carousel-control-next {
@@ -562,7 +581,7 @@ a {
   }
   #contact .contact-container #contact-form {
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 1rem;
   }
   .dark .slider-container #dark-btn .fa-sun-bright {
     opacity: 0.5;

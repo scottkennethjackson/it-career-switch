@@ -18,7 +18,7 @@
     <body>
         <nav class="navbar fixed-top p-0 bg-dark shadow">
             <div class="main-nav m-0 d-flex justify-content-between">
-                <a class="navbar-brand ms-3" href="#"><h1 class="heading">Scott Kenneth Jackson</h1></a>
+                <a class="navbar-brand ms-3 p-0" href="#"><h1 class="heading">Scott Kenneth Jackson</h1></a>
 
                 <button class="nav-btn btn">
                     <span class="bar d-block"></span>
@@ -41,6 +41,15 @@
                     <li>
                         <button class="menu-btn btn"><a class="menu-link" href="#contact">Contact</a></button>
                     </li>
+                    <li>
+                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="https://www.linkedin.com/in/scott-kenneth-jackson/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></button>
+                    </li>
+                    <li>
+                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="https://github.com/scottkennethjackson" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></button>
+                    </li>
+                    <li>
+                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="./libs/docs/Scott Kenneth Jackson's CV.pdf" download>Download CV</a></button>
+                    </li>
                     <li class="dark-mode">
                         <div class="slider-container">
                             <button id="dark-btn" class="menu-btn btn p-0"><i class="fa-solid fa-sun-bright mx-2"></i><i class="fa-solid fa-moon me-2"></i></button>
@@ -58,7 +67,7 @@
                         <h2 class="heading">Hi! I'm Scott</h2>
                         <p class="subheading">I make things on the internet</p>
 
-                        <div class="mt-3">
+                        <div class="icon-container mt-3">
                             <ul class="icon-menu m-0 p-0 d-flex">
                                 <li>
                                     <button class="icon-btn mx-4"><a class="icon-link" href="https://www.instagram.com/skjdotcodotuk/" target="_blank"><i class="fa-brands fa-instagram"></i></a></button>
@@ -80,7 +89,7 @@
 
             <section id="about">
                 <div class="about-container">
-                    <div class="about-content mx-5 d-flex">
+                    <div class="about-content d-flex">
                         <div class="sketchpad d-flex">
                             <img id="illustration" class="rounded-circle" src="./libs/images/illustration.png" alt="Scott Kenneth Jackson">
                             <canvas id="canvas" class="rounded-circle" height="" width=""></canvas>
@@ -101,7 +110,7 @@
 
             <section id="skills">
                 <div class="skills-container">
-                    <div class="mx-5">
+                    <div class="blurb-container">
                         <h3 class="heading text-center">Here's What I Can Do</h3>
                         <p>I qualified as a Web Developer through the completion of an online Coding Traineeship. This 12-month course began by teaching the basic fundamentals of essential front-end coding languages: HTML, CSS and JavaScript, with a brief introduction to popular back-end languages like Python, before moving on to more complex and challenging subjects.</p>
                         <p>In Stage 2, I delved deeper in more specific front and back-end languages and technologies. During this stage, I completed modules and received certification in Full Stack Engineering, jQuery, Python 3, PHP, Java, C#, Vue.js and Sass.</p>
@@ -175,7 +184,7 @@
                         </div>
                     </div>
 
-                    <div class="languages-container text-center mt-3 mx-5">
+                    <div class="languages-container text-center mt-3">
                         <p class="languages-blurb">I have practical experience and a good understanding of a wide array of programming languages, frameworks and technologies, including:</p>
                         <img class="logo" src="./libs/images/languages/html.svg" alt="HTML">
                         <img class="logo" src="./libs/images/languages/css.svg" alt="CSS">
@@ -203,12 +212,12 @@
 
             <section id="portfolio">
                 <div class="portfolio-container">
-                    <div id="portfolio-carousel" class="carousel carousel-dark slide mx-5" data-bs-ride="carousel">
+                    <div id="portfolio-carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item text-center active" data-bs-interval="5000">
                                 <a href="#" role="button">
                                     <img class="mockup mb-3" src="./libs/images/portfolio/gazetteer.png" alt="Gazetteer Demo">
-                                    <div class="project-info mx-5 pt-3">
+                                    <div class="project-info">
                                         <h3 class="heading">Gazetteer</h3>
                                         <p class="project-blurb">A mobile-first application that makes extensive use of third-party APIs to provide detailed profiling for every country on Earth through the presentation of demographic, climatic, geographical and other data.</p>
                                         <p class="project-languages">HTML, CSS, JavaScript, Bootstrap, PHP & Leaflet</p>
@@ -219,7 +228,7 @@
                             <div class="carousel-item text-center" data-bs-interval="5000">
                                 <a href="#" role="button">
                                     <img class="mockup mb-3" src="./libs/images/portfolio/company-directory.png" alt="Company Directory Demo">
-                                    <div class="project-info mx-5 pt-3">
+                                    <div class="project-info">
                                         <h3 class="heading">Company Directory</h3>
                                         <p class="project-blurb">An online directory which allows for easy searching of staff, departments and locations by single or multiple criteria, utilising CRUD (create, read, update and delete) functionality to interact with and modify a back-end server database.</p>
                                         <p class="project-languages">HTML, CSS, JavaScript, Bootstrap, PHP & SQL</p>
@@ -230,7 +239,7 @@
                             <div class="carousel-item text-center" data-bs-interval="5000">
                                 <a href="#" role="button">
                                     <img class="mockup mb-3" src="./libs/images/portfolio/wordman.png" alt="Wordman Demo">
-                                    <div class="project-info mx-5 pt-3">
+                                    <div class="project-info">
                                         <h3 class="heading">Wordman</h3>
                                         <p class="project-blurb">A simple hangman game with a Wordle-inspired interface, which uses Javascript syntax to generate a different, random answer each time the user runs the program.</p>
                                         <p class="project-languages">HTML, CSS & JavaScript</p>
@@ -241,7 +250,7 @@
                             <div class="carousel-item text-center" data-bs-interval="5000">
                                 <a href="#" role="button">
                                     <img class="mockup mb-3" src="./libs/images/portfolio/vue-tickets.png" alt="Vue Tickets Demo">
-                                    <div class="project-info mx-5 pt-3">
+                                    <div class="project-info">
                                         <h3 class="heading">Vue Tickets</h3>
                                         <p class="project-blurb">A basic form for buying tickets, built using the Vue.js framework and utilising its data, computed, watch and methods state-management options.</p>
                                         <p class="project-languages">HTML, CSS, JavaScript & Vue</p>
