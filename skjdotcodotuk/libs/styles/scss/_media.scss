@@ -1,0 +1,826 @@
+@mixin max-600px {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    .navbar {    
+        .main-nav {
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            background-color: $dark;
+
+            .heading {
+                font-size: 1.5rem;
+            }
+
+            .nav-btn {
+                display: block;
+            }
+        }
+
+        .dropdown {
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: -100vh;
+            z-index: 0;
+            padding-top: 50px;
+            text-align: center;
+            background-color: $dark;
+            transition: all .5s;
+            
+            .nav-menu {
+                flex-direction: column;
+
+                .menu-btn {
+                    margin: 1rem auto;
+                }
+
+                .hidden-btn {
+                    display: block;
+                }
+
+                .slider-container {
+                    .fa-moon {
+                        opacity: .5;
+                    }
+    
+                    .slider {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .visible {
+            top: 0;
+        }
+    }
+
+    #home {
+        .home-container {
+            .heading {
+                font-size: 5rem;
+            }
+
+            .subheading {
+                font-size: 2rem;
+            }
+
+            .icon-container .icon-menu {
+                .icon-link {
+                    font-size: 1.5rem;
+                }
+        
+            }
+        }
+    }
+
+    #about {
+        min-height: unset;
+
+        .about-container {
+            @include unset-centralise;
+
+            .about-content {
+                flex-direction: column;
+                margin: 0 1rem;
+    
+                .sketchpad {
+                    justify-content: center;
+                    margin-bottom: 1rem;
+    
+                    #illustration {
+                        width: 100%;
+                    }
+                }
+    
+                .about-blurb {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    #skills {
+        .skills-container {
+            @include unset-centralise;
+
+            .blurb-container {
+                margin: 0 1rem;
+            }
+
+            .box-container {
+                flex-direction: column;
+
+                .box {
+                    width: 100%;
+                }
+            }
+
+            .languages-container {
+                margin: 1rem;
+            }
+        }
+    }
+
+    #portfolio {
+        .portfolio-container {
+            @include unset-centralise;
+
+            .carousel-item {
+                .mockup {
+                    height: unset;
+                    width: 100vw;
+                }
+
+                .project-info {
+                    height: unset;
+                    margin: 0 1rem;
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+    }
+
+    #contact {
+        .contact-container {
+            @include unset-centralise;
+
+            #contact-form {
+                width: 100%;
+                padding: 0 1rem;
+            }
+        }
+    }
+
+    .dark {
+        .slider-container {
+            #dark-btn {
+                .fa-sun-bright {
+                    opacity: .5;
+                }
+
+                .fa-moon {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@mixin max-992px {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    .navbar {    
+        .main-nav {
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            background-color: $dark;
+
+            .nav-btn {
+                display: block;
+            }
+        }
+
+        .dropdown {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            background-color: $dark;
+            transition: all .5s;
+            
+            .nav-menu {
+                justify-content: end;
+
+                .menu-link {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .visible {
+            top: 50px;
+        }
+    }
+
+    #home {
+        .home-container {
+            .heading {
+                font-size: 5rem;
+            }
+
+            .subheading {
+                font-size: 2rem;
+            }
+
+            .icon-container .icon-menu {
+                .icon-link {
+                    font-size: 1.5rem;
+                }
+        
+            }
+        }
+    }
+
+    #about {
+        min-height: unset;
+
+        .about-container {
+            @include unset-centralise;
+
+            .about-content {
+                display: block;
+                margin: 0 1rem;
+
+                #main-sketchpad {
+                    display: none;
+                }
+
+                .about-blurb {
+                    padding: 0;
+
+                    #hidden-sketchpad {
+                        width: 40vw;
+                        aspect-ratio: 1;
+                        display: block;
+                        float: left;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #skills {
+        min-height: unset;
+
+        .skills-container {
+            @include unset-centralise;
+
+            .blurb-container {
+                margin: 0 1rem;
+            }
+
+            .box-container {
+                display: none;
+            }
+
+            .languages-container {
+                margin: 1rem;
+
+                .languages-blurb {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    #portfolio {
+        min-height: unset;
+
+        .portfolio-container {
+            @include unset-centralise;
+
+            .carousel-item {
+                .project-info {
+                    height: unset;
+                    margin: 0 1rem;
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+    }
+
+    #contact {
+        min-height: unset;
+
+        .contact-container {
+            @include unset-centralise;
+
+            #contact-form {
+                width: 75%;
+            }
+        }
+    }
+}
+
+@mixin max-1200px {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    .navbar {
+        .dropdown {
+            .nav-menu {
+                .menu-link {
+                    font-size: 1rem;
+                }
+
+                .slider-container {
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+    
+    #about {
+        .about-container {
+            @include unset-centralise;
+
+            .about-content {
+                display: block;
+
+                #main-sketchpad {
+                    display: none;
+                }
+
+                .about-blurb {
+                    padding: 0;
+
+                    #hidden-sketchpad {
+                        width: 40vw;
+                        aspect-ratio: 1;
+                        display: block;
+                        float: left;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #skills {
+        .skills-container {
+            @include unset-centralise;
+
+            .box-container {
+                .show {
+                    .box-blurb {
+                        height: 80%;
+                        transform: translateY(15%);
+                        opacity: 1;
+                    }
+
+                    .screen-container {
+                        height: 0;
+
+                        .screen {
+                            .screen-icon {
+                                font-size: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin min-1200px {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html {
+        width: 100%;
+        font-family: 'Roboto', Arial, sans-serif;
+        text-align: justify;
+        scroll-snap-type: y mandatory;
+        cursor: default;
+    }
+    
+    .heading {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: bold;
+    }
+    
+    .subheading {
+        font-size: 1.5rem;
+        font-weight: 100;
+    }
+    
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    .navbar {
+        height: 50px;
+    
+        .main-nav {
+            height: 50px;
+    
+            .heading {
+                line-height: 50px;
+                font-size: 2rem;
+                color: white;
+            }
+        
+            button {
+                display: none;
+    
+                .bar {
+                    height: 2px;
+                    width: 30px;
+                    margin: 6px auto;
+                    border-radius: 2px;
+                    background-color: white;
+                    transition: all .5s;
+                }
+        
+                &:hover .bar {
+                    background-color: $yellow;
+                }
+        
+                &.active {
+                    .bar:nth-child(1) {
+                        transform: translateY(8px) rotate(45deg);
+                    }
+        
+                    .bar:nth-child(2) {
+                        transform: rotate(45deg);
+                    }
+        
+                    .bar:nth-child(3) {
+                        transform: translateY(-8px) rotate(-45deg);
+                    }
+                }
+            }
+        }
+        
+        .nav-menu {
+            list-style: none;
+    
+            .menu-btn {
+                border: none;
+                background-color: transparent;
+    
+                &:hover a {
+                    color: $yellow;
+                }
+    
+                .menu-link {
+                    font-size: 1.25rem;
+                    color: white;
+                    text-transform: uppercase;
+                }
+            }
+    
+            .hidden-btn {
+                display: none;
+            }
+    
+            .slider-container {
+                height: 32px;
+                position: relative;
+                margin-top: 6px;
+    
+                #dark-btn {
+                    height: 30px;
+                    line-height: 1;
+                    border: 2px solid white;
+                    border-radius: 40px;
+    
+                    .fa-sun-bright {
+                        color: $yellow;
+                    }
+    
+                    .fa-moon {
+                        color: $lightblue;
+                    }
+                }
+    
+                .slider {
+                    height: 26px;
+                    aspect-ratio: 1;
+                    position: absolute;
+                    top: 2px;
+                    left: auto;
+                    right: 2px;
+                    border-radius: 50%;
+                    background-color: $lightgrey;
+                    transition: all .5s;
+                }
+    
+                .switch {
+                    transform: translateX(-26px);
+                    transition: all .5s;
+                }
+            }
+        }
+    }
+    
+    #home {
+        @include full-screen;
+        background-color: $lightblue;
+    
+        .home-container {
+            @include centralise;
+    
+            .heading {
+                font-size: 10rem;
+            }
+        
+            .subheading {
+                font-size: 3rem;
+                color: $darkorange;
+            }
+        
+            .icon-menu {
+                justify-content: center;
+                list-style: none;
+        
+                .icon-btn {
+                    border: none;
+                    background-color: transparent;
+        
+                    &:hover a {
+                        opacity: 1;
+                    }
+        
+                    .icon-link {
+                        font-size: 2rem;
+                        color: $darkblue;
+                        opacity: .5;
+                    }
+                }
+            }
+        }
+    }
+    
+    #about {
+        @include full-screen;
+        background-color: $yellow;
+    
+        .about-container {
+            @include centralise;
+    
+            .about-content {
+                display: flex;
+                margin: 0 3rem;
+    
+                .sketchpad {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+        
+                    #illustration {
+                        width: 40vw;
+                        position: absolute;
+                        z-index: 1;
+                    }
+            
+                    #canvas {
+                        cursor: url(../../images/marker.png), crosshair;
+                        z-index: 2;
+                    }
+                }
+        
+                .about-blurb {
+                    padding-left: 3rem;
+    
+                    #hidden-sketchpad {
+                        display: none;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    #skills {
+        @include full-screen;
+        background-color: $offwhite;
+    
+        .skills-container {
+            @include centralise;
+            .blurb-container {
+                margin: 0 3rem;
+            }
+    
+            .box-container {
+                display: flex;
+                width: 100%;
+    
+                .box {
+                    width: 20%;
+                    aspect-ratio: 1;
+                    position: relative;
+                    border-radius: .5rem;
+    
+                    * {
+                        transition: all .5s;
+                    }
+    
+                    .box-blurb {
+                        position: absolute;
+                        font-size: .75rem;
+                        color: white;
+                        opacity: 0;
+                        overflow-y: scroll;
+    
+                        .heading {
+                            font-size: initial;
+                        }
+                    }
+    
+                    .screen-container {
+                        @include flex-center;
+                        height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+    
+                        #development {
+                            background-color: $vividblue;
+                        }
+    
+                        #design {
+                            background-color: $yellow;
+                        }
+    
+                        #deployment {
+                            background-color: $grey;
+                        }
+    
+                        #seo {
+                            background-color: $darkorange;
+                        }
+    
+                        #qa {
+                            background-color: $mediumblue;
+                        }
+    
+                        .screen {
+                            @include flex-center;
+                            height: 100%;
+                            aspect-ratio: 1;
+                            position: relative;
+                            border-radius: .5rem;
+    
+                            .screen-icon {
+                                font-size: 3rem;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+    
+                .show {
+                    .box-blurb {
+                        height: 50%;
+                        position: absolute;
+                        transform: translateY(100%);
+                        opacity: 1;
+                    }
+    
+                    .screen-container {
+                        height: 50%;
+                        padding: 1rem;
+    
+                        .screen {
+                            border-radius: 50%;
+    
+                            .screen-icon {
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .languages-container {
+                margin: 3rem;
+    
+                .languages-blurb {
+                    display: none;
+                }
+        
+                .logo {
+                    height: 1.5rem;
+                    margin: .25rem;
+                }
+            }
+        }
+    }
+    
+    #portfolio {
+        @include full-screen;
+        background-color: $orange;
+    
+        .portfolio-container {
+            @include centralise;
+    
+            a {
+                color: black;
+                text-decoration: none;
+    
+                .mockup {
+                    height: 40vh;
+                }
+        
+                .project-info {
+                    height: 10rem;
+                    margin: 0 3rem;
+                    padding-top: 1rem;
+    
+                    .project-blurb {
+                        text-align: justify;
+                    }
+            
+                    .project-languages {
+                        font-family: monospace;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    
+    #contact {
+        @include full-screen;
+        color: white;
+        background-color: $darkblue;
+    
+        .contact-container {
+            @include centralise;
+    
+            #contact-form {
+                width: 50%;
+    
+                textarea {
+                    resize: none;
+                }
+        
+                button {
+                    border: 1px solid $yellow;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: $yellow;
+        
+                    &:hover {
+                        color: black;
+                        background-color: $yellow;
+                    }
+                }
+            }
+        }
+    
+        .credit {
+            position: absolute;
+            bottom: .25rem;
+            padding: 0 1rem;
+            font-size: .75rem;
+            text-align: center;
+    
+            a:hover {
+                color: $yellow;
+            }
+        }
+    }
+    
+    .dark {
+        nav {
+            box-shadow: none !important;
+        }
+        
+        #home,
+        #about,
+        #contact {
+            @include dark-mode
+        }
+    
+        #skills {
+            @include dark-mode;
+    
+            .logo {
+                filter: grayscale(100%) invert(75%) brightness(150%);
+            }
+        }
+    
+        #portfolio {
+            @include dark-mode;
+    
+            .carousel-control-prev,
+            .carousel-control-next {
+                filter: invert(100%);
+            }
+        }
+    }
+}
