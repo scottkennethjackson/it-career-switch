@@ -183,10 +183,12 @@ a {
         @include centralise;
 
         .about-content {
+            display: flex;
             margin: 0 3rem;
 
             .sketchpad {
                 position: relative;
+                display: flex;
                 align-items: center;
     
                 #illustration {
@@ -203,6 +205,10 @@ a {
     
             .about-blurb {
                 padding-left: 3rem;
+
+                #hidden-sketchpad {
+                    display: none;
+                }
             }
         }
     }
@@ -220,6 +226,7 @@ a {
         }
 
         .box-container {
+            display: flex;
             width: 100%;
 
             .box {
@@ -237,6 +244,7 @@ a {
                     font-size: .75rem;
                     color: white;
                     opacity: 0;
+                    overflow-y: scroll;
 
                     .heading {
                         font-size: initial;
@@ -557,7 +565,7 @@ a {
     #portfolio {
         .portfolio-container {
             @include unset-centralise;
-            
+
             .carousel-item {
                 .mockup {
                     height: unset;
@@ -603,18 +611,188 @@ a {
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 992px){
+    html {
+        scroll-snap-type: unset;
+    }
 
+    .navbar {    
+        .main-nav {
+            width: 100%;
+            position: absolute;
+            z-index: 1;
+            background-color: $dark;
+
+            .nav-btn {
+                display: block;
+            }
+        }
+
+        .dropdown {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            background-color: $dark;
+            transition: all .5s;
+            
+            .nav-menu {
+                justify-content: end;
+
+                .menu-link {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .visible {
+            top: 50px;
+        }
+    }
+
+    #home {
+        .home-container {
+            .heading {
+                font-size: 5rem;
+            }
+
+            .subheading {
+                font-size: 2rem;
+            }
+
+            .icon-container .icon-menu {
+                .icon-link {
+                    font-size: 1.5rem;
+                }
+        
+            }
+        }
+    }
+
+    #about {
+        min-height: unset;
+
+        .about-container {
+            @include unset-centralise;
+
+            .about-content {
+                display: block;
+                margin: 0 1rem;
+
+                #main-sketchpad {
+                    display: none;
+                }
+
+                .about-blurb {
+                    padding: 0;
+
+                    #hidden-sketchpad {
+                        width: 40vw;
+                        aspect-ratio: 1;
+                        display: block;
+                        float: left;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    #skills {
+        min-height: unset;
+
+        .skills-container {
+            @include unset-centralise;
+
+            .blurb-container {
+                margin: 0 1rem;
+            }
+
+            .box-container {
+                display: none;
+            }
+
+            .languages-container {
+                margin: 1rem;
+
+                .languages-blurb {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    #portfolio {
+        min-height: unset;
+
+        .portfolio-container {
+            @include unset-centralise;
+
+            .carousel-item {
+                .project-info {
+                    height: unset;
+                    margin: 0 1rem;
+                }
+            }
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            display: none;
+        }
+    }
+
+    #contact {
+        min-height: unset;
+
+        .contact-container {
+            @include unset-centralise;
+
+            #contact-form {
+                width: 75%;
+            }
+        }
+    }
 }
 
-@media only screen and (min-width: 768px) {
-    
+/*@media only screen and (max-width: 992px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
 }
 
-@media only screen and (min-width: 992px) {
-    
+@media only screen and (max-width: 1200px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-    
-}
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
+}*/

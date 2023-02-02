@@ -216,10 +216,12 @@ a {
   justify-content: center;
 }
 #about .about-container .about-content {
+  display: flex;
   margin: 0 3rem;
 }
 #about .about-container .about-content .sketchpad {
   position: relative;
+  display: flex;
   align-items: center;
 }
 #about .about-container .about-content .sketchpad #illustration {
@@ -233,6 +235,9 @@ a {
 }
 #about .about-container .about-content .about-blurb {
   padding-left: 3rem;
+}
+#about .about-container .about-content .about-blurb #hidden-sketchpad {
+  display: none;
 }
 
 #skills {
@@ -260,6 +265,7 @@ a {
   margin: 0 3rem;
 }
 #skills .skills-container .box-container {
+  display: flex;
   width: 100%;
 }
 #skills .skills-container .box-container .box {
@@ -276,6 +282,7 @@ a {
   font-size: 0.75rem;
   color: white;
   opacity: 0;
+  overflow-y: scroll;
 }
 #skills .skills-container .box-container .box .box-blurb .heading {
   font-size: initial;
@@ -589,4 +596,154 @@ a {
   .dark .slider-container #dark-btn .fa-moon {
     opacity: 1;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  html {
+    -ms-scroll-snap-type: unset;
+        scroll-snap-type: unset;
+  }
+  .navbar .main-nav {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(34, 37, 41);
+  }
+  .navbar .main-nav .nav-btn {
+    display: block;
+  }
+  .navbar .dropdown {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    background-color: rgb(34, 37, 41);
+    transition: all 0.5s;
+  }
+  .navbar .dropdown .nav-menu {
+    justify-content: end;
+  }
+  .navbar .dropdown .nav-menu .menu-link {
+    font-size: 14px;
+  }
+  .navbar .visible {
+    top: 50px;
+  }
+  #home .home-container .heading {
+    font-size: 5rem;
+  }
+  #home .home-container .subheading {
+    font-size: 2rem;
+  }
+  #home .home-container .icon-container .icon-menu .icon-link {
+    font-size: 1.5rem;
+  }
+  #about {
+    min-height: unset;
+  }
+  #about .about-container {
+    position: relative;
+    transform: unset;
+  }
+  #about .about-container .about-content {
+    display: block;
+    margin: 0 1rem;
+  }
+  #about .about-container .about-content #main-sketchpad {
+    display: none;
+  }
+  #about .about-container .about-content .about-blurb {
+    padding: 0;
+  }
+  #about .about-container .about-content .about-blurb #hidden-sketchpad {
+    width: 40vw;
+    aspect-ratio: 1;
+    display: block;
+    float: left;
+    margin-right: 1rem;
+  }
+  #skills {
+    min-height: unset;
+  }
+  #skills .skills-container {
+    position: relative;
+    transform: unset;
+  }
+  #skills .skills-container .blurb-container {
+    margin: 0 1rem;
+  }
+  #skills .skills-container .box-container {
+    display: none;
+  }
+  #skills .skills-container .languages-container {
+    margin: 1rem;
+  }
+  #skills .skills-container .languages-container .languages-blurb {
+    display: block;
+  }
+  #portfolio {
+    min-height: unset;
+  }
+  #portfolio .portfolio-container {
+    position: relative;
+    transform: unset;
+  }
+  #portfolio .portfolio-container .carousel-item .project-info {
+    height: unset;
+    margin: 0 1rem;
+  }
+  #portfolio .carousel-control-prev,
+#portfolio .carousel-control-next {
+    display: none;
+  }
+  #contact {
+    min-height: unset;
+  }
+  #contact .contact-container {
+    position: relative;
+    transform: unset;
+  }
+  #contact .contact-container #contact-form {
+    width: 75%;
+  }
+}
+/*@media only screen and (max-width: 992px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    html {
+        scroll-snap-type: unset;
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        display: none
+    }
+}*//*# sourceMappingURL=style.css.map */

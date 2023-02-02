@@ -42,13 +42,13 @@
                         <button class="menu-btn btn"><a class="menu-link" href="#contact">Contact</a></button>
                     </li>
                     <li>
-                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="https://www.linkedin.com/in/scott-kenneth-jackson/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></button>
+                        <button class="hidden-btn menu-btn btn"><a class="menu-link" href="https://www.linkedin.com/in/scott-kenneth-jackson/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></button>
                     </li>
                     <li>
-                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="https://github.com/scottkennethjackson" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></button>
+                        <button class="hidden-btn menu-btn btn"><a class="menu-link" href="https://github.com/scottkennethjackson" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></button>
                     </li>
                     <li>
-                        <button class="menu-btn hidden-btn btn"><a class="menu-link" href="./libs/docs/Scott Kenneth Jackson's CV.pdf" download>Download CV</a></button>
+                        <button class="hidden-btn menu-btn btn"><a class="menu-link" href="./libs/docs/Scott Kenneth Jackson's CV.pdf" download>Download CV</a></button>
                     </li>
                     <li class="dark-mode">
                         <div class="slider-container">
@@ -89,13 +89,17 @@
 
             <section id="about">
                 <div class="about-container">
-                    <div class="about-content d-flex">
-                        <div class="sketchpad d-flex">
+                    <div class="about-content">
+                        <div id="main-sketchpad" class="sketchpad">
                             <img id="illustration" class="rounded-circle" src="./libs/images/illustration.png" alt="Scott Kenneth Jackson">
                             <canvas id="canvas" class="rounded-circle" height="" width=""></canvas>
                         </div>
 
-                        <div class="about-blurb d-flex flex-column justify-content-center">
+                        <div class="about-blurb d-block">
+                            <div id="hidden-sketchpad" class="sketchpad">
+                                <img id="illustration" class="rounded-circle" src="./libs/images/illustration.png" alt="Scott Kenneth Jackson">
+                                <canvas id="canvas" class="rounded-circle" height="" width=""></canvas>
+                            </div>
                             <h3 class="heading">Hello, there!</h3>
                             <p class="subheading">My name is Scott and I am a Full Stack Developer.</p>
                             <p>After spending 18 years in the beer industry, I was unfortunately made redundant during the pandemic...twice!</p>
@@ -117,7 +121,7 @@
                         <p>At the end of the course, I sat the Microsoft 98-383: Introduction to Programming Using HTML and CSS examination, becoming fully-certified as a Microsoft Technology Associate.</p>
                     </div>
 
-                    <div class="box-container d-flex my-3 px-5">
+                    <div class="box-container my-3 px-5">
                         <div class="box m-2 bg-dark" role="button">
                             <div class="box-blurb px-1">
                                 <p class="heading m-0 text-center">Development</p>
