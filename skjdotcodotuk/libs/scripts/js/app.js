@@ -140,7 +140,7 @@ function isNotEmpty(caller) {
 (function() {
     'use strict'
   
-    var forms = document.querySelectorAll('.needs-validation')
+    const forms = document.querySelectorAll('.needs-validation')
   
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
@@ -158,4 +158,4 @@ function isNotEmpty(caller) {
           form.classList.add('was-validated')
         }, false)
     })
-});
+})();
