@@ -706,44 +706,50 @@ a {
     width: 75%;
   }
 }
-/*@media only screen and (max-width: 992px) {
-    html {
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  html {
+    -ms-scroll-snap-type: unset;
         scroll-snap-type: unset;
-    }
-
-    #home,
-    #about,
-    #skills,
-    #portfolio,
-    #contact {
-        display: none
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    html {
-        scroll-snap-type: unset;
-    }
-
-    #home,
-    #about,
-    #skills,
-    #portfolio,
-    #contact {
-        display: none
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    html {
-        scroll-snap-type: unset;
-    }
-
-    #home,
-    #about,
-    #skills,
-    #portfolio,
-    #contact {
-        display: none
-    }
-}*//*# sourceMappingURL=style.css.map */
+  }
+  .navbar .dropdown .nav-menu .menu-link {
+    font-size: 1rem;
+  }
+  .navbar .dropdown .nav-menu .slider-container {
+    margin-top: 3px;
+  }
+  #about .about-container {
+    position: relative;
+    transform: unset;
+  }
+  #about .about-container .about-content {
+    display: block;
+  }
+  #about .about-container .about-content #main-sketchpad {
+    display: none;
+  }
+  #about .about-container .about-content .about-blurb {
+    padding: 0;
+  }
+  #about .about-container .about-content .about-blurb #hidden-sketchpad {
+    width: 40vw;
+    aspect-ratio: 1;
+    display: block;
+    float: left;
+    margin-right: 1rem;
+  }
+  #skills .skills-container {
+    position: relative;
+    transform: unset;
+  }
+  #skills .skills-container .box-container .show .box-blurb {
+    height: 80%;
+    transform: translateY(15%);
+    opacity: 1;
+  }
+  #skills .skills-container .box-container .show .screen-container {
+    height: 0;
+  }
+  #skills .skills-container .box-container .show .screen-container .screen .screen-icon {
+    font-size: 0;
+  }
+}/*# sourceMappingURL=style.css.map */
