@@ -1,5 +1,6 @@
 @import "./fonts";
 @import "./variables";
+@import "./mixins";
 
 * {
     margin: 0;
@@ -31,6 +32,7 @@ a {
         height: 100%;
         width: 100%;
         padding: 0 1rem;
+        z-index: 99;
 
         .heading {
             line-height: 50px;
@@ -39,7 +41,7 @@ a {
         }
 
         button {
-            //background-color: pink;
+            width: 30px;
 
             .bar {
                 height: 2px;
@@ -71,9 +73,10 @@ a {
     }
 
     .dropdown {
-        height: 50px;
+        height: 100%;
         width: 100%;
         padding: 0 1rem;
+        transition: all .5s;
 
         .nav-menu {
             list-style: none;
@@ -128,4 +131,34 @@ a {
             }
         }
     }
+}
+
+// Small phone styling
+@media only screen and (max-width: 320px) {
+    @include portrait-nav;
+}
+
+// Medium phone styling
+@media only screen and (max-width: 375px) {
+    @include portrait-nav;
+}
+
+// Large phone styling
+@media only screen and (max-width: 414px) {
+    @include portrait-nav;
+}
+
+// Small tablet styling
+@media only screen and (max-width: 768px) {
+    @include portrait-nav;
+}
+
+// Medium tablet styling
+@media only screen and (max-width: 834px) {
+    @include portrait-nav;
+}
+
+// Large tablet styling
+@media only screen and (max-width: 1024px) {
+    @include portrait-nav;
 }
