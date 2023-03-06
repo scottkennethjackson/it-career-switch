@@ -1,0 +1,131 @@
+@import "./fonts";
+@import "./variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: justify;
+    //scroll-snap-type: y mandatory;
+    cursor: default;
+}
+
+.heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: bold;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar {
+    height: 50px;
+
+    .main-nav {
+        height: 100%;
+        width: 100%;
+        padding: 0 1rem;
+
+        .heading {
+            line-height: 50px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        button {
+            //background-color: pink;
+
+            .bar {
+                height: 2px;
+                width: 30px;
+                margin: 6px auto;
+                border-radius: 2px;
+                background-color: white;
+                transition: all .5s;
+            }
+
+            &:hover .bar {
+                background-color: $yellow;
+            }
+    
+            &.active {
+                .bar:nth-child(1) {
+                    transform: translateY(8px) rotate(45deg);
+                }
+    
+                .bar:nth-child(2) {
+                    transform: rotate(45deg);
+                }
+    
+                .bar:nth-child(3) {
+                    transform: translateY(-8px) rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        height: 50px;
+        width: 100%;
+        padding: 0 1rem;
+
+        .nav-menu {
+            list-style: none;
+    
+            .menu-btn {
+                height: 50px;
+
+                &:hover a {
+                    color: $yellow;
+                }
+
+                .menu-link {
+                    color: white;
+                    text-transform: uppercase;
+                }
+            }
+
+            .slider-container {
+                padding: 10px 0;
+                position: relative;
+
+                #dark-btn {
+                    height: 30px;
+                    padding: 0;
+                    border: 2px solid white;
+                    border-radius: 30px;
+    
+                    .fa-sun-bright {
+                        color: $yellow;
+                    }
+        
+                    .fa-moon {
+                        color: $lightblue;
+                    }
+                }
+
+                .slider {
+                    height: 26px;
+                    width: 26px;
+                    position: absolute;
+                    top: 12px;
+                    right: 2px;
+                    border-radius: 50%;
+                    background-color: $lightgrey;
+                    transition: all .5s;
+                }
+
+                .switch {
+                    transform: translateX(-26px);
+                    transition: all .5s;
+                }
+            }
+        }
+    }
+}

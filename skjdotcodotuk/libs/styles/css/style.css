@@ -44,8 +44,7 @@ html {
   width: 100%;
   font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
   cursor: default;
 }
 
@@ -476,8 +475,7 @@ a {
 
 @media only screen and (max-width: 600px) {
   html {
-    -ms-scroll-snap-type: unset;
-        scroll-snap-type: unset;
+    scroll-snap-type: unset;
   }
   .navbar .main-nav {
     width: 100%;
@@ -579,7 +577,7 @@ a {
     margin: 0 1rem;
   }
   #portfolio .carousel-control-prev,
-#portfolio .carousel-control-next {
+  #portfolio .carousel-control-next {
     display: none;
   }
   #contact .contact-container {
@@ -599,8 +597,7 @@ a {
 }
 @media only screen and (min-width: 600px) and (max-width: 992px) {
   html {
-    -ms-scroll-snap-type: unset;
-        scroll-snap-type: unset;
+    scroll-snap-type: unset;
   }
   .navbar .main-nav {
     width: 100%;
@@ -692,7 +689,7 @@ a {
     margin: 0 1rem;
   }
   #portfolio .carousel-control-prev,
-#portfolio .carousel-control-next {
+  #portfolio .carousel-control-next {
     display: none;
   }
   #contact {
@@ -708,8 +705,7 @@ a {
 }
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   html {
-    -ms-scroll-snap-type: unset;
-        scroll-snap-type: unset;
+    scroll-snap-type: unset;
   }
   .navbar .dropdown .nav-menu .menu-link {
     font-size: 1rem;
@@ -763,8 +759,7 @@ a {
     width: 100%;
     font-family: "Roboto", Arial, sans-serif;
     text-align: justify;
-    -ms-scroll-snap-type: y mandatory;
-        scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory;
     cursor: default;
   }
   .heading {
@@ -1154,13 +1149,13 @@ a {
     box-shadow: none !important;
   }
   .dark #home,
-.dark #about,
-.dark #contact {
+  .dark #about,
+  .dark #contact {
     background-color: rgb(34, 37, 41);
   }
   .dark #home *,
-.dark #about *,
-.dark #contact * {
+  .dark #about *,
+  .dark #contact * {
     color: white;
   }
   .dark #skills {
@@ -1179,7 +1174,7 @@ a {
     color: white;
   }
   .dark #portfolio .carousel-control-prev,
-.dark #portfolio .carousel-control-next {
+  .dark #portfolio .carousel-control-next {
     filter: invert(100%);
   }
 }/*# sourceMappingURL=style.css.map */
