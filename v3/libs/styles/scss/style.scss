@@ -167,7 +167,7 @@ a {
 
 // Large tablet styling
 @media only screen and (min-width: 1023px) and (orientation: portrait) {
-
+    @include nav-large;
 }
 
 // Small desktop styling

@@ -229,6 +229,14 @@ a {
     top: 50px;
   }
 }
+@media only screen and (min-width: 1023px) and (orientation: portrait) {
+  .navbar .main-nav {
+    width: unset;
+  }
+  .navbar .main-nav .nav-btn {
+    display: none;
+  }
+}
 @media only screen and (min-width: 799px) and (orientation: landscape) {
   .navbar .dropdown {
     height: 50px;
