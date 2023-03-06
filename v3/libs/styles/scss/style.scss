@@ -9,6 +9,7 @@
 }
 
 html {
+    font-size: 16px;
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
     //scroll-snap-type: y mandatory;
@@ -134,31 +135,56 @@ a {
 }
 
 // Small phone styling
-@media only screen and (max-width: 320px) {
-    @include portrait-nav;
+@media only screen and (max-width: 373px) {
+    @include nav-portrait;
 }
 
 // Medium phone styling
-@media only screen and (max-width: 375px) {
-    @include portrait-nav;
+@media only screen and (min-width: 374px) {
+    @include nav-portrait;
+
+    .nav-menu {
+        @include centralise;
+    }
 }
 
 // Large phone styling
-@media only screen and (max-width: 414px) {
-    @include portrait-nav;
+@media only screen and (min-width: 413px) {
+    
 }
 
 // Small tablet styling
-@media only screen and (max-width: 768px) {
-    @include portrait-nav;
+@media only screen and (min-width: 767px) {
+    .menu-link {
+        font-size: 1.5rem;
+    }
 }
 
 // Medium tablet styling
-@media only screen and (max-width: 834px) {
-    @include portrait-nav;
+@media only screen and (min-width: 833px) and (orientation: portrait) {
+    @include nav-landscape;
 }
 
 // Large tablet styling
-@media only screen and (max-width: 1024px) {
-    @include portrait-nav;
+@media only screen and (min-width: 1023px) and (orientation: portrait) {
+
+}
+
+// Small desktop styling
+@media only screen and (min-width: 799px) and (orientation: landscape) {
+    @include nav-landscape;
+
+    .menu-link {
+        font-size: 1rem;
+    }
+}
+
+// Medium desktop styling
+@media only screen and (min-width: 1365px) {
+    @include nav-large;
+}
+
+// Large desktop styling
+@media only screen and (min-width: 1919px) {
+
 }

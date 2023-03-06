@@ -41,6 +41,7 @@
 }
 
 html {
+  font-size: 16px;
   font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
   cursor: default;
@@ -143,7 +144,7 @@ a {
   transition: all 0.5s;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 373px) {
   .navbar .main-nav .heading {
     font-size: 1.25rem;
   }
@@ -151,7 +152,7 @@ a {
     height: 100vh;
     position: absolute;
     top: -100vh;
-    padding-top: 50px;
+    padding: 50px 0;
   }
   .navbar .dropdown .nav-menu {
     flex-direction: column;
@@ -167,7 +168,7 @@ a {
     top: 0;
   }
 }
-@media only screen and (max-width: 375px) {
+@media only screen and (min-width: 374px) {
   .navbar .main-nav .heading {
     font-size: 1.25rem;
   }
@@ -175,7 +176,7 @@ a {
     height: 100vh;
     position: absolute;
     top: -100vh;
-    padding-top: 50px;
+    padding: 50px 0;
   }
   .navbar .dropdown .nav-menu {
     flex-direction: column;
@@ -189,101 +190,75 @@ a {
   }
   .navbar .visible {
     top: 0;
+  }
+  .nav-menu {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
   }
 }
-@media only screen and (max-width: 414px) {
-  .navbar .main-nav .heading {
-    font-size: 1.25rem;
-  }
-  .navbar .dropdown {
-    height: 100vh;
-    position: absolute;
-    top: -100vh;
-    padding-top: 50px;
-  }
-  .navbar .dropdown .nav-menu {
-    flex-direction: column;
-    text-align: center;
-  }
-  .navbar .dropdown .nav-menu .fa-moon {
-    opacity: 0.5;
-  }
-  .navbar .dropdown .nav-menu .slider {
-    display: none;
-  }
-  .navbar .visible {
-    top: 0;
+@media only screen and (min-width: 767px) {
+  .menu-link {
+    font-size: 1.5rem;
   }
 }
-@media only screen and (max-width: 768px) {
-  .navbar .main-nav .heading {
-    font-size: 1.25rem;
-  }
+@media only screen and (min-width: 833px) and (orientation: portrait) {
   .navbar .dropdown {
-    height: 100vh;
-    position: absolute;
-    top: -100vh;
-    padding-top: 50px;
+    height: 50px;
+    top: 0;
+    padding: 0;
   }
   .navbar .dropdown .nav-menu {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
   }
-  .navbar .dropdown .nav-menu .fa-moon {
-    opacity: 0.5;
-  }
-  .navbar .dropdown .nav-menu .slider {
+  .navbar .dropdown .nav-menu .hidden-btn {
     display: none;
   }
+  .navbar .dropdown .nav-menu .dark-mode {
+    margin-right: 1rem;
+  }
+  .navbar .dropdown .nav-menu .slider {
+    display: unset;
+  }
   .navbar .visible {
-    top: 0;
+    top: 50px;
   }
 }
-@media only screen and (max-width: 834px) {
-  .navbar .main-nav .heading {
-    font-size: 1.25rem;
-  }
+@media only screen and (min-width: 799px) and (orientation: landscape) {
   .navbar .dropdown {
-    height: 100vh;
-    position: absolute;
-    top: -100vh;
-    padding-top: 50px;
+    height: 50px;
+    top: 0;
+    padding: 0;
   }
   .navbar .dropdown .nav-menu {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
   }
-  .navbar .dropdown .nav-menu .fa-moon {
-    opacity: 0.5;
-  }
-  .navbar .dropdown .nav-menu .slider {
+  .navbar .dropdown .nav-menu .hidden-btn {
     display: none;
   }
+  .navbar .dropdown .nav-menu .dark-mode {
+    margin-right: 1rem;
+  }
+  .navbar .dropdown .nav-menu .slider {
+    display: unset;
+  }
   .navbar .visible {
-    top: 0;
+    top: 50px;
+  }
+  .menu-link {
+    font-size: 1rem;
   }
 }
-@media only screen and (max-width: 1024px) {
-  .navbar .main-nav .heading {
-    font-size: 1.25rem;
+@media only screen and (min-width: 1365px) {
+  .navbar .main-nav {
+    width: unset;
   }
-  .navbar .dropdown {
-    height: 100vh;
-    position: absolute;
-    top: -100vh;
-    padding-top: 50px;
-  }
-  .navbar .dropdown .nav-menu {
-    flex-direction: column;
-    text-align: center;
-  }
-  .navbar .dropdown .nav-menu .fa-moon {
-    opacity: 0.5;
-  }
-  .navbar .dropdown .nav-menu .slider {
+  .navbar .main-nav .nav-btn {
     display: none;
-  }
-  .navbar .visible {
-    top: 0;
   }
 }/*# sourceMappingURL=style.css.map */
