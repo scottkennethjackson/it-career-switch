@@ -322,6 +322,7 @@ a {
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
+    padding-bottom: 0;
   }
   #about .about-container .sketchpad #illustration {
     width: 50vw;
@@ -437,10 +438,13 @@ a {
   }
 }
 @media only screen and (min-width: 1919px) {
-  .about-content {
+  #about .about-container {
+    padding: 0;
+  }
+  #about .about-container .about-content {
     margin: 0 10vw;
   }
-  .about-content .about-blurb p {
+  #about .about-container .about-content .about-blurb p {
     font-size: 1.5rem;
   }
 }

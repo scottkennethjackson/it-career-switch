@@ -288,6 +288,8 @@ a {
         .about-container {
             @include centralise;
 
+            padding-bottom: 0;
+
             .sketchpad {
                 #illustration {
                     width: 50vw;
@@ -423,12 +425,17 @@ a {
 
 // Large desktop styling
 @media only screen and (min-width: 1919px) {
-    .about-content {
-        margin: 0 10vw;
-
-        .about-blurb {
-            p {
-                font-size: 1.5rem;
+    #about {
+        .about-container {
+            padding: 0;
+            .about-content {
+                margin: 0 10vw;
+        
+                .about-blurb {
+                    p {
+                        font-size: 1.5rem;
+                    }
+                }
             }
         }
     }
