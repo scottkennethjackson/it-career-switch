@@ -181,7 +181,36 @@ a {
     }
 }
 
+#about {
+    height: 100%;
+    background-color: $yellow;
 
+    .about-container {
+        padding: 50px 0;
+
+        .sketchpad {
+            margin: 1rem 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+
+            #illustration {
+                width: 90vw;
+                position: absolute;
+                z-index: 1;
+            }
+
+            #canvas {
+                cursor: url(../../images/marker.png), crosshair;
+                z-index: 2;
+            }
+        }
+
+        .about-blurb {
+            padding: 0 1rem;
+        }
+    }
+}
 
 // Small phone styling
 @media only screen and (max-width: 373px) {
