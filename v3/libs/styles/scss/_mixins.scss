@@ -16,6 +16,47 @@
     scroll-snap-align: center;
 }
 
+@mixin dark-mode {
+    nav {
+        box-shadow: none !important;
+
+        #dark-btn {
+            .fa-sun-bright {
+                color: $yellow;
+                opacity: .5;
+            }
+    
+            .fa-moon {
+                color: $lightblue;
+                opacity: 1;
+            }
+        }
+    }
+
+    #home,
+    #about,
+    #skills,
+    #portfolio,
+    #contact {
+        color: white;
+        background-color: $dark;
+
+        .heading {
+            color: white;
+        }
+
+        .icon-container {
+            .icon-menu {
+                .icon-btn {
+                    .icon-link {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Nav mixins
 @mixin nav-portrait {
     .navbar{

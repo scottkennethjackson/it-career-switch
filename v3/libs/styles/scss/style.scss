@@ -213,6 +213,11 @@ a {
     }
 }
 
+// Dark mode styling
+.dark {
+    @include dark-mode;
+}
+
 // Small phone styling
 @media only screen and (max-width: 373px) {
     @include nav-portrait;

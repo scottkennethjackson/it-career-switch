@@ -219,6 +219,40 @@ a {
   padding: 0 1rem;
 }
 
+.dark nav {
+  box-shadow: none !important;
+}
+.dark nav #dark-btn .fa-sun-bright {
+  color: rgb(239, 198, 70);
+  opacity: 0.5;
+}
+.dark nav #dark-btn .fa-moon {
+  color: rgb(188, 220, 213);
+  opacity: 1;
+}
+.dark #home,
+.dark #about,
+.dark #skills,
+.dark #portfolio,
+.dark #contact {
+  color: white;
+  background-color: rgb(34, 37, 41);
+}
+.dark #home .heading,
+.dark #about .heading,
+.dark #skills .heading,
+.dark #portfolio .heading,
+.dark #contact .heading {
+  color: white;
+}
+.dark #home .icon-container .icon-menu .icon-btn .icon-link,
+.dark #about .icon-container .icon-menu .icon-btn .icon-link,
+.dark #skills .icon-container .icon-menu .icon-btn .icon-link,
+.dark #portfolio .icon-container .icon-menu .icon-btn .icon-link,
+.dark #contact .icon-container .icon-menu .icon-btn .icon-link {
+  color: white;
+}
+
 @media only screen and (max-width: 373px) {
   .navbar .main-nav .heading {
     font-size: 1.25rem;
