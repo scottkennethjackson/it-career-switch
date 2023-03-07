@@ -181,14 +181,7 @@ a {
     }
 }
 
-// Landscape phone styling
-@media only screen and (max-width: 750px) and (orientation: landscape) {
-    @include nav-small;
-    
-    .home-container {
-        padding-top: 50px;
-    }
-}
+
 
 // Small phone styling
 @media only screen and (max-width: 373px) {
@@ -326,4 +319,13 @@ a {
 // Large desktop styling
 @media only screen and (min-width: 1919px) {
     
+}
+
+// Landscape phone styling
+@media only screen and (max-width: 750px) and (orientation: landscape) {
+    @include nav-small;
+    
+    .home-container {
+        padding-top: 50px;
+    }
 }

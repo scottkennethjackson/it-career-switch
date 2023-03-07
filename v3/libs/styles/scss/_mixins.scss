@@ -17,30 +17,6 @@
 }
 
 // Nav mixins
-@mixin nav-small {
-    .navbar {
-        .main-nav {
-            width: unset;
-    
-            button {
-                display: none;
-            }
-        }
-    
-        .dropdown {
-            position: absolute;
-            
-            .menu-btn {
-                display: none;
-            }
-    
-            #dark-btn {
-                display: initial;
-            }
-        }
-    }
-}
-
 @mixin nav-portrait {
     .navbar{
         .main-nav {
@@ -115,5 +91,43 @@
                 display: none;
             }
         } 
+    }
+}
+
+@mixin nav-small {
+    .navbar {
+        .main-nav {
+            width: unset;
+    
+            button {
+                display: none;
+            }
+        }
+    
+        .dropdown {
+            height: 50px;
+            top: 0;
+            padding: 0;
+
+            .nav-menu {
+                flex-direction: row;
+
+                .menu-btn {
+                    display: none;
+                }
+
+                #dark-btn {
+                    display: initial;
+                }
+
+                .dark-mode {
+                    margin-right: 1rem;
+                }
+
+                .slider {
+                    display: unset;
+                }
+            }
+        }
     }
 }
