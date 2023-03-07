@@ -49,6 +49,7 @@ html {
 
 .heading {
   font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -306,6 +307,25 @@ a {
   #home .home-container .icon-link {
     font-size: 2rem;
   }
+  #about {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+    background-color: rgb(239, 198, 70);
+  }
+  #about .about-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  #about .about-container .sketchpad #illustration {
+    width: 50vw;
+  }
 }
 @media only screen and (min-width: 833px) and (orientation: portrait) {
   .navbar .dropdown {
@@ -331,6 +351,9 @@ a {
   #home .home-container .heading {
     font-size: 8rem;
   }
+  #about .about-container .sketchpad #illustration {
+    width: 60vw;
+  }
 }
 @media only screen and (min-width: 1023px) and (orientation: portrait) {
   .navbar .main-nav {
@@ -341,6 +364,9 @@ a {
   }
   #home .home-container .heading {
     font-size: 10rem;
+  }
+  #about .about-container .sketchpad #illustration {
+    width: 70vw;
   }
 }
 @media only screen and (min-width: 799px) and (orientation: landscape) {
@@ -373,6 +399,17 @@ a {
   #home .home-container .icon-container .icon-menu .icon-btn {
     margin: 0 1.5rem;
   }
+  #about .about-container {
+    padding-bottom: 0;
+  }
+  #about .about-container .about-content .sketchpad {
+    width: 25%;
+    margin: 0 1rem;
+    float: left;
+  }
+  #about .about-container .about-content .sketchpad #illustration {
+    width: 100%;
+  }
 }
 @media only screen and (min-width: 1365px) {
   .navbar .main-nav {
@@ -383,6 +420,28 @@ a {
   }
   #home .home-container .heading {
     font-size: 10rem;
+  }
+  #about .about-container .about-content {
+    display: flex;
+  }
+  #about .about-container .about-content .sketchpad {
+    width: 40vw;
+  }
+  #about .about-container .about-content .sketchpad #illustration {
+    width: 40vw;
+  }
+  #about .about-container .about-content .about-blurb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1919px) {
+  .about-content {
+    margin: 0 10vw;
+  }
+  .about-content .about-blurb p {
+    font-size: 1.5rem;
   }
 }
 @media only screen and (max-width: 750px) and (orientation: landscape) {
@@ -412,7 +471,10 @@ a {
   .navbar .dropdown .nav-menu .slider {
     display: unset;
   }
-  .home-container {
+  #home .home-container {
     padding-top: 50px;
+  }
+  #about .about-container .about-content #illustration {
+    width: 80vh;
   }
 }/*# sourceMappingURL=style.css.map */

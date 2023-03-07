@@ -18,6 +18,7 @@ html {
 
 .heading {
     font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
     font-weight: bold;
 }
 
@@ -279,6 +280,21 @@ a {
             }
         }
     }
+
+    #about {
+        @include full-screen;
+        background-color: $yellow;
+
+        .about-container {
+            @include centralise;
+
+            .sketchpad {
+                #illustration {
+                    width: 50vw;
+                }
+            }
+        }
+    }
 }
 
 // Medium tablet styling
@@ -292,6 +308,16 @@ a {
             }
         }
     }
+
+    #about {
+        .about-container {
+            .sketchpad {
+                #illustration {
+                    width: 60vw;
+                }
+            }
+        }
+    }
 }
 
 // Large tablet styling
@@ -302,6 +328,16 @@ a {
         .home-container {
             .heading {
                 font-size: 10rem;
+            }
+        }
+    }
+
+    #about {
+        .about-container {
+            .sketchpad {
+                #illustration {
+                    width: 70vw;
+                }
             }
         }
     }
@@ -330,6 +366,24 @@ a {
             }
         }
     }
+
+    #about {
+        .about-container {
+            padding-bottom: 0;
+            
+            .about-content {
+                .sketchpad {
+                    width: 25%;
+                    margin: 0 1rem;
+                    float: left;
+
+                    #illustration {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Medium desktop styling
@@ -343,18 +397,60 @@ a {
             }
         }
     }
+
+    #about {
+        .about-container {
+            .about-content {
+                display: flex;
+
+                .sketchpad {
+                    width: 40vw;
+
+                    #illustration {
+                        width: 40vw;
+                    }
+                }
+
+                .about-blurb {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+        }
+    }
 }
 
 // Large desktop styling
 @media only screen and (min-width: 1919px) {
-    
+    .about-content {
+        margin: 0 10vw;
+
+        .about-blurb {
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
 }
 
 // Landscape phone styling
 @media only screen and (max-width: 750px) and (orientation: landscape) {
     @include nav-small;
     
-    .home-container {
-        padding-top: 50px;
+    #home {
+        .home-container {
+            padding-top: 50px;
+        }
+    }
+
+    #about {
+        .about-container {
+            .about-content {
+                #illustration { 
+                    width: 80vh;
+                }
+            }
+        }
     }
 }
