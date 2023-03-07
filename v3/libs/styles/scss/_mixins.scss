@@ -1,3 +1,46 @@
+// General mixins
+@mixin centralise {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+@mixin full-screen {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+}
+
+// Nav mixins
+@mixin nav-small {
+    .navbar {
+        .main-nav {
+            width: unset;
+    
+            button {
+                display: none;
+            }
+        }
+    
+        .dropdown {
+            position: absolute;
+            
+            .menu-btn {
+                display: none;
+            }
+    
+            #dark-btn {
+                display: initial;
+            }
+        }
+    }
+}
+
 @mixin nav-portrait {
     .navbar{
         .main-nav {
@@ -31,17 +74,6 @@
             top: 0;
         }
     }
-}
-
-@mixin centralise {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
 }
 
 @mixin nav-landscape {
@@ -84,10 +116,4 @@
             }
         } 
     }
-}
-
-@mixin full-screen {
-    height: 100vh;
-    position: relative;
-    scroll-snap-align: center;
 }

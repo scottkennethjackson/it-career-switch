@@ -192,6 +192,26 @@ a {
   opacity: 0.5;
 }
 
+@media only screen and (max-width: 750px) and (orientation: landscape) {
+  .navbar .main-nav {
+    width: unset;
+  }
+  .navbar .main-nav button {
+    display: none;
+  }
+  .navbar .dropdown {
+    position: absolute;
+  }
+  .navbar .dropdown .menu-btn {
+    display: none;
+  }
+  .navbar .dropdown #dark-btn {
+    display: initial;
+  }
+  .home-container {
+    padding-top: 50px;
+  }
+}
 @media only screen and (max-width: 373px) {
   .navbar .main-nav .heading {
     font-size: 1.25rem;
