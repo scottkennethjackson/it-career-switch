@@ -54,6 +54,18 @@
                 }
             }
         }
+
+        .skills-container {
+            .bullet-container {
+                background-color: transparent;
+            }
+        }
+
+        .languages-container {
+            .logo {
+                filter: grayscale(100%) invert(75%) brightness(150%);
+            }
+        }
     }
 }
 
@@ -170,5 +182,28 @@
                 }
             }
         }
+    }
+}
+
+// Skills mixins
+@mixin icon-colors {
+    .development {
+        background-color: $vividblue;
+    }
+
+    .design {
+        background-color: $yellow;
+    }
+
+    .deployment {
+        background-color: $grey;
+    }
+
+    .seo {
+        background-color: $orange;
+    }
+
+    .qa {
+        background-color: $mediumblue;
     }
 }

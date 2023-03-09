@@ -213,6 +213,66 @@ a {
     }
 }
 
+#skills {
+    background-color: $offwhite;
+
+    .skills-container {
+        padding: 50px 0;
+
+        .experience-blurb {
+            margin: 0 1rem 2rem 1rem;
+        }
+
+        .box-container {
+            margin: 0 1rem 2rem 1rem;
+
+            .skill-box {
+                @include icon-colors;
+
+                margin: .5rem 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: .5rem;
+                padding: .75rem;
+                background-color: $lightgrey;
+
+                .box-icon {
+                    display: flex;
+                    margin-bottom: .5rem;
+                    text-align: center;
+
+                    .skill-icon {
+                        padding: .75rem;
+                        font-size: 2rem;
+                        color: white;
+                    }
+                }
+
+                .skill-blurb {
+                    .heading {
+                        font-size: 1.25rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .bullet-container {
+            display: none;
+        }
+
+        .languages-container {
+            margin: 0 1rem;
+
+            .logo {
+                height: 1.25rem;
+                margin: .25rem;
+            }
+        }
+    }
+}
+
 // Dark mode styling
 .dark {
     @include dark-mode;
@@ -288,7 +348,6 @@ a {
 
     #about {
         @include full-screen;
-        background-color: $yellow;
 
         .about-container {
             @include centralise;
@@ -298,6 +357,50 @@ a {
             .sketchpad {
                 #illustration {
                     width: 50vw;
+                }
+            }
+        }
+    }
+
+    #skills {
+        @include full-screen;
+
+        .skills-container {
+            @include centralise;
+
+            .experience-blurb {
+                margin-bottom: 2rem;
+            }
+
+            .box-container {
+                display: none;
+            }
+
+            .bullet-container {
+                display: block;
+                margin: 0 1rem 2rem 1rem;
+                border-radius: .5rem;
+                padding: .75rem .75rem 0 .75rem;
+                background-color: $lightgrey;
+
+                .row {
+                    margin: 0;
+
+                    p {
+                        @include icon-colors;
+    
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: .75rem;
+                        padding: 0;
+    
+                        .bullet-icon {
+                            margin-right: .75rem;
+                            padding: .5rem;
+                            font-size: 1.25rem;
+                            color: white;
+                        }
+                    }
                 }
             }
         }
@@ -344,6 +447,16 @@ a {
             .sketchpad {
                 #illustration {
                     width: 70vw;
+                }
+            }
+        }
+    }
+
+    #skills {
+        .skills-container {
+            .languages-container {
+                .logo {
+                    height: 1.5rem;
                 }
             }
         }

@@ -219,6 +219,67 @@ a {
   padding: 0 1rem;
 }
 
+#skills {
+  background-color: rgb(238, 240, 239);
+}
+#skills .skills-container {
+  padding: 50px 0;
+}
+#skills .skills-container .experience-blurb {
+  margin: 0 1rem 2rem 1rem;
+}
+#skills .skills-container .box-container {
+  margin: 0 1rem 2rem 1rem;
+}
+#skills .skills-container .box-container .skill-box {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background-color: rgb(226, 226, 226);
+}
+#skills .skills-container .box-container .skill-box .development {
+  background-color: rgb(151, 208, 242);
+}
+#skills .skills-container .box-container .skill-box .design {
+  background-color: rgb(239, 198, 70);
+}
+#skills .skills-container .box-container .skill-box .deployment {
+  background-color: rgb(171, 171, 171);
+}
+#skills .skills-container .box-container .skill-box .seo {
+  background-color: rgb(240, 174, 83);
+}
+#skills .skills-container .box-container .skill-box .qa {
+  background-color: rgb(99, 125, 159);
+}
+#skills .skills-container .box-container .skill-box .box-icon {
+  display: flex;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+#skills .skills-container .box-container .skill-box .box-icon .skill-icon {
+  padding: 0.75rem;
+  font-size: 2rem;
+  color: white;
+}
+#skills .skills-container .box-container .skill-box .skill-blurb .heading {
+  font-size: 1.25rem;
+  text-align: center;
+}
+#skills .skills-container .bullet-container {
+  display: none;
+}
+#skills .skills-container .languages-container {
+  margin: 0 1rem;
+}
+#skills .skills-container .languages-container .logo {
+  height: 1.25rem;
+  margin: 0.25rem;
+}
+
 .dark nav {
   box-shadow: none !important;
 }
@@ -251,6 +312,20 @@ a {
 .dark #portfolio .icon-container .icon-menu .icon-btn .icon-link,
 .dark #contact .icon-container .icon-menu .icon-btn .icon-link {
   color: white;
+}
+.dark #home .skills-container .bullet-container,
+.dark #about .skills-container .bullet-container,
+.dark #skills .skills-container .bullet-container,
+.dark #portfolio .skills-container .bullet-container,
+.dark #contact .skills-container .bullet-container {
+  background-color: transparent;
+}
+.dark #home .languages-container .logo,
+.dark #about .languages-container .logo,
+.dark #skills .languages-container .logo,
+.dark #portfolio .languages-container .logo,
+.dark #contact .languages-container .logo {
+  filter: grayscale(100%) invert(75%) brightness(150%);
 }
 
 @media only screen and (max-width: 373px) {
@@ -345,7 +420,6 @@ a {
     height: 100vh;
     position: relative;
     scroll-snap-align: center;
-    background-color: rgb(239, 198, 70);
   }
   #about .about-container {
     width: 100%;
@@ -360,6 +434,64 @@ a {
   }
   #about .about-container .sketchpad #illustration {
     width: 50vw;
+  }
+  #skills {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+  }
+  #skills .skills-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  #skills .skills-container .experience-blurb {
+    margin-bottom: 2rem;
+  }
+  #skills .skills-container .box-container {
+    display: none;
+  }
+  #skills .skills-container .bullet-container {
+    display: block;
+    margin: 0 1rem 2rem 1rem;
+    border-radius: 0.5rem;
+    padding: 0.75rem 0.75rem 0 0.75rem;
+    background-color: rgb(226, 226, 226);
+  }
+  #skills .skills-container .bullet-container .row {
+    margin: 0;
+  }
+  #skills .skills-container .bullet-container .row p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding: 0;
+  }
+  #skills .skills-container .bullet-container .row p .development {
+    background-color: rgb(151, 208, 242);
+  }
+  #skills .skills-container .bullet-container .row p .design {
+    background-color: rgb(239, 198, 70);
+  }
+  #skills .skills-container .bullet-container .row p .deployment {
+    background-color: rgb(171, 171, 171);
+  }
+  #skills .skills-container .bullet-container .row p .seo {
+    background-color: rgb(240, 174, 83);
+  }
+  #skills .skills-container .bullet-container .row p .qa {
+    background-color: rgb(99, 125, 159);
+  }
+  #skills .skills-container .bullet-container .row p .bullet-icon {
+    margin-right: 0.75rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    color: white;
   }
 }
 @media only screen and (min-width: 833px) and (orientation: portrait) {
@@ -402,6 +534,9 @@ a {
   }
   #about .about-container .sketchpad #illustration {
     width: 70vw;
+  }
+  #skills .skills-container .languages-container .logo {
+    height: 1.5rem;
   }
 }
 @media only screen and (min-width: 799px) and (orientation: landscape) {
