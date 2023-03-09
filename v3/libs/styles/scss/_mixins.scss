@@ -1,4 +1,10 @@
 // General mixins
+@mixin full-screen {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+}
+
 @mixin centralise {
     width: 100%;
     position: absolute;
@@ -10,10 +16,12 @@
     -o-transform: translateY(-50%);
 }
 
-@mixin full-screen {
-    height: 100vh;
-    position: relative;
-    scroll-snap-align: center;
+@mixin undo-centralise {
+    transform: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
 }
 
 @mixin dark-mode {

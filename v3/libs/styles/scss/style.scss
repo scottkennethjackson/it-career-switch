@@ -457,6 +457,7 @@ a {
             .languages-container {
                 .logo {
                     height: 1.5rem;
+                    margin: .5rem;
                 }
             }
         }
@@ -504,6 +505,16 @@ a {
             }
         }
     }
+
+    #skills {
+        height: unset;
+        
+        .skills-container {
+            @include undo-centralise;
+
+            margin-top: 2rem;
+        }
+    }
 }
 
 // Medium desktop styling
@@ -539,6 +550,24 @@ a {
             }
         }
     }
+
+    #skills {
+        @include full-screen;
+
+        .skills-container {
+            @include centralise;
+
+            margin-top: 0;
+            padding-bottom: 0;
+
+            .languages-container {
+                .logo {
+                    height: 2rem;
+                    margin: .5rem;
+                }
+            }
+        }
+    }
 }
 
 // Large desktop styling
@@ -553,6 +582,16 @@ a {
                     p {
                         font-size: 1.5rem;
                     }
+                }
+            }
+        }
+    }
+
+    #skills {
+        .skills-container {
+            .languages-container {
+                .logo {
+                    margin: .75rem;
                 }
             }
         }

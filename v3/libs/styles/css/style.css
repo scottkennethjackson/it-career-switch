@@ -537,6 +537,7 @@ a {
   }
   #skills .skills-container .languages-container .logo {
     height: 1.5rem;
+    margin: 0.5rem;
   }
 }
 @media only screen and (min-width: 799px) and (orientation: landscape) {
@@ -580,6 +581,17 @@ a {
   #about .about-container .about-content .sketchpad #illustration {
     width: 100%;
   }
+  #skills {
+    height: unset;
+  }
+  #skills .skills-container {
+    transform: unset;
+    -webkit-transform: unset;
+    -moz-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+    margin-top: 2rem;
+  }
 }
 @media only screen and (min-width: 1365px) {
   .navbar .main-nav {
@@ -605,6 +617,27 @@ a {
     flex-direction: column;
     justify-content: center;
   }
+  #skills {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+  }
+  #skills .skills-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+  #skills .skills-container .languages-container .logo {
+    height: 2rem;
+    margin: 0.5rem;
+  }
 }
 @media only screen and (min-width: 1919px) {
   #about .about-container {
@@ -615,6 +648,9 @@ a {
   }
   #about .about-container .about-content .about-blurb p {
     font-size: 1.5rem;
+  }
+  #skills .skills-container .languages-container .logo {
+    margin: 0.75rem;
   }
 }
 @media only screen and (max-width: 750px) and (orientation: landscape) {
