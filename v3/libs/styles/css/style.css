@@ -634,6 +634,16 @@ a {
     margin-top: 0;
     padding-bottom: 0;
   }
+  #skills .skills-container .box-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #skills .skills-container .box-container .skill-box {
+    width: 19%;
+  }
+  #skills .skills-container .bullet-container {
+    display: none;
+  }
   #skills .skills-container .languages-container .logo {
     height: 2rem;
     margin: 0.5rem;
@@ -648,6 +658,19 @@ a {
   }
   #about .about-container .about-content .about-blurb p {
     font-size: 1.5rem;
+  }
+  #skills .skills-container {
+    width: 80vw;
+    margin: 0 10vw;
+  }
+  #skills .skills-container .experience-blurb {
+    margin-bottom: 3rem;
+  }
+  #skills .skills-container .experience-blurb p {
+    font-size: 1.5rem;
+  }
+  #skills .skills-container .box-container {
+    margin-bottom: 3rem;
   }
   #skills .skills-container .languages-container .logo {
     margin: 0.75rem;

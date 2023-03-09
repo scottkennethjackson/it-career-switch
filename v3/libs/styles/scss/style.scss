@@ -560,6 +560,19 @@ a {
             margin-top: 0;
             padding-bottom: 0;
 
+            .box-container {
+                display: flex;
+                justify-content: space-between;
+
+                .skill-box {
+                    width: 19%;
+                }
+            }
+
+            .bullet-container {
+                display: none;
+            }
+
             .languages-container {
                 .logo {
                     height: 2rem;
@@ -575,6 +588,7 @@ a {
     #about {
         .about-container {
             padding: 0;
+
             .about-content {
                 margin: 0 10vw;
         
@@ -589,6 +603,21 @@ a {
 
     #skills {
         .skills-container {
+            width: 80vw;
+            margin: 0 10vw;
+
+            .experience-blurb {
+                margin-bottom: 3rem;
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .box-container {
+                margin-bottom: 3rem;
+            }
+
             .languages-container {
                 .logo {
                     margin: .75rem;
