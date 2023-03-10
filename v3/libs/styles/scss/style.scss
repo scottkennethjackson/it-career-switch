@@ -227,7 +227,6 @@ a {
 
             .skill-box {
                 @include icon-colors;
-
                 margin: .5rem 0;
                 display: flex;
                 flex-direction: column;
@@ -268,6 +267,40 @@ a {
                 height: 1.25rem;
                 margin: .25rem;
             }
+        }
+    }
+}
+
+#portfolio {
+    background-color: $orange;
+
+    .portfolio-container {
+        padding: 50px 0;
+
+        a {
+            color: black;
+    
+            .mockup {
+                width: 100vw;
+                margin-bottom: 1rem;
+            }
+    
+            .project-info {
+                margin: 0 1rem;
+
+                .project-blurb {
+                    text-align: justify
+                }
+
+                .project-languages {
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            display: none;
         }
     }
 }
@@ -349,7 +382,6 @@ a {
 
         .about-container {
             @include centralise;
-
             padding-bottom: 0;
 
             .sketchpad {
@@ -386,7 +418,6 @@ a {
 
                     p {
                         @include icon-colors;
-    
                         display: flex;
                         align-items: center;
                         margin-bottom: .75rem;
@@ -509,7 +540,6 @@ a {
         
         .skills-container {
             @include undo-centralise;
-
             margin-top: 2rem;
         }
     }
@@ -554,7 +584,6 @@ a {
 
         .skills-container {
             @include centralise;
-
             margin-top: 0;
             padding-bottom: 0;
 

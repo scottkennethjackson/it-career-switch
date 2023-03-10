@@ -279,6 +279,33 @@ a {
   margin: 0.25rem;
 }
 
+#portfolio {
+  background-color: rgb(240, 174, 83);
+}
+#portfolio .portfolio-container {
+  padding: 50px 0;
+}
+#portfolio .portfolio-container a {
+  color: black;
+}
+#portfolio .portfolio-container a .mockup {
+  width: 100vw;
+  margin-bottom: 1rem;
+}
+#portfolio .portfolio-container a .project-info {
+  margin: 0 1rem;
+}
+#portfolio .portfolio-container a .project-info .project-blurb {
+  text-align: justify;
+}
+#portfolio .portfolio-container a .project-info .project-languages {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+#portfolio .portfolio-container .carousel-control-prev, #portfolio .portfolio-container .carousel-control-next {
+  display: none;
+}
+
 .dark nav {
   box-shadow: none !important;
 }
@@ -341,6 +368,13 @@ a {
 .dark #portfolio .languages-container .logo,
 .dark #contact .languages-container .logo {
   filter: grayscale(100%) invert(75%) brightness(150%);
+}
+.dark #home .project-info,
+.dark #about .project-info,
+.dark #skills .project-info,
+.dark #portfolio .project-info,
+.dark #contact .project-info {
+  color: white;
 }
 
 @media only screen and (max-width: 373px) {
