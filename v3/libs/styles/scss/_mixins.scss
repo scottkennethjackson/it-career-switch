@@ -64,6 +64,16 @@
         }
 
         .skills-container {
+            margin-top: 0;
+            padding-top: 82px;
+            background-color: $dark;
+
+            .box-container {
+                .skill-box {
+                    background-color: transparent;
+                }
+            }
+
             .bullet-container {
                 background-color: transparent;
             }

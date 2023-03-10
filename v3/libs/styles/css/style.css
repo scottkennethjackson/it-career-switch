@@ -41,7 +41,6 @@
 }
 
 html {
-  font-size: 16px;
   font-family: "Roboto", Arial, sans-serif;
   text-align: justify;
   cursor: default;
@@ -312,6 +311,22 @@ a {
 .dark #portfolio .icon-container .icon-menu .icon-btn .icon-link,
 .dark #contact .icon-container .icon-menu .icon-btn .icon-link {
   color: white;
+}
+.dark #home .skills-container,
+.dark #about .skills-container,
+.dark #skills .skills-container,
+.dark #portfolio .skills-container,
+.dark #contact .skills-container {
+  margin-top: 0;
+  padding-top: 82px;
+  background-color: rgb(34, 37, 41);
+}
+.dark #home .skills-container .box-container .skill-box,
+.dark #about .skills-container .box-container .skill-box,
+.dark #skills .skills-container .box-container .skill-box,
+.dark #portfolio .skills-container .box-container .skill-box,
+.dark #contact .skills-container .box-container .skill-box {
+  background-color: transparent;
 }
 .dark #home .skills-container .bullet-container,
 .dark #about .skills-container .bullet-container,

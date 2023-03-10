@@ -79,7 +79,7 @@ $canvas.mousedown(function(e) {
     mouseDown = false;
 });
 
-// When the user clicks a skill box, reveal its skill description
+// When the user clicks a skill box, reveal its skill description - feature removed
 $(".box").click(function() {
     let selectedBox = this.closest(".box");
 
