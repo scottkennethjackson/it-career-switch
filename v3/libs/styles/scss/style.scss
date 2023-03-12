@@ -8,6 +8,14 @@
     box-sizing: border-box;
 }
 
+/*.home-container,
+.about-container,
+.skills-container,
+.portfolio-container,
+.contact-container {
+    background-color: pink;
+}*/
+
 html {
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
@@ -219,7 +227,7 @@ a {
         padding: 50px 0;
 
         .experience-blurb {
-            margin: 0 1rem 2rem 1rem;
+            margin: 1rem 1rem 2rem 1rem;
         }
 
         .box-container {
@@ -288,11 +296,17 @@ a {
             .project-info {
                 margin: 0 1rem;
 
+                .heading {
+                    font-size: 1.75rem;
+                }
+
                 .project-blurb {
-                    text-align: justify
+                    height: 9rem;
+                    text-align: justify;
                 }
 
                 .project-languages {
+                    height: 3rem;
                     font-family: 'Courier New', Courier, monospace;
                     font-weight: bold;
                 }
@@ -301,6 +315,63 @@ a {
 
         .carousel-control-prev, .carousel-control-next {
             display: none;
+        }
+    }
+}
+
+#contact {
+    height: 100%;
+    color: white;
+    background-color: $darkblue;
+
+    .contact-container {
+        margin: 0 1rem;
+        padding: 50px 0;
+
+        .heading {
+            margin-top: 1rem;
+        }
+
+        #contact-form {
+            .form-group {
+                margin-bottom: 1rem;
+
+                input {
+                    border: none;
+                    border-radius: .5rem;
+                }
+
+                textarea {
+                    width: 100%;
+                    border: none;
+                    border-radius: .5rem;
+                    padding: .75rem;
+                    resize: none;
+                }
+            }
+
+            button {
+                border: 1px solid $yellow;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: $yellow;
+
+                &:hover {
+                    color: black;
+                    background-color: $yellow;
+                }
+            }
+        }
+    }
+
+    .credit {
+        position: absolute;
+        bottom: 0;
+        margin: .5rem 1rem;
+        font-size: .75rem;
+
+        a:hover {
+            color: $yellow;
         }
     }
 }
@@ -330,6 +401,27 @@ a {
             }
         }
     }
+
+    #portfolio {
+        @include full-screen;
+
+        .portfolio-container {
+            @include centralise;
+            padding-bottom: 0;
+
+            .heading {
+                font-size: 2rem;
+            }
+
+            .project-blurb {
+                height: 7.5rem;
+            }
+
+            .project-languages {
+                height: 3rem;
+            }
+        }
+    }
 }
 
 // Large phone styling
@@ -351,6 +443,16 @@ a {
                     font-size: 1.5rem;
                 }
             }
+        }
+    }
+
+    #contact {
+        @include full-screen;
+
+        .contact-container {
+            @include centralise;
+            margin: 0;
+            padding: 0 1rem;
         }
     }
 }
@@ -397,6 +499,7 @@ a {
 
         .skills-container {
             @include centralise;
+            padding-bottom: 0;
 
             .experience-blurb {
                 margin-bottom: 2rem;
@@ -433,6 +536,32 @@ a {
                 }
             }
         }
+        
+    }
+
+    #portfolio {
+        .portfolio-container {
+            .project-blurb {
+                height: 4.5rem;
+            }
+
+            .project-languages {
+                height: 1.5rem;
+            }
+        }
+    }
+
+    #contact {
+        form {
+            width: 80%;
+            margin: 0 10%;
+        }
+
+        .credit {
+            width: 100%;
+            margin: .5rem 0;
+            text-align: center;
+        }
     }
 }
 
@@ -454,6 +583,14 @@ a {
                 #illustration {
                     width: 60vw;
                 }
+            }
+        }
+    }
+
+    #portfolio {
+        .portfolio-container {
+            .project-blurb {
+                height: 3rem;
             }
         }
     }
@@ -540,7 +677,31 @@ a {
         
         .skills-container {
             @include undo-centralise;
-            margin-top: 2rem;
+        }
+    }
+
+    #portfolio {
+        .portfolio-container {
+            a {
+                .mockup {
+                    width: 50%;
+                }
+            }
+
+            .carousel-control-prev, .carousel-control-next {
+                display: block;
+            }
+        }
+    }
+
+    #contact {
+        form {
+            width: 60%;
+            margin: 0 20%;
+
+            textarea {
+                height: 7.5rem;
+            }
         }
     }
 }
@@ -608,6 +769,29 @@ a {
             }
         }
     }
+
+    #portfolio {
+        .portfolio-container {
+            a {
+                .project-info {
+                    width: 80vw;
+                    margin: 0 10vw;
+                }
+            }
+            
+        }
+    }
+
+    #contact {
+        form {
+            width: 50%;
+            margin: 0 25%;
+
+            textarea {
+                height: unset;
+            }
+        }
+    }
 }
 
 // Large desktop styling
@@ -652,6 +836,18 @@ a {
             }
         }
     }
+
+    #portfolio {
+        .portfolio-container {
+            a {
+                .project-info {
+                    width: 60vw;
+                    margin: 0 20vw;
+                }
+            }
+            
+        }
+    }
 }
 
 // Landscape phone styling
@@ -671,6 +867,40 @@ a {
                     width: 80vh;
                 }
             }
+        }
+    }
+
+    #portfolio {
+        height: unset;
+        
+        .portfolio-container {
+            @include undo-centralise;
+
+            a {
+                .mockup {
+                    width: 50%;
+                }
+
+                .project-blurb {
+                    height: 4.5rem;
+                }
+            }
+        }
+    }
+
+    #contact {
+        height: 100%;
+
+        .contact-container {
+            @include undo-centralise;
+            margin: 0;
+            padding: 50px 1rem;
+        }
+
+        .credit {
+            width: 100%;
+            margin: .5rem 0;
+            text-align: center;
         }
     }
 }
