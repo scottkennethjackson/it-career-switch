@@ -6,20 +6,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    //border: 1px solid red;
 }
-
-/*.home-container,
-.about-container,
-.skills-container,
-.portfolio-container,
-.contact-container {
-    background-color: pink;
-}*/
 
 html {
     font-family: 'Roboto', Arial, sans-serif;
     text-align: justify;
-    //scroll-snap-type: y mandatory;
     cursor: default;
 }
 
@@ -149,14 +141,16 @@ a {
 
 #home {
     @include full-screen;
+    justify-content: center;
     background-color: $lightblue;
 
     .home-container {
-        @include centralise;
+        margin: 1rem;
 
         .heading {
             font-size: 3rem;
             color: $darkerblue;
+
         }
 
         .subheading {
@@ -164,9 +158,8 @@ a {
         }
 
         .icon-container {
-            margin-top: .5rem;
-
             .icon-menu {
+                margin: 0;
                 justify-content: center;
                 list-style: none;
     
@@ -192,12 +185,13 @@ a {
 #about {
     height: 100%;
     background-color: $yellow;
+    scroll-snap-stop: always;
 
     .about-container {
         padding: 50px 0;
 
         .sketchpad {
-            margin: 1rem 0;
+            margin: 1rem;
             position: relative;
             display: flex;
             justify-content: center;
@@ -215,13 +209,14 @@ a {
         }
 
         .about-blurb {
-            padding: 0 1rem;
+            margin: 0 1rem;
         }
     }
 }
 
 #skills {
     background-color: $offwhite;
+    scroll-snap-stop: always;
 
     .skills-container {
         padding: 50px 0;
@@ -281,32 +276,35 @@ a {
 
 #portfolio {
     background-color: $orange;
+    scroll-snap-stop: always;
 
     .portfolio-container {
         padding: 50px 0;
 
         a {
+            width: 100%;
             color: black;
+            border: none;
     
             .mockup {
                 width: 100vw;
-                margin-bottom: 1rem;
             }
     
             .project-info {
-                margin: 0 1rem;
+                margin: 1rem;
 
                 .heading {
                     font-size: 1.75rem;
                 }
 
                 .project-blurb {
-                    height: 9rem;
+                    height: 10.5rem;
                     text-align: justify;
                 }
 
                 .project-languages {
                     height: 3rem;
+                    margin-bottom: 0;
                     font-family: 'Courier New', Courier, monospace;
                     font-weight: bold;
                 }
@@ -320,17 +318,13 @@ a {
 }
 
 #contact {
-    height: 100%;
+    position: relative;
     color: white;
     background-color: $darkblue;
 
     .contact-container {
         margin: 0 1rem;
         padding: 50px 0;
-
-        .heading {
-            margin-top: 1rem;
-        }
 
         #contact-form {
             .form-group {
@@ -360,6 +354,11 @@ a {
                     color: black;
                     background-color: $yellow;
                 }
+            }
+
+            .status-notification {
+                height: 1.5rem;
+                margin: .5rem 0;
             }
         }
     }
@@ -394,6 +393,12 @@ a {
         @include centralise;
     }
 
+    .dropdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     #home {
         .home-container {
             .heading {
@@ -406,19 +411,20 @@ a {
         @include full-screen;
 
         .portfolio-container {
-            @include centralise;
-            padding-bottom: 0;
-
-            .heading {
-                font-size: 2rem;
-            }
-
-            .project-blurb {
-                height: 7.5rem;
-            }
-
-            .project-languages {
-                height: 3rem;
+            a {
+                .project-info {
+                    .heading {
+                        font-size: 2rem;
+                    }
+        
+                    .project-blurb {
+                        height: 7.5rem;
+                    }
+        
+                    .project-languages {
+                        height: 3rem;
+                    }
+                }
             }
         }
     }
@@ -437,8 +443,6 @@ a {
             }
 
             .icon-container {
-                margin-top: 1rem;
-
                 .icon-link {
                     font-size: 1.5rem;
                 }
@@ -448,17 +452,22 @@ a {
 
     #contact {
         @include full-screen;
+        justify-content: center;
+        align-items: center;
 
         .contact-container {
-            @include centralise;
             margin: 0;
-            padding: 0 1rem;
+            padding: 50px 1rem;
         }
     }
 }
 
 // Small tablet styling
 @media only screen and (min-width: 767px) {
+    html {
+        scroll-snap-type: y mandatory;
+    }
+
     .menu-link {
         font-size: 1.5rem;
     }
@@ -483,7 +492,6 @@ a {
         @include full-screen;
 
         .about-container {
-            @include centralise;
             padding-bottom: 0;
 
             .sketchpad {
@@ -498,12 +506,7 @@ a {
         @include full-screen;
 
         .skills-container {
-            @include centralise;
             padding-bottom: 0;
-
-            .experience-blurb {
-                margin-bottom: 2rem;
-            }
 
             .box-container {
                 display: none;
@@ -541,26 +544,34 @@ a {
 
     #portfolio {
         .portfolio-container {
-            .project-blurb {
-                height: 4.5rem;
-            }
-
-            .project-languages {
-                height: 1.5rem;
+            a {
+                .project-info {
+                    .project-blurb {
+                        height: 4.5rem;
+                    }
+        
+                    .project-languages {
+                        height: 1.5rem;
+                    }
+                }
             }
         }
     }
 
     #contact {
-        form {
-            width: 80%;
-            margin: 0 10%;
-        }
-
-        .credit {
+        .contact-container {
             width: 100%;
-            margin: .5rem 0;
-            text-align: center;
+
+            form {
+                width: 80%;
+                margin: 0 10%;
+            }
+    
+            .credit {
+                width: 100%;
+                margin: .5rem 0;
+                text-align: center;
+            }
         }
     }
 }
@@ -589,8 +600,12 @@ a {
 
     #portfolio {
         .portfolio-container {
-            .project-blurb {
-                height: 3rem;
+            a {
+                .project-info {
+                    .project-blurb {
+                        height: 3rem;
+                    }
+                }
             }
         }
     }
@@ -673,18 +688,37 @@ a {
     }
 
     #skills {
-        height: unset;
+        height: 200vh;
+        scroll-snap-align: start;
         
         .skills-container {
-            @include undo-centralise;
+            padding-top: 0;
+            scroll-snap-align: end;
+            scroll-snap-stop: always;
+
+            .skills-page1,
+            .skills-page2 {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 50px;
+            }
         }
     }
 
     #portfolio {
         .portfolio-container {
+            padding-bottom: 0;
             a {
                 .mockup {
                     width: 50%;
+                }
+
+                .project-info {
+                    .project-blurb {
+                        height: 4.5rem;
+                    }
                 }
             }
 
@@ -695,13 +729,21 @@ a {
     }
 
     #contact {
-        form {
-            width: 60%;
-            margin: 0 20%;
+        .contact-container {
+            padding-bottom: 0;
 
-            textarea {
-                height: 7.5rem;
+            form {
+                width: 60%;
+                margin: 0 20%;
+    
+                textarea {
+                    height: 7.5rem;
+                }
             }
+        }
+
+        .credit {
+            bottom: 0;
         }
     }
 }
@@ -742,11 +784,19 @@ a {
 
     #skills {
         @include full-screen;
+        height: 100vh;
 
         .skills-container {
-            @include centralise;
             margin-top: 0;
-            padding-bottom: 0;
+            padding-top: 50px;
+            scroll-snap-align: unset;
+            scroll-snap-stop: unset;
+
+            .skills-page1,
+            .skills-page2 {
+                height: unset;
+                padding: 0;
+            }
 
             .box-container {
                 display: flex;
@@ -763,8 +813,7 @@ a {
 
             .languages-container {
                 .logo {
-                    height: 2rem;
-                    margin: .5rem;
+                    margin: .75rem;
                 }
             }
         }
@@ -776,6 +825,10 @@ a {
                 .project-info {
                     width: 80vw;
                     margin: 0 10vw;
+
+                    .project-blurb {
+                        height: 3rem;
+                    }
                 }
             }
             
@@ -798,8 +851,6 @@ a {
 @media only screen and (min-width: 1919px) {
     #about {
         .about-container {
-            padding: 0;
-
             .about-content {
                 margin: 0 10vw;
         
@@ -818,8 +869,6 @@ a {
             margin: 0 10vw;
 
             .experience-blurb {
-                margin-bottom: 3rem;
-
                 p {
                     font-size: 1.5rem;
                 }
@@ -874,15 +923,19 @@ a {
         height: unset;
         
         .portfolio-container {
-            @include undo-centralise;
-
             a {
                 .mockup {
                     width: 50%;
                 }
 
-                .project-blurb {
-                    height: 4.5rem;
+                .project-info {
+                    .project-blurb {
+                        height: 6rem;
+                    }
+
+                    .project-languages {
+                        height: 1.5rem;
+                    }
                 }
             }
         }
@@ -892,9 +945,12 @@ a {
         height: 100%;
 
         .contact-container {
-            @include undo-centralise;
             margin: 0;
             padding: 50px 1rem;
+
+            form {
+                width: 80vw;
+            }
         }
 
         .credit {
