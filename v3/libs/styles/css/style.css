@@ -427,6 +427,18 @@ a {
 .dark #contact .project-info {
   color: white;
 }
+.dark #home .carousel-control-prev,
+.dark #home .carousel-control-next,
+.dark #about .carousel-control-prev,
+.dark #about .carousel-control-next,
+.dark #skills .carousel-control-prev,
+.dark #skills .carousel-control-next,
+.dark #portfolio .carousel-control-prev,
+.dark #portfolio .carousel-control-next,
+.dark #contact .carousel-control-prev,
+.dark #contact .carousel-control-next {
+  filter: invert(100%);
+}
 
 @media only screen and (max-width: 373px) {
   .navbar .main-nav .heading {
@@ -748,7 +760,8 @@ a {
   #portfolio .portfolio-container a .project-info .project-blurb {
     height: 4.5rem;
   }
-  #portfolio .portfolio-container .carousel-control-prev, #portfolio .portfolio-container .carousel-control-next {
+  #portfolio .portfolio-container .carousel-control-prev,
+  #portfolio .portfolio-container .carousel-control-next {
     display: block;
   }
   #contact .contact-container {
