@@ -6,12 +6,12 @@ class BusinessList extends React.Component {
     render () {
         return (
             <div className="BusinessList">
-                <BusinessList /> 
-                <BusinessList />
-                <BusinessList />
-                <BusinessList />
-                <BusinessList />
-                <BusinessList />
+                <Business /> 
+                <Business />
+                <Business />
+                <Business />
+                <Business />
+                <Business />
             </div>
         )
     }
