@@ -3,9 +3,9 @@ import './Business.css';
 
 const business = {
   imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-  name: 'MarginOtto Pizzeria',
+  name: 'Margin Otto Pizzeria',
   address: '1010 Paddington Way',
-  city: 'Flavortown',
+  city: 'Bordertown',
   state: 'NY',
   zipCode: '10101',
   category: 'Italian',
