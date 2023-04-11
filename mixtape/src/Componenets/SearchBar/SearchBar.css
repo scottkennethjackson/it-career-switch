@@ -31,9 +31,9 @@
     font-size: .833rem;
     transition: background-color .25s;
     border: 0px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .SearchButton:hover {
-    opacity: .7;
+    background-color: #3dbede;
 }

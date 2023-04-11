@@ -32,11 +32,11 @@
     text-align: center;
     font-size: .83rem;
     transition: background-color .25s;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .Playlist-save:hover {
-    opacity: .7;
+    background-color: #3dbede;
 }
 
 ::-webkit-scrollbar {
