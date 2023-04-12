@@ -20,11 +20,7 @@ class App extends React.Component {
         {name: 'Track3', artist: 'Artist3', album: 'Album3', id: 3}
       ],
       playlistName: 'My Mixtape',
-      playlistTracks: [
-        {name: 'PlaylistTrack1', artist: 'PlaylistArtist1', album: 'PlaylistAlbum1', id: 4},
-        {name: 'PlaylistTrack2', artist: 'PlaylistArtist2', album: 'PlaylistAlbum2', id: 5},
-        {name: 'PlaylistTrack3', artist: 'PlaylistArtist3', album: 'PlaylistAlbum3', id: 6}
-      ]
+      playlistTracks: []
     };
 
     this.addTrack = this.addTrack.bind(this);
